@@ -11,7 +11,14 @@ export type MatchRow = {
   status: MatchStatus;
   question_ids: number[];
   starts_at: string | null;
-  finishes_at: string | null;
+  votes_questions: Record<string, string> | null;
+  votes_timer: Record<string, string> | null;
+  question_count: number | null;
+  question_time_limit_ms: number | null;
+  current_question_index: number;
+  question_started_at: string | null;
+  question_ends_at: string | null;
+  reveal_ends_at: string | null;
   created_at: string;
   finished_at: string | null;
 };
@@ -23,8 +30,7 @@ export type MatchPlayerRow = {
   name: string;
   avatar: string;
   score: number;
-  current_question_index: number;
-  question_started_at: string | null;
+  answered_current: boolean;
   finished_at: string | null;
   joined_at: string;
 };

@@ -13,6 +13,14 @@ export type Lesson = {
   questions: Question[];
 };
 
+/** Bir sınav oturumunun yanlış sorularını tutan yapı */
+export type WrongSession = {
+  lessonId: string;
+  lessonTitle: string;
+  questions: Question[];
+  timestamp: number;
+};
+
 export interface QuizState {
   lessons: Lesson[];
   selectedLessonId: string | null;
@@ -33,6 +41,15 @@ export interface QuizState {
   playerAvatar: string | null;
   competitionLessonId: string | null;
 
+  /** Son 3 oturumun yanlışları (max 3 eleman, FIFO) */
+  wrongAnswersBank: WrongSession[];
+  /** Ardışık full (yanlış=0) sınav sayacı — 3 olunca banka temizlenir */
+  consecutiveFullCount: number;
+  /** Yanlışlarım modu aktif mi */
+  isMyWrongsMode: boolean;
+  /** Yanlışlarım modundaki birleştirilmiş sorular */
+  myWrongsQuestions: Question[];
+
   selectLesson: (lessonId: string) => void;
   goToLessonSelection: () => void;
   answerQuestion: (questionId: number, answer: string) => void;
@@ -52,4 +69,6 @@ export interface QuizState {
   setPlayerId: (id: string) => void;
   enterCompetition: (lessonId: string) => void;
   exitCompetition: () => void;
+  startMyWrongsMode: () => void;
+  exitMyWrongsMode: () => void;
 }

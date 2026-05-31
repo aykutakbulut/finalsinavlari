@@ -132,6 +132,20 @@ export default function QuizApp() {
   const enterCompetition = useQuizStore((s) => s.enterCompetition);
   const exitCompetition = useQuizStore((s) => s.exitCompetition);
 
+  const wrongAnswersBank = useQuizStore((s) => s.wrongAnswersBank);
+  const isMyWrongsMode = useQuizStore((s) => s.isMyWrongsMode);
+  const startMyWrongsMode = useQuizStore((s) => s.startMyWrongsMode);
+  const exitMyWrongsMode = useQuizStore((s) => s.exitMyWrongsMode);
+
+  const totalBankQuestions = useMemo(
+    () => {
+      const seen = new Set<number>();
+      for (const s of wrongAnswersBank) for (const q of s.questions) seen.add(q.id);
+      return seen.size;
+    },
+    [wrongAnswersBank],
+  );
+
   const mounted = useSyncExternalStore(
     subscribeHydration,
     getHydrated,
@@ -186,6 +200,7 @@ export default function QuizApp() {
   const [avatarDraft, setAvatarDraft] = useState<string | null>(null);
   const [claimingProfile, setClaimingProfile] = useState(false);
   const [nameError, setNameError] = useState<string | null>(null);
+  const [emptyBankToast, setEmptyBankToast] = useState(false);
 
   // Aktif tahmin modu local state
   const [revealed, setRevealed] = useState(false);
@@ -280,7 +295,7 @@ export default function QuizApp() {
       }
 
       // Quiz modu klavye
-      if (!selectedLesson || isQuizFinished || !currentQuestion) return;
+      if ((!selectedLesson && !isMyWrongsMode) || isQuizFinished || !currentQuestion) return;
       if (e.key === "ArrowRight" && hasAnswered) {
         if (isLastQuestion) finishQuiz();
         else nextQuestion();
@@ -300,6 +315,7 @@ export default function QuizApp() {
       nextStudyQuestion,
       prevStudyQuestion,
       selectedLesson,
+      isMyWrongsMode,
       isQuizFinished,
       currentQuestion,
       hasAnswered,
@@ -811,7 +827,7 @@ export default function QuizApp() {
   }
 
   // === DERS SEÇİM EKRANI ===
-  if (!selectedLesson) {
+  if (!selectedLesson && !isMyWrongsMode) {
     return (
       <div className="min-h-[100dvh] w-full bg-[#050505] text-slate-200 flex flex-col overflow-y-auto relative selection:bg-indigo-500/30 safe-area">
         <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:40px_40px] pointer-events-none" />
@@ -970,35 +986,55 @@ export default function QuizApp() {
                           Aktif Tahmin
                         </button>
                       </div>
-                      {/* YARIŞMA — BAKIM MODU */}
-                      <button
-                        disabled
-                        className="group/comp relative w-full flex items-center justify-center gap-2 px-4 py-3.5 rounded-2xl font-bold text-sm tracking-wide text-white/40 overflow-hidden transition-all cursor-not-allowed bg-gradient-to-r from-slate-800/70 via-slate-700/65 to-slate-800/70 border border-white/[0.06] shadow-none grayscale opacity-60"
-                      >
-                        <svg
-                          className="w-5 h-5 shrink-0 relative"
-                          fill="none"
-                          viewBox="0 0 24 24"
-                          stroke="currentColor"
+                      {/* Yanlışlarım + Online Kapışma — yan yana */}
+                      <div className="grid grid-cols-2 gap-2.5">
+                        {/* YANLIŞLARIM BUTONU */}
+                        <button
+                          onClick={() => {
+                            if (totalBankQuestions > 0) {
+                              startMyWrongsMode();
+                            } else {
+                              setEmptyBankToast(true);
+                              setTimeout(() => setEmptyBankToast(false), 2500);
+                            }
+                          }}
+                          className="group/wrongs relative flex items-center justify-center gap-1.5 px-3 py-3 rounded-2xl font-semibold text-sm tracking-wide overflow-hidden transition-all active:scale-95 bg-gradient-to-r from-amber-500/15 via-orange-500/10 to-amber-500/15 border border-amber-500/30 text-amber-300 hover:from-amber-500/25 hover:via-orange-500/20 hover:to-amber-500/25 hover:border-amber-400/50 hover:text-amber-200 hover:shadow-[0_0_20px_rgba(245,158,11,0.15)] shadow-sm"
                         >
-                          <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            strokeWidth="2"
-                            d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.066 2.573c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.573 1.066c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.066-2.573c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.573-1.066z"
-                          />
-                          <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            strokeWidth="2"
-                            d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
-                          />
-                        </svg>
-                        <span className="relative flex flex-col items-center leading-tight">
-                          <span>ONLINE KAPIŞMA</span>
-                          <span className="text-[10px] font-semibold text-amber-400/70 tracking-wider">🔧 Bakım Yapılıyor</span>
-                        </span>
-                      </button>
+                          <svg
+                            className="w-4 h-4 shrink-0"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="currentColor"
+                          >
+                            <path
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              strokeWidth="2"
+                              d="M12 9v2m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                            />
+                          </svg>
+                          Yanlışlarım
+                          {totalBankQuestions > 0 && (
+                            <span className="shrink-0 min-w-[1.25rem] h-5 px-1 flex items-center justify-center rounded-full bg-amber-500/25 text-amber-300 text-[10px] font-black border border-amber-500/40">
+                              {totalBankQuestions}
+                            </span>
+                          )}
+                        </button>
+                        {/* ONLINE KAPIŞMA */}
+                        <button
+                          onClick={() => enterCompetition(lesson.id)}
+                          className="group/comp relative flex items-center justify-center gap-1.5 px-3 py-3 rounded-2xl font-semibold text-sm tracking-wide overflow-hidden transition-all active:scale-95 bg-gradient-to-r from-fuchsia-500/20 via-purple-500/15 to-fuchsia-500/20 border border-fuchsia-500/30 text-fuchsia-300 hover:from-fuchsia-500/30 hover:via-purple-500/25 hover:to-fuchsia-500/30 hover:border-fuchsia-400/50 hover:text-fuchsia-200 hover:shadow-[0_0_20px_rgba(217,70,239,0.15)] shadow-sm"
+                        >
+                          <span className="w-1.5 h-1.5 rounded-full bg-fuchsia-400 animate-pulse shrink-0" />
+                          Kapışma
+                        </button>
+                      </div>
+                      {/* Boş banka toast */}
+                      {emptyBankToast && (
+                        <div className="w-full text-center py-2 px-3 rounded-xl bg-amber-500/10 border border-amber-500/20 text-amber-400 text-xs font-semibold animate-in fade-in zoom-in-95 duration-200">
+                          Henüz yanlışın yok 🎉
+                        </div>
+                      )}
                     </div>
                   )}
                 </div>
@@ -1087,11 +1123,13 @@ export default function QuizApp() {
     );
   }
 
-  const accent = ACCENT_STYLES[selectedLesson.accent];
+  const accent = isMyWrongsMode
+    ? ACCENT_STYLES.amber
+    : ACCENT_STYLES[selectedLesson!.accent];
 
   // === SONUÇ EKRANI ===
   if (isQuizFinished) {
-    const lessonQs = selectedLesson.questions;
+    const lessonQs = isMyWrongsMode ? currentQuestionsList : selectedLesson!.questions;
     const answeredIds = Object.keys(userAnswers).map(Number);
 
     const currentListWrongCount = isWrongAnswersMode
@@ -1118,7 +1156,7 @@ export default function QuizApp() {
         : 0;
 
     const videoSrc =
-      selectedLesson.id === EASTER_EGG_LESSON_ID
+      selectedLesson?.id === EASTER_EGG_LESSON_ID
         ? "/videos/easteregg.mp4"
         : currentListWrongCount === 0
           ? "/videos/v1.mp4"
@@ -1150,17 +1188,32 @@ export default function QuizApp() {
             <span
               className={`inline-block px-2.5 py-1 text-[10px] font-bold tracking-widest uppercase rounded-lg border ${accent.chip}`}
             >
-              {selectedLesson.title}
+              {isMyWrongsMode ? "Yanlışlarım" : selectedLesson!.title}
             </span>
             <h1 className="text-4xl font-black text-transparent bg-clip-text bg-gradient-to-b from-white to-white/60 tracking-tighter">
               {isPerfect ? "KUSURSUZ!" : "RAPOR"}
             </h1>
             <p className="text-sm font-medium text-slate-400">
-              {isWrongAnswersMode
-                ? "Hata ayıklama tamamlandı."
-                : "Test oturumu sona erdi."}
+              {isMyWrongsMode && isPerfect
+                ? ""
+                : isWrongAnswersMode
+                  ? "Hata ayıklama tamamlandı."
+                  : isMyWrongsMode
+                    ? "Yanlışlarım oturumu sona erdi."
+                    : "Test oturumu sona erdi."}
             </p>
           </div>
+          {/* Yanlışlarım modunda hepsi doğruysa özel kutlama mesajı */}
+          {isMyWrongsMode && isPerfect && (
+            <div className="bg-black/40 border border-amber-500/30 rounded-3xl p-5 text-center backdrop-blur-md">
+              <p className="text-base font-bold text-amber-300 leading-relaxed">
+                Buraya son 3 oturumunun yanlışları kaydedilir!
+              </p>
+              <p className="text-sm text-slate-400 mt-2">
+                Silinmesini istiyorsan sınavını 3 kere fulle 😊
+              </p>
+            </div>
+          )}
 
           <div className="grid grid-cols-2 gap-3">
             <div className="bg-black/40 border border-emerald-500/30 rounded-3xl p-5 text-center backdrop-blur-md">
@@ -1190,14 +1243,16 @@ export default function QuizApp() {
                 Sadece Yanlışları Çöz
               </button>
             )}
+            {!isMyWrongsMode && (
+              <button
+                onClick={restartQuiz}
+                className="w-full py-4 bg-white/10 hover:bg-white/20 text-white font-bold rounded-2xl border border-white/15 backdrop-blur-sm transition-all active:scale-[0.98]"
+              >
+                Bu Dersi Sıfırla
+              </button>
+            )}
             <button
-              onClick={restartQuiz}
-              className="w-full py-4 bg-white/10 hover:bg-white/20 text-white font-bold rounded-2xl border border-white/15 backdrop-blur-sm transition-all active:scale-[0.98]"
-            >
-              Bu Dersi Sıfırla
-            </button>
-            <button
-              onClick={goToLessonSelection}
+              onClick={isMyWrongsMode ? exitMyWrongsMode : goToLessonSelection}
               className="w-full py-3 text-slate-400 hover:text-white text-sm font-semibold rounded-2xl transition-colors active:scale-[0.98] flex items-center justify-center gap-2"
             >
               <svg
@@ -1248,7 +1303,7 @@ export default function QuizApp() {
       <div className="w-full max-w-3xl mx-auto px-4 pt-4 sm:pt-6 pb-2 flex items-center justify-between shrink-0 z-30 gap-2 relative">
         <div className="flex items-center gap-2 min-w-0">
           <button
-            onClick={goToLessonSelection}
+            onClick={isMyWrongsMode ? exitMyWrongsMode : goToLessonSelection}
             className="shrink-0 flex items-center gap-1.5 px-2.5 py-1 text-[clamp(10px,1.2dvh,12px)] font-bold tracking-wider uppercase rounded-lg border bg-white/[0.04] text-slate-300 border-white/10 hover:bg-white/[0.08] hover:border-white/20 hover:text-white active:scale-95 transition-all"
             aria-label="Derslere dön"
           >
@@ -1269,12 +1324,12 @@ export default function QuizApp() {
           </button>
 
           <span
-            className={`px-2.5 py-1 text-[clamp(10px,1.2dvh,12px)] font-bold tracking-wider uppercase rounded-lg border truncate ${isWrongAnswersMode ? "bg-amber-500/10 text-amber-400 border-amber-500/20" : accent.chip}`}
+            className={`px-2.5 py-1 text-[clamp(10px,1.2dvh,12px)] font-bold tracking-wider uppercase rounded-lg border truncate ${isMyWrongsMode ? "bg-amber-500/10 text-amber-400 border-amber-500/20" : isWrongAnswersMode ? "bg-amber-500/10 text-amber-400 border-amber-500/20" : accent.chip}`}
           >
-            {isWrongAnswersMode ? "Hata Modu" : selectedLesson.title}
+            {isMyWrongsMode ? "Yanlışlarım" : isWrongAnswersMode ? "Hata Modu" : selectedLesson!.title}
           </span>
 
-          {!isWrongAnswersMode && !shuffledQuestions && (
+          {!isWrongAnswersMode && !isMyWrongsMode && !shuffledQuestions && (
             <button
               onClick={shuffleQuestions}
               className="shrink-0 px-2.5 py-1 text-[clamp(10px,1.2dvh,12px)] font-black tracking-wider uppercase rounded-lg border bg-gradient-to-r from-fuchsia-500/25 to-pink-500/20 text-fuchsia-300 border-fuchsia-500/40 hover:from-fuchsia-500/40 hover:to-pink-500/35 hover:text-fuchsia-200 hover:border-fuchsia-400/60 hover:shadow-[0_0_12px_rgba(217,70,239,0.35)] active:scale-95 transition-all flex items-center gap-1.5"

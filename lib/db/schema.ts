@@ -28,14 +28,37 @@ export const matches = pgTable(
   {
     id: uuid("id").defaultRandom().primaryKey(),
     lessonId: text("lesson_id").notNull(),
-    // waiting | countdown | active | finishing | finished
+    // waiting | voting_questions | voting_timer | countdown | active | reveal | finished
     status: text("status").notNull().default("waiting"),
     // Maçın sabit, sıralı soru kimlikleri (herkes aynı sırada görür)
     questionIds: jsonb("question_ids").$type<number[]>().notNull(),
-    // Geri sayım bitip yarışma aktifleşeceği an
+    // Geri sayım bitip oylama/yarışma başlayacağı an
     startsAt: timestamp("starts_at", { withTimezone: true }),
-    // 3 kişi bitince başlayan son geri sayımın bitiş anı
-    finishesAt: timestamp("finishes_at", { withTimezone: true }),
+
+    // ── Oylama sonuçları ──
+    // {playerId: "all"|"30"}
+    votesQuestions: jsonb("votes_questions")
+      .$type<Record<string, string>>()
+      .default({}),
+    // {playerId: "10000"|"15000"}
+    votesTimer: jsonb("votes_timer")
+      .$type<Record<string, string>>()
+      .default({}),
+    // Oylama sonucu belirlenen değerler
+    questionCount: integer("question_count"), // all ise dersin soru sayısı, yoksa 30
+    questionTimeLimitMs: integer("question_time_limit_ms"), // 10000 veya 15000
+
+    // ── Senkronize soru ilerlemesi (herkes aynı anda aynı soruyu görür) ──
+    currentQuestionIndex: integer("current_question_index")
+      .notNull()
+      .default(-1), // -1 = başlamadı
+    questionStartedAt: timestamp("question_started_at", {
+      withTimezone: true,
+    }), // Soru başlangıcı (herkes için aynı)
+    questionEndsAt: timestamp("question_ends_at", { withTimezone: true }), // Soru bitiş zamanı
+    revealEndsAt: timestamp("reveal_ends_at", { withTimezone: true }), // Reveal bitiş zamanı
+
+    // Bitiş zamanları
     createdAt: timestamp("created_at", { withTimezone: true })
       .notNull()
       .defaultNow(),
@@ -59,11 +82,8 @@ export const matchPlayers = pgTable(
     name: text("name").notNull(),
     avatar: text("avatar").notNull(),
     score: integer("score").notNull().default(0),
-    currentQuestionIndex: integer("current_question_index")
-      .notNull()
-      .default(0),
-    // Bu oyuncuya mevcut sorunun gösterildiği an — sunucu süre/puan hesabı için
-    questionStartedAt: timestamp("question_started_at", { withTimezone: true }),
+    // Bu soruyu cevapladı mı (her soru başında false'a sıfırlanır)
+    answeredCurrent: boolean("answered_current").notNull().default(false),
     finishedAt: timestamp("finished_at", { withTimezone: true }),
     joinedAt: timestamp("joined_at", { withTimezone: true })
       .notNull()
