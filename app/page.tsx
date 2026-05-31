@@ -491,7 +491,7 @@ export default function QuizApp() {
             </span>
           </div>
           <div className="shrink-0 flex items-center gap-2">
-            <button
+            {!studyShuffled && <button
               onClick={shuffleStudyQuestions}
               className="shrink-0 px-2.5 py-1 text-[clamp(10px,1.2dvh,12px)] font-black tracking-wider uppercase rounded-lg border bg-gradient-to-r from-emerald-500/25 to-teal-500/20 text-emerald-300 border-emerald-500/40 hover:from-emerald-500/40 hover:to-teal-500/35 hover:text-emerald-200 hover:border-emerald-400/60 hover:shadow-[0_0_12px_rgba(52,211,153,0.35)] active:scale-95 transition-all flex items-center gap-1.5"
               aria-label="Soruları karıştır"
@@ -510,7 +510,7 @@ export default function QuizApp() {
                 />
               </svg>
               Karıştır
-            </button>
+            </button>}
             <div className="text-[clamp(12px,1.5dvh,14px)] font-semibold text-slate-400">
               <span className="text-white">{studyQuestionIndex + 1}</span> /{" "}
               {totalStudyQuestions}
@@ -1262,7 +1262,7 @@ export default function QuizApp() {
             {isWrongAnswersMode ? "Hata Modu" : selectedLesson.title}
           </span>
 
-          {!isWrongAnswersMode && (
+          {!isWrongAnswersMode && !shuffledQuestions && (
             <button
               onClick={shuffleQuestions}
               className="shrink-0 px-2.5 py-1 text-[clamp(10px,1.2dvh,12px)] font-black tracking-wider uppercase rounded-lg border bg-gradient-to-r from-fuchsia-500/25 to-pink-500/20 text-fuchsia-300 border-fuchsia-500/40 hover:from-fuchsia-500/40 hover:to-pink-500/35 hover:text-fuchsia-200 hover:border-fuchsia-400/60 hover:shadow-[0_0_12px_rgba(217,70,239,0.35)] active:scale-95 transition-all flex items-center gap-1.5"
