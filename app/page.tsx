@@ -893,7 +893,7 @@ export default function QuizApp() {
                       {!isLocked && (
                         <div className="shrink-0 flex flex-col items-end gap-0.5">
                           <svg
-                            className={`w-5 h-5 ${accent.text} transition-transform group-hover:translate-x-1 arrow-nudge`}
+                            className={`w-7 h-7 ${accent.text} transition-transform group-hover:translate-x-1 arrow-nudge`}
                             fill="none"
                             stroke="currentColor"
                             viewBox="0 0 24 24"
@@ -901,11 +901,11 @@ export default function QuizApp() {
                             <path
                               strokeLinecap="round"
                               strokeLinejoin="round"
-                              strokeWidth="2.5"
+                              strokeWidth="2"
                               d="M9 5l7 7-7 7"
                             />
                           </svg>
-                          <span className="text-[10px] text-slate-600 font-semibold">
+                          <span className="text-xs text-slate-500 font-bold">
                             Sınav
                           </span>
                         </div>
@@ -920,7 +920,7 @@ export default function QuizApp() {
                       <div className="grid grid-cols-2 gap-2.5">
                         <button
                           onClick={() => startStudyMode(lesson.id, "list")}
-                          className="flex flex-col items-center justify-center gap-1 px-3 py-3 rounded-2xl bg-white/[0.05] border border-white/15 text-slate-200 hover:text-white hover:bg-white/[0.09] hover:border-white/25 text-sm font-semibold transition-all active:scale-95 shadow-sm"
+                          className="flex flex-col items-center justify-center gap-0.5 px-3 py-1.5 rounded-2xl bg-white/[0.05] border border-white/15 text-slate-200 hover:text-white hover:bg-white/[0.09] hover:border-white/25 text-sm font-semibold transition-all active:scale-95 shadow-sm"
                         >
                           <div className="flex items-center gap-2">
                             <svg
@@ -938,9 +938,7 @@ export default function QuizApp() {
                             </svg>
                             Liste
                           </div>
-                          <span className="text-[9px] font-medium text-slate-500 tracking-wide">
-                            (soruları ezberle!)
-                          </span>
+                          <span className="text-[8px] font-medium text-slate-500 tracking-wide leading-none">(soruları ezberle!)</span>
                         </button>
                         <button
                           onClick={() => startStudyMode(lesson.id, "reveal")}
@@ -968,7 +966,6 @@ export default function QuizApp() {
                           Aktif Tahmin
                         </button>
                       </div>
-
                       {/* YARIŞMA */}
                       <button
                         onClick={() => enterCompetition(lesson.id)}
