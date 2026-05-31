@@ -18,6 +18,7 @@ import {
   submitAnswer,
   submitVote,
   getLeaderboard,
+  toggleReady,
 } from "./actions";
 
 /* ── Props ─────────────────────────────────────────────────────────────────── */
@@ -139,15 +140,26 @@ export default function CompetitionRoom({
   const [submitting, setSubmitting] = useState(false);
   const [pendingOption, setPendingOption] = useState<string | null>(null);
 
-  // Oylama tercihleri
-  const [myQuestionVote, setMyQuestionVote] = useState<string | null>(null);
-  const [myTimerVote, setMyTimerVote] = useState<string | null>(null);
+  // Oylama tercihleri — anlık (optimistic) seçim. Gerçek kaynak sunucudaki
+  // votes_* alanıdır; bunlar yalnızca tıklar tıklamaz anında geri bildirim için.
+  const [optimisticQuestionVote, setOptimisticQuestionVote] = useState<
+    string | null
+  >(null);
+  const [optimisticTimerVote, setOptimisticTimerVote] = useState<string | null>(
+    null,
+  );
 
   // Lobi liderlik tablosu
   const [leaderboard, setLeaderboard] = useState<LeaderboardEntry[]>([]);
 
-  // Önceki soru skoru (reveal'da mini skor karşılaştırması için)
-  const prevScoresRef = useRef<Record<string, number>>({});
+  // Soru başındaki skor anlık görüntüsü — reveal'da "+X" deltasını göstermek
+  // için. Ref yerine state kullanıyoruz: render sırasında okumak güvenli (ref
+  // okumak react-hooks/refs'i tetikler) ve anlık görüntü soru başına bir kez
+  // dondurulduğundan delta doğru hesaplanır.
+  const [scoreSnapshot, setScoreSnapshot] = useState<{
+    qIndex: number;
+    scores: Record<string, number>;
+  }>({ qIndex: -1, scores: {} });
 
   /* ── Zaman tiki ──────────────────────────────────────────────────────── */
 
@@ -205,6 +217,37 @@ export default function CompetitionRoom({
       .catch(() => {});
   }, []);
 
+  /* ── Hayalet Oyuncu Koruması (çıkış yakalama) ───────────────────────── */
+  useEffect(() => {
+    if (!matchId || !pid) return;
+
+    const beacon = () => {
+      navigator.sendBeacon(
+        "/api/leave-match",
+        JSON.stringify({ matchId, playerId: pid }),
+      );
+    };
+
+    // beforeunload masaüstünde, pagehide ise mobil tarayıcılarda (Safari/Chrome)
+    // güvenilir tetiklenir — sekme kapatma/sayfa terk etme bu şekilde yakalanır.
+    const handleBeforeUnload = () => beacon();
+    const handlePageHide = (e: PageTransitionEvent) => {
+      // e.persisted = sayfa bfcache'e alınıyor (geri gelebilir). Sadece uygulamayı
+      // arka plana alıp dönen mobil kullanıcıyı lobiden düşürmemek için atla.
+      if (e.persisted) return;
+      beacon();
+    };
+
+    window.addEventListener("beforeunload", handleBeforeUnload);
+    window.addEventListener("pagehide", handlePageHide);
+
+    return () => {
+      window.removeEventListener("beforeunload", handleBeforeUnload);
+      window.removeEventListener("pagehide", handlePageHide);
+      leaveMatch(matchId, pid).catch(() => {});
+    };
+  }, [matchId, pid]);
+
   /* ── Türetilmiş değerler ────────────────────────────────────────────── */
 
   const status = match?.status;
@@ -213,6 +256,14 @@ export default function CompetitionRoom({
     () => parts.find((p) => p.player_id === pid) ?? null,
     [parts, pid],
   );
+
+  // Etkin oy = anlık seçim ?? sunucudaki kayıtlı oy. Sunucudan türetmek sayfa
+  // yenilemeye dayanıklıdır (yenileyince seçim kaybolmaz, çift oy görünmez).
+  const myQuestionVote =
+    optimisticQuestionVote ??
+    (pid ? (match?.votes_questions?.[pid] ?? null) : null);
+  const myTimerVote =
+    optimisticTimerVote ?? (pid ? (match?.votes_timer?.[pid] ?? null) : null);
 
   const qIndex = match?.current_question_index ?? -1;
   const qid = match ? match.question_ids[qIndex] : undefined;
@@ -249,14 +300,14 @@ export default function CompetitionRoom({
   }, [matchId, status]);
 
   /* ── Önceki skorları sakla (reveal'da delta göstermek için) ─────────── */
-
-  useEffect(() => {
-    if (status === "active" && !feedback) {
-      const m: Record<string, number> = {};
-      for (const p of parts) m[p.player_id] = p.score;
-      prevScoresRef.current = m;
-    }
-  }, [status, parts, feedback]);
+  // Render sırasında ayarlanan state (React'in önerdiği "prop değişince state'i
+  // güncelle" deseni) — efekt değil. Yalnızca yeni soru aktif olduğunda, soru
+  // başı skorları bir kez dondurur; soru içinde puanlar değişse de bozulmaz.
+  if (status === "active" && scoreSnapshot.qIndex !== qIndex) {
+    const m: Record<string, number> = {};
+    for (const p of parts) m[p.player_id] = p.score;
+    setScoreSnapshot({ qIndex, scores: m });
+  }
 
   /* ── Cevap ───────────────────────────────────────────────────────────── */
 
@@ -309,37 +360,39 @@ export default function CompetitionRoom({
   }, [qIndex]);
 
   /* ── Süre dolunca otomatik cevapsız gönder ───────────────────────────── */
+  // `now` (200ms) yoklaması yerine bitiş anına tek bir zamanlayıcı kuruyoruz:
+  // efekt gövdesinde senkron setState olmaz (setState timer callback'inde),
+  // her soru için tek timer kurulur ve süre dolunca bir kez tetiklenir.
 
   useEffect(() => {
     if (status !== "active") return;
     if (!match?.question_ends_at) return;
     if (!myPart || myPart.answered_current || feedback || submitting) return;
     const ends = new Date(match.question_ends_at).getTime();
-    if (now >= ends) {
+    const delay = Math.max(0, ends - Date.now());
+    const timer = setTimeout(() => {
       handleAnswer(null);
-    }
-  }, [now, status, match?.question_ends_at, myPart, feedback, submitting, handleAnswer]);
+    }, delay);
+    return () => clearTimeout(timer);
+  }, [status, match?.question_ends_at, myPart, feedback, submitting, handleAnswer]);
 
   /* ── Oy ──────────────────────────────────────────────────────────────── */
 
   const handleVote = useCallback(
     async (voteType: "questions" | "timer", value: string) => {
       if (!matchId || !pid) return;
+      // Anında geri bildirim için optimistic işaretle; sunucu yazımı arkadan
+      // gelir ve realtime/poll ile teyit edilir.
+      if (voteType === "questions") setOptimisticQuestionVote(value);
+      else setOptimisticTimerVote(value);
       await submitVote({ matchId, playerId: pid, voteType, value });
-      if (voteType === "questions") setMyQuestionVote(value);
-      else setMyTimerVote(value);
     },
     [matchId, pid],
   );
 
-  // Oylama fazı değişince oy seçimlerini sıfırla
-  useEffect(() => {
-    if (status === "voting_questions") setMyTimerVote(null);
-    if (status === "countdown") {
-      setMyQuestionVote(null);
-      setMyTimerVote(null);
-    }
-  }, [status]);
+  // Not: Oy seçimleri (myQuestionVote/myTimerVote) yalnızca kendi oylama
+  // fazında okunur ve bir maçta oylama bir kez yapıldığı için faz değişince
+  // ayrıca sıfırlanmalarına gerek yoktur.
 
   /* ── Çıkış ───────────────────────────────────────────────────────────── */
 
@@ -391,19 +444,28 @@ export default function CompetitionRoom({
   /* 3. LOBİ (waiting) ───────────────────────────────────────────────────── */
 
   if (match.status === "waiting") {
-    const countNeeded = COMPETITION_CONFIG.lobbyMaxBeforeFastStart;
-    const ageMs = now - new Date(match.created_at).getTime();
-    const ageSecs = Math.floor(ageMs / 1000);
-    const ageMin = Math.floor(ageSecs / 60);
-    const ageSec = ageSecs % 60;
+    const target = COMPETITION_CONFIG.lobbyCountdownTarget; // 10
+    const minPlayers = COMPETITION_CONFIG.lobbyMinPlayers; // 2
+    const hardCap = COMPETITION_CONFIG.lobbyHardCap; // 20
 
-    const enough = parts.length >= COMPETITION_CONFIG.lobbyMinForTimeout;
-    const timeoutRemaining = Math.max(
-      0,
-      Math.ceil(
-        (COMPETITION_CONFIG.lobbyTimeoutMs - ageMs) / 1000,
-      ),
-    );
+    const totalCount = parts.length;
+    const readyCount = parts.filter((p) => p.is_ready).length;
+    const readyRatio = totalCount > 0 ? readyCount / totalCount : 0;
+    const percent = Math.round(readyRatio * 100);
+    const everyoneReady = totalCount >= minPlayers && readyCount === totalCount;
+
+    // Geri sayım yalnızca hedef sayıya (10) ulaşılınca ve sayaç başlamışsa görünür.
+    let countdownRemaining = -1;
+    if (totalCount >= target && match.lobby_countdown_starts_at) {
+      const startMs = new Date(match.lobby_countdown_starts_at).getTime();
+      const elapsed = now - startMs;
+      countdownRemaining = Math.max(
+        0,
+        Math.ceil((COMPETITION_CONFIG.lobbyCountdownMs - elapsed) / 1000),
+      );
+    }
+
+    const isMeReady = myPart?.is_ready ?? false;
 
     return (
       <Shell title={lesson?.title} onExit={handleExit}>
@@ -413,34 +475,58 @@ export default function CompetitionRoom({
               Lobi
             </h1>
             <p className="mt-2 text-sm text-slate-400">
-              <span className="text-white font-bold">{parts.length}</span>{" "}
-              yarışmacı bekliyor
+              <span className="text-white font-bold">{totalCount}</span>{" "}
+              yarışmacı · {totalCount >= target ? "geri sayım" : `hedef ${target}`}
             </p>
-            <p className="mt-1 text-[11px] text-slate-600 tabular-nums">
-              {ageMin > 0 ? `${ageMin}dk ` : ""}
-              {ageSec}sn
+            <p className="mt-1 text-xs text-slate-500 tabular-nums">
+              <span className="text-green-400 font-bold">{readyCount}</span>
+              <span className="text-slate-600">/{totalCount}</span> hazır
+              {readyCount < totalCount && (
+                <span className="text-amber-400/80">
+                  {" "}
+                  · {totalCount - readyCount} bekliyor
+                </span>
+              )}
             </p>
           </header>
 
           {/* Oyuncu ızgarası */}
           <div className="grid grid-cols-4 sm:grid-cols-4 gap-2.5 mb-6">
-            {parts.map((p) => (
-              <div
-                key={p.id}
-                className={`flex flex-col items-center gap-1 p-2 rounded-2xl border animate-in zoom-in duration-300 ${
-                  p.player_id === pid
-                    ? "border-fuchsia-400/50 bg-fuchsia-500/10"
-                    : "border-white/[0.06] bg-white/[0.02]"
-                }`}
-              >
-                <span className="text-2xl">{p.avatar}</span>
-                <span className="text-[10px] text-slate-400 font-semibold truncate max-w-full">
-                  {p.name}
-                </span>
-              </div>
-            ))}
+            {parts.map((p) => {
+              const isMe = p.player_id === pid;
+              return (
+                <div
+                  key={p.id}
+                  className={`relative flex flex-col items-center gap-1 p-2 rounded-2xl border animate-in zoom-in duration-300 ${
+                    p.is_ready
+                      ? "border-green-500/40 bg-green-500/[0.06]"
+                      : "border-white/[0.06] bg-white/[0.02]"
+                  } ${isMe ? "ring-2 ring-fuchsia-400/60" : ""}`}
+                >
+                  {p.is_ready ? (
+                    <div className="absolute -top-1 -right-1 bg-green-500 text-white text-[10px] w-4 h-4 flex items-center justify-center rounded-full shadow-lg border border-green-400 animate-in zoom-in">
+                      ✓
+                    </div>
+                  ) : (
+                    <div className="absolute -top-1 -right-1 w-2.5 h-2.5 rounded-full bg-amber-400/80 border border-amber-300 animate-pulse" />
+                  )}
+                  <span className="text-2xl leading-none">{p.avatar}</span>
+                  <span className="text-[10px] text-slate-300 font-semibold truncate max-w-full">
+                    {p.name}
+                    {isMe && <span className="text-fuchsia-300"> (sen)</span>}
+                  </span>
+                  <span
+                    className={`text-[8px] font-black uppercase tracking-wider ${
+                      p.is_ready ? "text-green-400" : "text-amber-400/80"
+                    }`}
+                  >
+                    {p.is_ready ? "Hazır" : "Bekliyor"}
+                  </span>
+                </div>
+              );
+            })}
             {Array.from({
-              length: Math.max(0, countNeeded - parts.length),
+              length: Math.max(0, target - parts.length),
             }).map((_, i) => (
               <div
                 key={`empty-${i}`}
@@ -453,25 +539,69 @@ export default function CompetitionRoom({
 
           {/* Durum mesajı */}
           <div className="rounded-2xl border border-white/[0.06] bg-white/[0.02] p-3 text-center mb-4">
-            {enough ? (
-              <p className="text-xs text-fuchsia-300 font-bold animate-pulse">
-                Yeterli oyuncu var! {timeoutRemaining > 0
-                  ? `${timeoutRemaining}sn içinde başlıyor…`
-                  : "Başlıyor…"}
+            {totalCount < minPlayers ? (
+              <p className="text-xs text-slate-400 leading-relaxed">
+                Başlamak için{" "}
+                <span className="text-fuchsia-300 font-bold">
+                  en az {minPlayers} kişi
+                </span>{" "}
+                gerekli. ({totalCount}/{minPlayers})
+                <br />
+                <span className="text-[10px]">
+                  Diğer yarışmacılar bekleniyor…
+                </span>
               </p>
+            ) : totalCount >= hardCap ? (
+              <p className="text-xs text-fuchsia-300 font-bold animate-pulse">
+                Kapasite doldu — başlıyor!
+              </p>
+            ) : totalCount >= target ? (
+              everyoneReady ? (
+                <p className="text-xs text-green-400 font-bold animate-pulse">
+                  Herkes hazır — başlıyor!
+                </p>
+              ) : (
+                <p className="text-xs text-fuchsia-300 font-bold animate-pulse">
+                  Yeterli oyuncu var! {countdownRemaining}sn içinde başlıyor…
+                  <br />
+                  <span className="text-[10px] text-slate-400 font-normal">
+                    Yeni biri katılırsa süre sıfırlanır · herkes hazır olursa
+                    hemen başlar.
+                  </span>
+                </p>
+              )
             ) : (
               <p className="text-xs text-slate-400 leading-relaxed">
-                <span className="text-fuchsia-300 font-bold">
-                  {countNeeded} kişi
-                </span>{" "}
-                dolunca oylama başlar. En az{" "}
-                <span className="text-fuchsia-300 font-bold">
-                  {COMPETITION_CONFIG.lobbyMinForTimeout} kişi
-                </span>{" "}
-                varsa 1 dk sonra beklemeden başlar.
+                Herkes hazır olunca (veya %
+                {Math.round(COMPETITION_CONFIG.lobbyReadyRatio * 100)}) başlar.
+                <br />
+                Şu an:{" "}
+                <span className="text-fuchsia-300 font-bold">%{percent}</span> (
+                {readyCount}/{totalCount})
+                <br />
+                <span className="text-[10px]">
+                  {target} kişiye ulaşılırsa{" "}
+                  {COMPETITION_CONFIG.lobbyCountdownMs / 1000}sn geri sayım
+                  başlar.
+                </span>
               </p>
             )}
           </div>
+
+          {/* Hazır Ol Butonu */}
+          <button
+            onClick={() => {
+              if (!matchId || !pid) return;
+              toggleReady(matchId, pid).catch(() => {});
+            }}
+            className={`w-full py-4 rounded-2xl font-black tracking-widest uppercase transition-all mb-4 ${
+              isMeReady
+                ? "bg-green-500/20 text-green-400 border border-green-500/30 hover:bg-green-500/30"
+                : "bg-fuchsia-500 text-white shadow-[0_0_20px_rgba(217,70,239,0.3)] hover:scale-[1.02] hover:bg-fuchsia-400 active:scale-95"
+            }`}
+          >
+            {isMeReady ? "Hazırsın (İptal Et)" : "Hazır Ol"}
+          </button>
 
           {/* Mini Liderlik Tablosu */}
           {leaderboard.length > 0 && (
@@ -894,7 +1024,7 @@ export default function CompetitionRoom({
             </h3>
             <div className="flex flex-col gap-1">
               {ranked.slice(0, 5).map((p, i) => {
-                const prevScore = prevScoresRef.current[p.player_id] ?? 0;
+                const prevScore = scoreSnapshot.scores[p.player_id] ?? 0;
                 const delta = p.score - prevScore;
                 return (
                   <div

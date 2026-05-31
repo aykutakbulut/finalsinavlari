@@ -998,7 +998,7 @@ export default function QuizApp() {
                               setTimeout(() => setEmptyBankToast(false), 2500);
                             }
                           }}
-                          className="group/wrongs relative flex items-center justify-center gap-1.5 px-3 py-3 rounded-2xl font-semibold text-sm tracking-wide overflow-hidden transition-all active:scale-95 bg-gradient-to-r from-amber-500/15 via-orange-500/10 to-amber-500/15 border border-amber-500/30 text-amber-300 hover:from-amber-500/25 hover:via-orange-500/20 hover:to-amber-500/25 hover:border-amber-400/50 hover:text-amber-200 hover:shadow-[0_0_20px_rgba(245,158,11,0.15)] shadow-sm"
+                          className="group/wrongs relative flex items-center justify-center gap-1.5 px-3 py-3 rounded-2xl font-semibold text-sm tracking-wide overflow-hidden transition-all active:scale-95 bg-gradient-to-r from-rose-500/15 via-red-500/10 to-rose-500/15 border border-rose-500/30 text-rose-300 hover:from-rose-500/25 hover:via-red-500/20 hover:to-rose-500/25 hover:border-rose-400/50 hover:text-rose-200 hover:shadow-[0_0_20px_rgba(244,63,94,0.18)] shadow-sm"
                         >
                           <svg
                             className="w-4 h-4 shrink-0"
@@ -1015,7 +1015,7 @@ export default function QuizApp() {
                           </svg>
                           Yanlışlarım
                           {totalBankQuestions > 0 && (
-                            <span className="shrink-0 min-w-[1.25rem] h-5 px-1 flex items-center justify-center rounded-full bg-amber-500/25 text-amber-300 text-[10px] font-black border border-amber-500/40">
+                            <span className="shrink-0 min-w-[1.25rem] h-5 px-1 flex items-center justify-center rounded-full bg-rose-500/25 text-rose-300 text-[10px] font-black border border-rose-500/40">
                               {totalBankQuestions}
                             </span>
                           )}
@@ -1023,10 +1023,17 @@ export default function QuizApp() {
                         {/* ONLINE KAPIŞMA */}
                         <button
                           onClick={() => enterCompetition(lesson.id)}
-                          className="group/comp relative flex items-center justify-center gap-1.5 px-3 py-3 rounded-2xl font-semibold text-sm tracking-wide overflow-hidden transition-all active:scale-95 bg-gradient-to-r from-fuchsia-500/20 via-purple-500/15 to-fuchsia-500/20 border border-fuchsia-500/30 text-fuchsia-300 hover:from-fuchsia-500/30 hover:via-purple-500/25 hover:to-fuchsia-500/30 hover:border-fuchsia-400/50 hover:text-fuchsia-200 hover:shadow-[0_0_20px_rgba(217,70,239,0.15)] shadow-sm"
+                          className="group/comp relative flex items-center justify-center gap-1.5 px-3 py-3 rounded-2xl font-bold text-sm tracking-wide whitespace-nowrap overflow-hidden transition-all active:scale-95 bg-gradient-to-r from-fuchsia-600/25 via-purple-600/20 to-fuchsia-600/25 border border-fuchsia-400/40 text-fuchsia-200 hover:from-fuchsia-500/40 hover:via-purple-500/30 hover:to-fuchsia-500/40 hover:border-fuchsia-300/60 hover:text-white hover:shadow-[0_0_26px_rgba(217,70,239,0.35)] shadow-sm"
                         >
-                          <span className="w-1.5 h-1.5 rounded-full bg-fuchsia-400 animate-pulse shrink-0" />
-                          Kapışma
+                          {/* hover'da soldan sağa kayan ışıltı (boyutu etkilemez) */}
+                          <span className="pointer-events-none absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/15 to-transparent transition-transform duration-700 group-hover/comp:translate-x-full" />
+                          <span className="relative flex items-center gap-1">
+                            <span className="w-1.5 h-1.5 rounded-full bg-fuchsia-300 shadow-[0_0_8px_rgba(217,70,239,0.9)] animate-pulse shrink-0" />
+                            <span className="text-[11px] font-bold uppercase tracking-wider text-fuchsia-400/90">
+                              Online
+                            </span>
+                          </span>
+                          <span className="relative">Kapışma</span>
                         </button>
                       </div>
                       {/* Boş banka toast */}

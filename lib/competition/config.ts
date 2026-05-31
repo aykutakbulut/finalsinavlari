@@ -26,10 +26,17 @@ export const COMPETITION_CONFIG = {
   timeoutScore: 0, // süre doldu = 0 puan
 
   // ── Lobi / eşleşme ──
-  lobbyMaxBeforeFastStart: 10, // 10 kişi olunca geri sayım başlar
-  lobbyCountdownMs: 30_000, // 10 kişi → 30 sn sonra oylama başlasın
-  lobbyMinForTimeout: 2, // en az 2 kişi varsa…
-  lobbyTimeoutMs: 60_000, // …60 sn dolunca 10 beklemeden oylama başlasın
+  // Bu sayıya ulaşınca geri sayım başlar; her yeni katılan onu sıfırlar.
+  lobbyCountdownTarget: 10,
+  // Geri sayım süresi (10 kişi dolunca / her yeni katılımda 30 sn).
+  lobbyCountdownMs: 30_000,
+  // Bu sayıya ulaşınca beklemeden anında başlar (kapasite tavanı).
+  lobbyHardCap: 20,
+  // Başlamak için gereken en az oyuncu sayısı.
+  lobbyMinPlayers: 2,
+  // 10 kişinin altındaki lobilerde bu oranda oyuncu hazır olunca başlar
+  // (AFK kilidi olmasın diye; geri sayım yalnızca 10 kişide devreye girer).
+  lobbyReadyRatio: 0.7,
 } as const;
 
 /**

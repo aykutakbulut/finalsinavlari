@@ -31,6 +31,9 @@ function toMatchRow(m: typeof matches.$inferSelect): MatchRow {
     reveal_ends_at: m.revealEndsAt
       ? m.revealEndsAt.toISOString()
       : null,
+    lobby_countdown_starts_at: m.lobbyCountdownStartsAt
+      ? m.lobbyCountdownStartsAt.toISOString()
+      : null,
     created_at: m.createdAt.toISOString(),
     finished_at: m.finishedAt ? m.finishedAt.toISOString() : null,
   };
@@ -44,6 +47,7 @@ function toMatchPlayerRow(p: typeof matchPlayers.$inferSelect): MatchPlayerRow {
     name: p.name,
     avatar: p.avatar,
     score: p.score,
+    is_ready: p.isReady,
     answered_current: p.answeredCurrent,
     finished_at: p.finishedAt ? p.finishedAt.toISOString() : null,
     joined_at: p.joinedAt.toISOString(),
@@ -128,14 +132,15 @@ export async function joinCompetition(input: {
   return await db.transaction(async (tx) => {
     await tx.execute(sql`select pg_advisory_xact_lock(hashtext(${input.lessonId}))`);
 
-    // Bekleyen VEYA oylama aşamasındaki bir maça katıl.
+    // Bekleyen ve son 15 dakika içinde oluşturulmuş (hayalet olmayan) bir maça katıl.
     let [match] = await tx
       .select()
       .from(matches)
       .where(
         and(
           eq(matches.lessonId, input.lessonId),
-          inArray(matches.status, ["waiting", "voting_questions", "voting_timer"]),
+          eq(matches.status, "waiting"),
+          sql`${matches.createdAt} > NOW() - INTERVAL '15 minutes'`
         ),
       )
       .orderBy(asc(matches.createdAt))
@@ -156,7 +161,10 @@ export async function joinCompetition(input: {
         .returning();
     }
 
-    await tx
+    // returning() yalnızca GERÇEKTEN yeni bir satır eklendiğinde dolu döner.
+    // Mevcut bir oyuncunun sayfayı yenilemesi (rejoin) çakışmaya düşer ve
+    // boş döner — bu durumda geri sayımı sıfırlamamalıyız.
+    const inserted = await tx
       .insert(matchPlayers)
       .values({
         matchId: match.id,
@@ -164,13 +172,27 @@ export async function joinCompetition(input: {
         name: input.name.trim().slice(0, 18) || "Yarışmacı",
         avatar: input.avatar,
       })
-      .onConflictDoNothing();
+      .onConflictDoNothing()
+      .returning({ id: matchPlayers.id });
+    const isNewPlayer = inserted.length > 0;
 
     const roster = await tx
       .select()
       .from(matchPlayers)
       .where(eq(matchPlayers.matchId, match.id))
       .orderBy(asc(matchPlayers.joinedAt));
+
+    // Hedef sayıya (10) ulaşıldığında ve sonrasında YENİ biri katıldığında
+    // 30 sn'lik lobi geri sayımını (yeniden) başlat. Mevcut oyuncunun
+    // yeniden bağlanması süreyi sıfırlamaz.
+    if (isNewPlayer && roster.length >= COMPETITION_CONFIG.lobbyCountdownTarget) {
+      const now = new Date();
+      await tx
+        .update(matches)
+        .set({ lobbyCountdownStartsAt: now })
+        .where(eq(matches.id, match.id));
+      match.lobbyCountdownStartsAt = now;
+    }
 
     return {
       matchId: match.id,
@@ -188,15 +210,37 @@ export async function leaveMatch(matchId: string, playerId: string): Promise<voi
     .from(matches)
     .where(eq(matches.id, matchId))
     .limit(1);
-  if (match?.status === "waiting") {
-    await db
-      .delete(matchPlayers)
-      .where(
-        and(
-          eq(matchPlayers.matchId, matchId),
-          eq(matchPlayers.playerId, playerId),
-        ),
-      );
+  // Maç bittiyse (finished) dokunma — sıralama kalıcı.
+  if (!match || match.status === "finished") return;
+
+  await db
+    .delete(matchPlayers)
+    .where(
+      and(
+        eq(matchPlayers.matchId, matchId),
+        eq(matchPlayers.playerId, playerId),
+      ),
+    );
+
+  if (match.status === "waiting") {
+    // Oyuncu sayısı geri sayım eşiğinin (10) altına düştüyse sayacı temizle —
+    // eşiğe yeniden ulaşıldığında 30 sn baştan başlasın, yarım kalmış bir
+    // geri sayımla beklenmedik başlangıç olmasın.
+    const [{ remaining }] = await db
+      .select({ remaining: count() })
+      .from(matchPlayers)
+      .where(eq(matchPlayers.matchId, matchId));
+
+    if (remaining < COMPETITION_CONFIG.lobbyCountdownTarget) {
+      await db
+        .update(matches)
+        .set({ lobbyCountdownStartsAt: null })
+        .where(and(eq(matches.id, matchId), eq(matches.status, "waiting")));
+    }
+  } else if (match.status === "active") {
+    // Maç sırasında ayrılan kişi son cevap bekleneniyse, kalanlar tam süreyi
+    // beklemesin diye erken reveal'ı tetikle.
+    await endQuestionIfAllAnswered(matchId);
   }
 }
 
@@ -235,32 +279,89 @@ export async function submitVote(input: {
   }
 }
 
-// ─── İç yardımcı: sıradaki soruya geç ──────────────────────────────────────
+// ─── Lobi: Hazır Durumunu Değiştir ──────────────────────────────────────────
 
+export async function toggleReady(matchId: string, playerId: string): Promise<void> {
+  const [mp] = await db
+    .select({ isReady: matchPlayers.isReady })
+    .from(matchPlayers)
+    .where(
+      and(
+        eq(matchPlayers.matchId, matchId),
+        eq(matchPlayers.playerId, playerId),
+      ),
+    )
+    .limit(1);
+
+  if (mp) {
+    await db
+      .update(matchPlayers)
+      .set({ isReady: !mp.isReady })
+      .where(
+        and(
+          eq(matchPlayers.matchId, matchId),
+          eq(matchPlayers.playerId, playerId),
+        ),
+      );
+  }
+}
+
+// ─── İç yardımcı: sıradaki soruya geç ──────────────────────────────────────
+// Atomik ve tek-kazananlı. Tick'i her istemci 1 sn'de bir çağırdığı için birden
+// çok istemci aynı anda geçişe çalışabilir; status korumalı UPDATE + index'in
+// SQL içinde artırılması sayesinde geçiş yalnızca BİR kez gerçekleşir (timer
+// titremesi / çift ilerleme olmaz). Geçişi kazandıysa true döner.
 async function advanceToNextQuestion(
   matchId: string,
-  match: typeof matches.$inferSelect,
-): Promise<void> {
+  timeLimitMs: number,
+): Promise<boolean> {
   const now = new Date();
-  const nextIndex = match.currentQuestionIndex + 1;
-  const timeLimitMs = match.questionTimeLimitMs ?? COMPETITION_CONFIG.defaultTimeLimitMs;
   const questionEndsAt = new Date(now.getTime() + timeLimitMs);
 
-  await db
+  const res = await db
     .update(matches)
     .set({
       status: "active",
-      currentQuestionIndex: nextIndex,
+      currentQuestionIndex: sql`${matches.currentQuestionIndex} + 1`,
       questionStartedAt: now,
       questionEndsAt,
+      revealEndsAt: null,
     })
-    .where(eq(matches.id, matchId));
+    .where(
+      and(
+        eq(matches.id, matchId),
+        inArray(matches.status, ["countdown", "reveal"]),
+      ),
+    )
+    .returning({ id: matches.id });
 
-  // Tüm oyuncuların answeredCurrent bayrağını sıfırla
+  if (!res.length) return false;
+
+  // Yalnızca geçişi kazanan istemci answeredCurrent bayraklarını sıfırlar.
   await db
     .update(matchPlayers)
     .set({ answeredCurrent: false })
     .where(eq(matchPlayers.matchId, matchId));
+
+  return true;
+}
+
+// ─── İç yardımcı: herkes cevapladıysa soruyu erken bitir ────────────────────
+// Aktif soruda cevap bekleyen kimse kalmadıysa questionEndsAt'ı şimdiye çeker;
+// tickMatch bir sonraki saniyede reveal'e geçer. submitAnswer ve (maç içi
+// ayrılmada) leaveMatch tarafından paylaşılır.
+async function endQuestionIfAllAnswered(matchId: string): Promise<void> {
+  const roster = await db
+    .select({ answeredCurrent: matchPlayers.answeredCurrent })
+    .from(matchPlayers)
+    .where(eq(matchPlayers.matchId, matchId));
+
+  if (roster.length > 0 && roster.every((p) => p.answeredCurrent)) {
+    await db
+      .update(matches)
+      .set({ questionEndsAt: new Date() })
+      .where(and(eq(matches.id, matchId), eq(matches.status, "active")));
+  }
 }
 
 // ─── Oy sayımı yardımcısı ──────────────────────────────────────────────────
@@ -298,18 +399,46 @@ export async function tickMatch(matchId: string): Promise<void> {
 
   // ── waiting → voting_questions ──
   if (match.status === "waiting") {
-    const [{ c }] = await db
-      .select({ c: count() })
+    // Toplam ve hazır oyuncuları al
+    const roster = await db
+      .select({ isReady: matchPlayers.isReady })
       .from(matchPlayers)
       .where(eq(matchPlayers.matchId, matchId));
 
-    const reached = c >= COMPETITION_CONFIG.lobbyMaxBeforeFastStart;
-    const ageMs = now - new Date(match.createdAt).getTime();
-    const timedOut =
-      c >= COMPETITION_CONFIG.lobbyMinForTimeout &&
-      ageMs >= COMPETITION_CONFIG.lobbyTimeoutMs;
+    const totalCount = roster.length;
+    const readyCount = roster.filter((p) => p.isReady).length;
+    const everyoneReady =
+      totalCount >= COMPETITION_CONFIG.lobbyMinPlayers &&
+      readyCount === totalCount;
 
-    if (reached || timedOut) {
+    let shouldStart = false;
+
+    if (totalCount < COMPETITION_CONFIG.lobbyMinPlayers) {
+      // En az 2 kişi yoksa asla başlama.
+      shouldStart = false;
+    } else if (totalCount >= COMPETITION_CONFIG.lobbyHardCap) {
+      // Kapasite tavanı (20) → beklemeden anında başla.
+      shouldStart = true;
+    } else if (totalCount >= COMPETITION_CONFIG.lobbyCountdownTarget) {
+      // 10+ kişi: 30 sn'lik geri sayım otoritedir (her yeni katılan sıfırlar).
+      // Herkes hazırsa beklemeden başlar; değilse geri sayım dolunca başlar.
+      if (everyoneReady) {
+        shouldStart = true;
+      } else if (match.lobbyCountdownStartsAt) {
+        const startMs = new Date(match.lobbyCountdownStartsAt).getTime();
+        if (now >= startMs + COMPETITION_CONFIG.lobbyCountdownMs) {
+          shouldStart = true;
+        }
+      }
+    } else {
+      // 2–9 kişi: geri sayım yok. %70 hazır olunca başla (bir kişi AFK kalsa
+      // bile lobi kilitlenmesin; geri sayım yalnızca 10 kişide devreye girer).
+      if (readyCount / totalCount >= COMPETITION_CONFIG.lobbyReadyRatio) {
+        shouldStart = true;
+      }
+    }
+
+    if (shouldStart) {
       const startsAt = new Date(now + COMPETITION_CONFIG.votingDurationMs);
       await db
         .update(matches)
@@ -382,16 +511,11 @@ export async function tickMatch(matchId: string): Promise<void> {
   // ── countdown → active (ilk soru) ──
   if (match.status === "countdown") {
     if (match.startsAt && now >= new Date(match.startsAt).getTime()) {
-      const res = await db
-        .update(matches)
-        .set({ status: "active" })
-        .where(and(eq(matches.id, matchId), eq(matches.status, "countdown")))
-        .returning();
-      if (res.length) {
-        // Güncellendikten sonra yeni hali ile ilk soruya geç
-        // currentQuestionIndex = -1 olduğu için advanceToNextQuestion 0'a çıkaracak
-        await advanceToNextQuestion(matchId, res[0]);
-      }
+      // currentQuestionIndex = -1 → atomik geçiş onu 0'a çıkarır.
+      await advanceToNextQuestion(
+        matchId,
+        match.questionTimeLimitMs ?? COMPETITION_CONFIG.defaultTimeLimitMs,
+      );
     }
     return;
   }
@@ -399,11 +523,20 @@ export async function tickMatch(matchId: string): Promise<void> {
   // ── active → reveal (süre doldu) ──
   if (match.status === "active") {
     if (match.questionEndsAt && now >= new Date(match.questionEndsAt).getTime()) {
-      // Cevap vermemiş oyuncular için null cevap kaydet
+      // Önce korumalı geçişi kazan: status'ü active→reveal çeviren TEK istemci
+      // cevapsız kayıtlarını işler (çok istemcili tekrarı önler).
+      const revealEndsAt = new Date(now + COMPETITION_CONFIG.revealDurationMs);
+      const claimed = await db
+        .update(matches)
+        .set({ status: "reveal", revealEndsAt })
+        .where(and(eq(matches.id, matchId), eq(matches.status, "active")))
+        .returning({ id: matches.id });
+
+      if (!claimed.length) return; // başka istemci zaten geçirdi
+
+      // Cevap vermemiş oyuncular için null cevap kaydet (timeoutScore puanı).
       const unanswered = await db
-        .select({
-          playerId: matchPlayers.playerId,
-        })
+        .select({ playerId: matchPlayers.playerId })
         .from(matchPlayers)
         .where(
           and(
@@ -440,16 +573,9 @@ export async function tickMatch(matchId: string): Promise<void> {
             and(
               eq(matchPlayers.matchId, matchId),
               eq(matchPlayers.playerId, u.playerId),
-              eq(matchPlayers.answeredCurrent, false),
             ),
           );
       }
-
-      const revealEndsAt = new Date(now + COMPETITION_CONFIG.revealDurationMs);
-      await db
-        .update(matches)
-        .set({ status: "reveal", revealEndsAt })
-        .where(and(eq(matches.id, matchId), eq(matches.status, "active")));
     }
     return;
   }
@@ -464,8 +590,11 @@ export async function tickMatch(matchId: string): Promise<void> {
         // Tüm sorular bitti
         await finalizeMatch(matchId);
       } else {
-        // Sonraki soruya geç
-        await advanceToNextQuestion(matchId, match);
+        // Sonraki soruya geç (atomik + korumalı)
+        await advanceToNextQuestion(
+          matchId,
+          match.questionTimeLimitMs ?? COMPETITION_CONFIG.defaultTimeLimitMs,
+        );
       }
     }
     return;
@@ -568,29 +697,8 @@ export async function submitAnswer(input: {
       ),
     );
 
-  // Herkes cevapladı mı? → erken reveal tetikle
-  const [{ notAnswered }] = await db
-    .select({ notAnswered: count() })
-    .from(matchPlayers)
-    .where(
-      and(
-        eq(matchPlayers.matchId, input.matchId),
-        eq(matchPlayers.answeredCurrent, false),
-      ),
-    );
-
-  if (notAnswered === 0) {
-    // Herkesi cevapladı — questionEndsAt'ı şimdiye çek, tickMatch hemen reveal'e geçer
-    await db
-      .update(matches)
-      .set({ questionEndsAt: new Date() })
-      .where(
-        and(
-          eq(matches.id, input.matchId),
-          eq(matches.status, "active"),
-        ),
-      );
-  }
+  // Herkes cevapladıysa erken reveal tetikle.
+  await endQuestionIfAllAnswered(input.matchId);
 
   return { correct, awarded, correctAnswer, finished: false };
 }

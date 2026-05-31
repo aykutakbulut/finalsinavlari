@@ -58,6 +58,9 @@ export const matches = pgTable(
     questionEndsAt: timestamp("question_ends_at", { withTimezone: true }), // Soru bitiş zamanı
     revealEndsAt: timestamp("reveal_ends_at", { withTimezone: true }), // Reveal bitiş zamanı
 
+    // 10 kişi ulaşıldığında 30 sn geri sayımın başladığı an
+    lobbyCountdownStartsAt: timestamp("lobby_countdown_starts_at", { withTimezone: true }),
+
     // Bitiş zamanları
     createdAt: timestamp("created_at", { withTimezone: true })
       .notNull()
@@ -82,6 +85,8 @@ export const matchPlayers = pgTable(
     name: text("name").notNull(),
     avatar: text("avatar").notNull(),
     score: integer("score").notNull().default(0),
+    // Lobi %70 hazır kuralı için
+    isReady: boolean("is_ready").notNull().default(false),
     // Bu soruyu cevapladı mı (her soru başında false'a sıfırlanır)
     answeredCurrent: boolean("answered_current").notNull().default(false),
     finishedAt: timestamp("finished_at", { withTimezone: true }),

@@ -19,6 +19,7 @@ export type MatchRow = {
   question_started_at: string | null;
   question_ends_at: string | null;
   reveal_ends_at: string | null;
+  lobby_countdown_starts_at: string | null;
   created_at: string;
   finished_at: string | null;
 };
@@ -30,6 +31,7 @@ export type MatchPlayerRow = {
   name: string;
   avatar: string;
   score: number;
+  is_ready: boolean;
   answered_current: boolean;
   finished_at: string | null;
   joined_at: string;
@@ -41,11 +43,10 @@ export function useMatch(matchId: string | null) {
   const [parts, setParts] = useState<MatchPlayerRow[]>([]);
 
   useEffect(() => {
-    if (!matchId) {
-      setMatch(null);
-      setParts([]);
-      return;
-    }
+    // matchId yokken yüklenecek/abonelik kurulacak bir şey yok. Başlangıç
+    // state'i zaten null/boş olduğu için ayrıca sıfırlamaya gerek yok
+    // (matchId mount içinde yalnızca null→değer yönünde değişir).
+    if (!matchId) return;
     let active = true;
 
     const loadMatch = async () => {
@@ -97,8 +98,17 @@ export function useMatch(matchId: string | null) {
       )
       .subscribe();
 
+    // Güvenlik ağı: realtime koparsa veya bir event kaçarsa (özellikle mobilde
+    // ağ değişiminde) düşük sıklıkta tam senkron. Realtime çalışırken güncelleme
+    // anlık gelir; bu yoklama yalnızca tutarlılığı garanti eder.
+    const poll = setInterval(() => {
+      loadMatch();
+      loadParts();
+    }, 2500);
+
     return () => {
       active = false;
+      clearInterval(poll);
       supabase.removeChannel(channel);
     };
   }, [matchId]);

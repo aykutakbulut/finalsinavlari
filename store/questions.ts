@@ -65,13 +65,7 @@ const AcikKaynak = [
     id: 7,
     questionText:
       "Aşağıdakilerden hangileri Shortest Job First algoritmasının türlerindendir?\nI. Kesilmesiz SJF  II. Yarı Kesilmesiz SJF  III. Kesilmeli SJF  IV. Yarı Kesilmeli SJF",
-    options: [
-      "I, II",
-      "I, III",
-      "II, IV",
-      "I, II, III",
-      "Hepsi",
-    ],
+    options: ["I, II", "I, III", "II, IV", "I, II, III", "Hepsi"],
     correctAnswer: "I, III",
   },
   {
@@ -148,8 +142,7 @@ const AcikKaynak = [
   },
   {
     id: 14,
-    questionText:
-      "Aşağıdakilerden hangisi kilitlenme koşullarından değildir?",
+    questionText: "Aşağıdakilerden hangisi kilitlenme koşullarından değildir?",
     options: [
       "Karşılıklı Dışlama",
       "Tutup Bekleme",
@@ -228,13 +221,7 @@ const AcikKaynak = [
     id: 20,
     questionText:
       "Aşağıdakilerden hangisi/hangileri kilitlenme yönetim yöntemlerinden biridir?\nI. Önleme  II. Sakınma  III. İzin verme-Kurtarma  IV. Görmezden Gelme",
-    options: [
-      "I-II",
-      "III-IV",
-      "Yalnız III",
-      "I-II-IV",
-      "Hepsi",
-    ],
+    options: ["I-II", "III-IV", "Yalnız III", "I-II-IV", "Hepsi"],
     correctAnswer: "Hepsi",
   },
   {
@@ -345,13 +332,7 @@ const AcikKaynak = [
     id: 29,
     questionText:
       "RAM belleğin hızı ……… hızından düşüktür. RAM belleğin bu hız düşüklüğüne ön bellek (cache) yardımcı olur ve RAM ile ……… arasındaki veri transferinde görev yapar. Hangisi boş bırakılan yere gelmelidir?",
-    options: [
-      "ROM bellek",
-      "Ana kart",
-      "CPU",
-      "Sabit disk",
-      "GPU",
-    ],
+    options: ["ROM bellek", "Ana kart", "CPU", "Sabit disk", "GPU"],
     correctAnswer: "CPU",
   },
   {
@@ -638,8 +619,7 @@ const AcikKaynak = [
   },
   {
     id: 52,
-    questionText:
-      "Disk yapısı ile ilgili aşağıdakilerden hangisi yanlıştır?",
+    questionText: "Disk yapısı ile ilgili aşağıdakilerden hangisi yanlıştır?",
     options: [
       "Disk alt bölümlere ayrılamaz",
       "Disk ve bölüm işlenmemiş olarak yani dosya sistemi olmadan veya dosya sistemiyle biçimlendirilmiş olarak kullanılabilir",
@@ -651,8 +631,7 @@ const AcikKaynak = [
   },
   {
     id: 53,
-    questionText:
-      "Aşağıdakilerden hangisi dosya işlemlerinden biri değildir?",
+    questionText: "Aşağıdakilerden hangisi dosya işlemlerinden biri değildir?",
     options: [
       "Yaz",
       "Oku",
@@ -664,8 +643,7 @@ const AcikKaynak = [
   },
   {
     id: 54,
-    questionText:
-      "Aşağıdaki dosya türü eşleştirmelerinden hangisi yanlıştır?",
+    questionText: "Aşağıdaki dosya türü eşleştirmelerinden hangisi yanlıştır?",
     options: [
       "Executable – exe, com, bin",
       "Object – obj, o",
@@ -690,13 +668,7 @@ const AcikKaynak = [
   {
     id: 56,
     questionText: "Aşağıdakilerden hangisi sıralı erişime örnektir?",
-    options: [
-      "read n",
-      "read next",
-      "write n",
-      "position to n",
-      "rewrite n",
-    ],
+    options: ["read n", "read next", "write n", "position to n", "rewrite n"],
     correctAnswer: "read next",
   },
   {
@@ -728,13 +700,7 @@ const AcikKaynak = [
     id: 59,
     questionText:
       "Aşağıdakilerden hangisi korumalı erişim türlerinden değildir?",
-    options: [
-      "Okumak",
-      "Yazmak",
-      "Çoğaltmak",
-      "Eklemek",
-      "Silmek",
-    ],
+    options: ["Okumak", "Yazmak", "Çoğaltmak", "Eklemek", "Silmek"],
     correctAnswer: "Çoğaltmak",
   },
   {
@@ -753,13 +719,7 @@ const AcikKaynak = [
     id: 61,
     questionText:
       "Aşağıdakilerden hangisinde PC'lerde 'interrupt controller' bağlantı noktası konumudur?",
-    options: [
-      "000-00F",
-      "020-021",
-      "040-043",
-      "200-20F",
-      "320-32F",
-    ],
+    options: ["000-00F", "020-021", "040-043", "200-20F", "320-32F"],
     correctAnswer: "020-021",
   },
   {
@@ -852,26 +812,14 @@ const AcikKaynak = [
     id: 70,
     questionText:
       "Unix sistemlerde bir uygulamanın sürücü kodunu boru hatlarına dinamik olarak monte etmeyi sağlayan mekanizma hangisidir?",
-    options: [
-      "streams",
-      "caching",
-      "spooling",
-      "reservation",
-      "Hiçbiri",
-    ],
+    options: ["streams", "caching", "spooling", "reservation", "Hiçbiri"],
     correctAnswer: "streams",
   },
   {
     id: 71,
     questionText:
       "Aşağıdaki ifadelerden hangileri koruma hedefleri arasında yer alır?\nI. Modern bir bilgisayar sisteminde korumanın amaçlarını ve ilkelerini tartışmak.\nII. Yetenek tabanlı koruma sistemlerini incelemek.\nIII. Dil tabanlı koruma sistemlerini incelemek.",
-    options: [
-      "Yalnız I",
-      "Yalnız II",
-      "I ve II",
-      "I ve III",
-      "I-II-III",
-    ],
+    options: ["Yalnız I", "Yalnız II", "I ve II", "I ve III", "I-II-III"],
     correctAnswer: "I-II-III",
   },
   {
@@ -915,8 +863,7 @@ const AcikKaynak = [
   },
   {
     id: 75,
-    questionText:
-      "Gizli dosyaların görüntülenmesi nereden gerçekleştirilir?",
+    questionText: "Gizli dosyaların görüntülenmesi nereden gerçekleştirilir?",
     options: [
       "Konum/Gizli dosyaları göster",
       "Düzen/Gizli dosyaları göster",
@@ -961,32 +908,20 @@ const AcikKaynak = [
     id: 79,
     questionText:
       "Erişim haklarını iptal etmek gerektiğinde aşağıdaki sorulardan hangileri sorulur?\nI. Hemen karşı gecikmeli  II. Kısmi Toplam  III. Yeniden kazanma  IV. Seçmeli ve genel  V. Dolaylı Aktarım",
-    options: [
-      "I-II",
-      "I-II-III",
-      "I-IV-V",
-      "I-II-III-V",
-      "Hepsi",
-    ],
+    options: ["I-II", "I-II-III", "I-IV-V", "I-II-III-V", "Hepsi"],
     correctAnswer: "Hepsi",
   },
   {
     id: 80,
     questionText:
       "Bir derleyici tarafından, yalnızca bir çekirdeğe dayanan uygulamanın göreceli değerleri hangilerdir?\nI. Güvenlik  II. Esneklik  III. Verimlilik",
-    options: [
-      "Yalnız I",
-      "Yalnız II",
-      "Yalnız III",
-      "I-III",
-      "I-II-III",
-    ],
+    options: ["Yalnız I", "Yalnız II", "Yalnız III", "I-III", "I-II-III"],
     correctAnswer: "I-II-III",
   },
   {
     id: 81,
     questionText:
-      '81-) "Sistemin yasal olarak kullanılmasının engellenmesidir." Yukarıda bahsedilen güvenlik sorunu hangisidir?',
+      '"Sistemin yasal olarak kullanılmasının engellenmesidir." Yukarıda bahsedilen güvenlik sorunu hangisidir?',
     options: [
       "Gizlilik ihlali",
       "Bütünlük ihlali",
@@ -999,7 +934,7 @@ const AcikKaynak = [
   {
     id: 82,
     questionText:
-      '82-) "Verilerin yetkisiz kişiler tarafından okunmasını veya çalınmasını ifade eder." Yukarıda bahsedilen güvenlik sorunu hangisidir?',
+      '"Verilerin yetkisiz kişiler tarafından okunmasını veya çalınmasını ifade eder." Yukarıda bahsedilen güvenlik sorunu hangisidir?',
     options: [
       "Gizlilik ihlali",
       "Bütünlük ihlali",
@@ -1012,7 +947,7 @@ const AcikKaynak = [
   {
     id: 83,
     questionText:
-      '83-) "Verilerin veya kaynak kodların yetkisiz kişiler tarafından değiştirilmesidir." Yukarıda bahsedilen güvenlik sorunu hangisidir?',
+      '"Verilerin veya kaynak kodların yetkisiz kişiler tarafından değiştirilmesidir." Yukarıda bahsedilen güvenlik sorunu hangisidir?',
     options: [
       "Gizlilik ihlali",
       "Bütünlük ihlali",
@@ -1025,7 +960,7 @@ const AcikKaynak = [
   {
     id: 84,
     questionText:
-      '84-) "Verilerin yetkisiz kişiler tarafından tahrip edilmesidir (Web site saldırıları vs)." Yukarıda bahsedilen güvenlik sorunu hangisidir?',
+      '"Verilerin yetkisiz kişiler tarafından tahrip edilmesidir (Web site saldırıları vs)." Yukarıda bahsedilen güvenlik sorunu hangisidir?',
     options: [
       "Gizlilik ihlali",
       "Bütünlük ihlali",
@@ -1038,7 +973,7 @@ const AcikKaynak = [
   {
     id: 85,
     questionText:
-      '85-) "Kaynakların izinsiz kullanılmasıdır." Yukarıda bahsedilen güvenlik sorunu hangisidir?',
+      '"Kaynakların izinsiz kullanılmasıdır." Yukarıda bahsedilen güvenlik sorunu hangisidir?',
     options: [
       "Gizlilik ihlali",
       "Bütünlük ihlali",
@@ -1052,19 +987,13 @@ const AcikKaynak = [
     id: 86,
     questionText:
       "Bir sistemi korumak için dört seviyede güvenlik tedbiri alınmalıdır. Aşağıdakilerden hangisi bu seviyelerden birisi değildir?",
-    options: [
-      "Fiziksel",
-      "İnsan",
-      "İşletim Sistemi",
-      "Ağ",
-      "Hiçbiri",
-    ],
+    options: ["Fiziksel", "İnsan", "İşletim Sistemi", "Ağ", "Hiçbiri"],
     correctAnswer: "Hiçbiri",
   },
   {
     id: 87,
     questionText:
-      '87-) "Genellikle ücretsiz yazılımlarla birlikte sisteme yüklenen, tarayıcıda reklam sekmesi açan veya belirli siteler ziyaret edildiğinde açılır tarayıcı penceresi oluşturan ve bir programı bire bir taklit eden yazılımlar" olarak ifade edilen program tehdidi hangisidir?',
+      '"Genellikle ücretsiz yazılımlarla birlikte sisteme yüklenen, tarayıcıda reklam sekmesi açan veya belirli siteler ziyaret edildiğinde açılır tarayıcı penceresi oluşturan ve bir programı bire bir taklit eden yazılımlar" olarak ifade edilen program tehdidi hangisidir?',
     options: [
       "Truva Atı",
       "Tuzak Kapıları",
@@ -1077,7 +1006,7 @@ const AcikKaynak = [
   {
     id: 88,
     questionText:
-      '88-) "Tespiti zordur. Programın normal çalışması sırasında güvenlik açığı fark edilememektedir. Ancak önceden belirlenmiş bir dizi parametre kullanımı sonrasında güvenlik açığı oluşur." Yukarıda bilgi verilen program tehdidi hangisidir?',
+      '"Tespiti zordur. Programın normal çalışması sırasında güvenlik açığı fark edilememektedir. Ancak önceden belirlenmiş bir dizi parametre kullanımı sonrasında güvenlik açığı oluşur." Yukarıda bilgi verilen program tehdidi hangisidir?',
     options: [
       "Truva Atı",
       "Tuzak Kapıları",
@@ -1103,7 +1032,7 @@ const AcikKaynak = [
   {
     id: 90,
     questionText:
-      '90-) "Kendisini çoğaltmak için spawn mekanizmasını kullanan bir işlemdir. Sistem kaynaklarını kullanan ve tüm diğer işlemleri kilitleyen, kendi kopyalarını çıkaran zararlı yazılımlardır. Bilgisayar ağlarında özellikle güçlüdür." Bu program tehdidi hangisidir?',
+      '"Kendisini çoğaltmak için spawn mekanizmasını kullanan bir işlemdir. Sistem kaynaklarını kullanan ve tüm diğer işlemleri kilitleyen, kendi kopyalarını çıkaran zararlı yazılımlardır. Bilgisayar ağlarında özellikle güçlüdür." Bu program tehdidi hangisidir?',
     options: [
       "Truva Atı",
       "Tuzak Kapıları",
@@ -1169,7 +1098,7 @@ const AcikKaynak = [
   {
     id: 95,
     questionText:
-      '95-) "Sanallaştırma; sahip olduğumuz fiziksel donanımı, sanal makineler yardımıyla, ………………………. birden fazla sistem veya modül koşturabileceğimiz hâle getirme işidir". Boş olan yere aşağıdakilerden hangisi gelmelidir?',
+      '"Sanallaştırma; sahip olduğumuz fiziksel donanımı, sanal makineler yardımıyla, ………………………. birden fazla sistem veya modül koşturabileceğimiz hâle getirme işidir". Boş olan yere aşağıdakilerden hangisi gelmelidir?',
     options: [
       "Birbirinden bağımsız",
       "Benzer ilişkisi olan",
@@ -1196,13 +1125,7 @@ const AcikKaynak = [
     id: 97,
     questionText:
       "Aşağıdakilerden hangisi ya da hangileri sanallaştırma sistemlerinden birisidir?\nI. VMWARE  II. HYPER-V  III. CITRIX XENSERVER",
-    options: [
-      "Yalnız I",
-      "Yalnız II",
-      "I ve II",
-      "II ve III",
-      "I, II ve III",
-    ],
+    options: ["Yalnız I", "Yalnız II", "I ve II", "II ve III", "I, II ve III"],
     correctAnswer: "I, II ve III",
   },
   {
@@ -1242,14 +1165,8 @@ const AcikKaynak = [
   {
     id: 101,
     questionText:
-      '101-) "Dağıtık bir sistem heterojen bilgisayarları ve ağları desteklemek için mantıksal olarak yüksek-seviyeli katmanlarla daha düşük katmanlar arasında bir yazılımsal katmanı önermektedirler." Tanımı verilen kavram hangisidir?',
-    options: [
-      "Software",
-      "Sunucu",
-      "İstemci",
-      "MiddleWare",
-      "Site",
-    ],
+      '"Dağıtık bir sistem heterojen bilgisayarları ve ağları desteklemek için mantıksal olarak yüksek-seviyeli katmanlarla daha düşük katmanlar arasında bir yazılımsal katmanı önermektedirler." Tanımı verilen kavram hangisidir?',
+    options: ["Software", "Sunucu", "İstemci", "MiddleWare", "Site"],
     correctAnswer: "Software",
   },
   {
@@ -1308,19 +1225,12 @@ const AcikKaynak = [
     id: 106,
     questionText:
       "Aşağıdakilerden hangisi yönlendirme stratejilerinden değildir?",
-    options: [
-      "Sabit",
-      "Sanal",
-      "Tradeoff",
-      "Dinamik",
-      "OpenFlow",
-    ],
+    options: ["Sabit", "Sanal", "Tradeoff", "Dinamik", "OpenFlow"],
     correctAnswer: "Tradeoff",
   },
   {
     id: 107,
-    questionText:
-      "Aşağıdakilerden hangisi tasarım sorunlarından değildir?",
+    questionText: "Aşağıdakilerden hangisi tasarım sorunlarından değildir?",
     options: [
       "Şeffaflık",
       "Güvenilirlik",
@@ -1359,14 +1269,8 @@ const AcikKaynak = [
   {
     id: 110,
     questionText:
-      '110-) "Düzenli aralıklarla önbellek tara ve son taramadan bu yana değiştirilmiş blokların temizlenme işidir." Tanımı verilen kavram hangisidir?',
-    options: [
-      "Hadoop",
-      "OpenFlow",
-      "Cleaner",
-      "MiddleWare",
-      "Varyasyon",
-    ],
+      '"Düzenli aralıklarla önbellek tara ve son taramadan bu yana değiştirilmiş blokların temizlenme işidir." Tanımı verilen kavram hangisidir?',
+    options: ["Hadoop", "OpenFlow", "Cleaner", "MiddleWare", "Varyasyon"],
     correctAnswer: "Varyasyon",
   },
   {
@@ -1393,12 +1297,11 @@ const AcikKaynak = [
       "Donanım – Kabuk – Sistem Çağrıları – Çekirdek – Kullanıcı",
       "Donanım – Çekirdek – Kabuk – Sistem Çağrıları – Kullanıcı",
     ],
-    correctAnswer:
-      "Donanım – Çekirdek – Sistem Çağrıları – Kabuk – Kullanıcı",
+    correctAnswer: "Donanım – Çekirdek – Sistem Çağrıları – Kabuk – Kullanıcı",
   },
   {
     id: 113,
-    questionText: '113-) Linux dosya sisteminde "inode" neyi temsil eder?',
+    questionText: 'Linux dosya sisteminde "inode" neyi temsil eder?',
     options: [
       "Açık dosyayı temsil eder",
       "Süper bloğu temsil eder",
@@ -1411,7 +1314,7 @@ const AcikKaynak = [
   {
     id: 114,
     questionText:
-      '114-) Linux dosya sisteminde "süper blok" nesnesi neyi temsil eder?',
+      'Linux dosya sisteminde "süper blok" nesnesi neyi temsil eder?',
     options: [
       "Bir Dosyayı temsil eder",
       "Bütün bir dosya sistemini temsil eder",
@@ -1424,7 +1327,7 @@ const AcikKaynak = [
   {
     id: 115,
     questionText:
-      '115-) Linux dosya sistemi işlemlerinden "open(…)" komutu nasıl bir işlem gerçekleştirir?',
+      'Linux dosya sistemi işlemlerinden "open(…)" komutu nasıl bir işlem gerçekleştirir?',
     options: [
       "Bir dosyayı açar",
       "Bir dosyayı okur",
@@ -1437,7 +1340,7 @@ const AcikKaynak = [
   {
     id: 116,
     questionText:
-      '116-) Linux dosya sistemi işlemlerinden "mmap(…)" komutu nasıl bir işlem gerçekleştirir?',
+      'Linux dosya sistemi işlemlerinden "mmap(…)" komutu nasıl bir işlem gerçekleştirir?',
     options: [
       "Bir dosyayı açar",
       "Bir dosyayı okur",
@@ -1477,26 +1380,14 @@ const AcikKaynak = [
     id: 119,
     questionText:
       "Kendi kimliği ile yeni bir thread oluşmasını sağlayan sistem çağrısı hangisidir?",
-    options: [
-      "Fork()",
-      "Open()",
-      "Delete()",
-      "Clone()",
-      "Close()",
-    ],
+    options: ["Fork()", "Open()", "Delete()", "Clone()", "Close()"],
     correctAnswer: "Clone()",
   },
   {
     id: 120,
     questionText:
       "Yeni bir kimlikle yeni bir thread oluşmasını sağlayan sistem çağrısı hangisidir?",
-    options: [
-      "Fork()",
-      "Open()",
-      "Delete()",
-      "Clone()",
-      "Close()",
-    ],
+    options: ["Fork()", "Open()", "Delete()", "Clone()", "Close()"],
     correctAnswer: "Fork()",
   },
   {
@@ -1569,13 +1460,7 @@ const AcikKaynak = [
     id: 127,
     questionText:
       "Aşağıdakilerden hangisi Server Message Block Protocol (SMB) mesaj tiplerinden değildir?",
-    options: [
-      "Session control",
-      "File",
-      "Printer",
-      "Message",
-      "Disk",
-    ],
+    options: ["Session control", "File", "Printer", "Message", "Disk"],
     correctAnswer: "Disk",
   },
   {
@@ -1596,13 +1481,7 @@ const AcikKaynak = [
     id: 130,
     questionText:
       "Windows güç yöneticisi (power manager) bileşeni tarafından bilgisayarın ana belleğindeki verilerin sabit belleğe kaydedilerek sistemin kapatılması işlemine ne ad verilir?",
-    options: [
-      "power save",
-      "disk save",
-      "sleep",
-      "wake",
-      "hibernate",
-    ],
+    options: ["power save", "disk save", "sleep", "wake", "hibernate"],
     correctAnswer: "hibernate",
   },
   {
@@ -1660,7 +1539,7 @@ const AcikKaynak = [
   {
     id: 136,
     questionText:
-      '136-) "Çekirdek eşzamanlı işlemlerin toplanmasını desteklemekteydi. Çevrimsel sıralı CPU, zaman planı uygulayıcısı kullanılmıştı. İşlemler sekiz kelime uzunluğundaki sabit boyda mesajların değişimi ile birbirleriyle iletişim kurabilmekteydi. Tüm mesajlar ortak bir ara bellek alanından arabelleklerde saklanmaktaydı." Bahsi geçen işletim sistemi hangisidir?',
+      '"Çekirdek eşzamanlı işlemlerin toplanmasını desteklemekteydi. Çevrimsel sıralı CPU, zaman planı uygulayıcısı kullanılmıştı. İşlemler sekiz kelime uzunluğundaki sabit boyda mesajların değişimi ile birbirleriyle iletişim kurabilmekteydi. Tüm mesajlar ortak bir ara bellek alanından arabelleklerde saklanmaktaydı." Bahsi geçen işletim sistemi hangisidir?',
     options: ["MULTICS", "THE", "XDS-940", "RC 4000", "ATLAS"],
     correctAnswer: "RC 4000",
   },
@@ -2353,26 +2232,14 @@ const DijitalPazarlama = [
     id: 49,
     questionText:
       "'.......' akıllı, güvenilir bir danışman veya yol gösterici olan Yunan mitolojisinden bir karakterin adıdır.",
-    options: [
-      "Koçluk",
-      "Mentorluk",
-      "Yöneticilik",
-      "Rehberlik",
-      "Danışmanlık",
-    ],
+    options: ["Koçluk", "Mentorluk", "Yöneticilik", "Rehberlik", "Danışmanlık"],
     correctAnswer: "Mentorluk",
   },
   {
     id: 50,
     questionText:
       "'.......' son iki-üç yüzyıldır kullanılan, bir kişinin bilgi ve becerilerini bir öğretim veya öğretme biçimi aracılığıyla daha üst seviyeye taşımaya yardımcı olan kişiyi belirten bir terimdir. Yirminci yüzyılda özellikle, spor ve performans gerektiren işlerle ilgili olarak yaygın şekilde kullanılmaktadır.",
-    options: [
-      "Koçluk",
-      "Mentorluk",
-      "Yöneticilik",
-      "Rehberlik",
-      "Danışmanlık",
-    ],
+    options: ["Koçluk", "Mentorluk", "Yöneticilik", "Rehberlik", "Danışmanlık"],
     correctAnswer: "Koçluk",
   },
   {
@@ -2427,8 +2294,7 @@ const DijitalPazarlama = [
       "Organizasyonlarda olumlu iş tutumları gözlemlenmektedir.",
       "Organizasyonlarda işten kaytarma ve tatminsizlik gibi olumsuz iş tutumları,",
     ],
-    correctAnswer:
-      "Organizasyonlarda olumlu iş tutumları gözlemlenmektedir.",
+    correctAnswer: "Organizasyonlarda olumlu iş tutumları gözlemlenmektedir.",
   },
   {
     id: 55,
@@ -2626,7 +2492,7 @@ const StratejikYonetim = [
   {
     id: 1,
     questionText:
-      "Müşteri taleplerinin çok hızlı değiştiği, öngörülemez trendlerin hakim olduğu, ancak hammadde tedarik sürecinin nispeten istikrarlı çalıştığı bir pazarda faaliyet gösteren yenilikçi bir teknoloji veya moda markasının, rekabet avantajı sağlamak için aşağıdaki tedarik zinciri stratejilerinden hangisini uygulaması en mantıklıdır?[cite: 1]",
+      "Müşteri taleplerinin çok hızlı değiştiği, öngörülemez trendlerin hakim olduğu, ancak hammadde tedarik sürecinin nispeten istikrarlı çalıştığı bir pazarda faaliyet gösteren yenilikçi bir teknoloji veya moda markasının, rekabet avantajı sağlamak için aşağıdaki tedarik zinciri stratejilerinden hangisini uygulaması en mantıklıdır?",
     options: [
       "Etkin (Verimli) Tedarik Zinciri",
       "Risk Önleyici Tedarik Zinciri",
@@ -2639,7 +2505,7 @@ const StratejikYonetim = [
   {
     id: 2,
     questionText:
-      "Bir işletmenin pazarlama, insan kaynakları ve finansman departmanlarının; üst yönetim tarafından belirlenen genel büyüme ve sektörde maliyet lideri olma hedeflerine ulaşmak amacıyla hazırladıkları günlük ve orta vadeli eylem planları, stratejik hiyerarşide hangi düzeyde sınıflandırılır?[cite: 1]",
+      "Bir işletmenin pazarlama, insan kaynakları ve finansman departmanlarının; üst yönetim tarafından belirlenen genel büyüme ve sektörde maliyet lideri olma hedeflerine ulaşmak amacıyla hazırladıkları günlük ve orta vadeli eylem planları, stratejik hiyerarşide hangi düzeyde sınıflandırılır?",
     options: [
       "Kurumsal Stratejiler",
       "Rekabet (İş Birimi) Stratejileri",
@@ -2652,7 +2518,7 @@ const StratejikYonetim = [
   {
     id: 3,
     questionText:
-      "Genellikle aynı büyüklükte iki veya daha fazla işletmenin sermaye alışverişi sonunda tüm kaynaklarını bir araya getirerek ortaya yeni bir işletme çıkarmasına ne ad verilir?[cite: 1]",
+      "Genellikle aynı büyüklükte iki veya daha fazla işletmenin sermaye alışverişi sonunda tüm kaynaklarını bir araya getirerek ortaya yeni bir işletme çıkarmasına ne ad verilir?",
     options: [
       "Satın alma stratejisi",
       "Birleşme stratejisi",
@@ -2665,7 +2531,7 @@ const StratejikYonetim = [
   {
     id: 4,
     questionText:
-      "İşletmeler arasında ortaya çıkan dayanışma ve kaynak birleştirme faaliyetlerinin gerçekleştirildiği strateji aşağıdakilerden hangisidir?[cite: 1]",
+      "İşletmeler arasında ortaya çıkan dayanışma ve kaynak birleştirme faaliyetlerinin gerçekleştirildiği strateji aşağıdakilerden hangisidir?",
     options: [
       "Rekabet stratejisi",
       "Farklılaşma stratejisi",
@@ -2678,7 +2544,7 @@ const StratejikYonetim = [
   {
     id: 5,
     questionText:
-      "İşletmelerin markalı ve özellikli mallarının üretimini başka işletmelere yaptırmalarına imkan veren işbirliği anlaşması aşağıdakilerden hangisidir?[cite: 1]",
+      "İşletmelerin markalı ve özellikli mallarının üretimini başka işletmelere yaptırmalarına imkan veren işbirliği anlaşması aşağıdakilerden hangisidir?",
     options: [
       "Know-how anlaşmaları",
       "Outsourcing",
@@ -2691,7 +2557,7 @@ const StratejikYonetim = [
   {
     id: 6,
     questionText:
-      "İşletmenin kaynaklarının nasıl dağıtılacağı, hangi işlere girilip hangi işlerin terk edileceği, faaliyet alanlarının genişletilip genişletilmeyeceği, başka bir işletme ile birleşilip birleşilmeyeceği gibi konuların ele alındığı stratejik yönetim süreci aşaması aşağıdakilerden hangisidir?[cite: 1]",
+      "İşletmenin kaynaklarının nasıl dağıtılacağı, hangi işlere girilip hangi işlerin terk edileceği, faaliyet alanlarının genişletilip genişletilmeyeceği, başka bir işletme ile birleşilip birleşilmeyeceği gibi konuların ele alındığı stratejik yönetim süreci aşaması aşağıdakilerden hangisidir?",
     options: [
       "Strateji uygulama",
       "Strateji değerleme",
@@ -2704,7 +2570,7 @@ const StratejikYonetim = [
   {
     id: 7,
     questionText:
-      '7-) Pazar büyüme durumu\'nu bir değişken, "rekabet durumunu" da bir diğer değişken olarak kabul ederek iki boyutlu bir matris geliştiren görüş aşağıdaki düşünürlerden hangisi tarafından ileri sürülmüştür?[cite: 1]',
+      'Pazar büyüme durumu\'nu bir değişken, "rekabet durumunu" da bir diğer değişken olarak kabul ederek iki boyutlu bir matris geliştiren görüş aşağıdaki düşünürlerden hangisi tarafından ileri sürülmüştür?',
     options: [
       "Thompson - Strickland",
       "C. Hofer",
@@ -2717,7 +2583,7 @@ const StratejikYonetim = [
   {
     id: 8,
     questionText:
-      "Tüm işletme birimlerinin ihtiyaçlarını ve potansiyellerini dikkate alarak ana şirketin kaynaklarını en iyi şekilde kullanmayı amaçlayan stratejilere ne ad verilir?[cite: 1]",
+      "Tüm işletme birimlerinin ihtiyaçlarını ve potansiyellerini dikkate alarak ana şirketin kaynaklarını en iyi şekilde kullanmayı amaçlayan stratejilere ne ad verilir?",
     options: [
       "Uluslararası stratejiler",
       "İşletme stratejileri",
@@ -2730,7 +2596,7 @@ const StratejikYonetim = [
   {
     id: 9,
     questionText:
-      "Üst yönetimin hazırladığı şirket ve işletme stratejilerine uygun olarak orta ve alt yönetim düzeylerince hazırlanıp uygulanan ve daha çok teknik bilgi ve uzmanlık isteyen stratejilere ne ad verilir?[cite: 1]",
+      "Üst yönetimin hazırladığı şirket ve işletme stratejilerine uygun olarak orta ve alt yönetim düzeylerince hazırlanıp uygulanan ve daha çok teknik bilgi ve uzmanlık isteyen stratejilere ne ad verilir?",
     options: [
       "Operasyonel stratejiler",
       "Odaklanma Stratejileri",
@@ -2743,7 +2609,7 @@ const StratejikYonetim = [
   {
     id: 10,
     questionText:
-      "Aşağıdakilerden hangisi işletmelerde her yönetim düzeyinde uygulanabilen temel stratejiler arasında yer almaz?[cite: 1]",
+      "Aşağıdakilerden hangisi işletmelerde her yönetim düzeyinde uygulanabilen temel stratejiler arasında yer almaz?",
     options: [
       "Büyüme stratejileri",
       "Küçülme stratejileri",
@@ -2756,7 +2622,7 @@ const StratejikYonetim = [
   {
     id: 11,
     questionText:
-      "Aşağıdakilerden hangisi işletmenin tüm faaliyetlerini durdurması ve varlıklarını sona erdirmesi ile ilgili stratejilerdir?[cite: 1]",
+      "Aşağıdakilerden hangisi işletmenin tüm faaliyetlerini durdurması ve varlıklarını sona erdirmesi ile ilgili stratejilerdir?",
     options: [
       "Kısmi tasfiye stratejisi",
       "Tasarruf stratejisi",
@@ -2769,7 +2635,7 @@ const StratejikYonetim = [
   {
     id: 12,
     questionText:
-      "İşletmeyi rakiplerinden farklılaştıran kabiliyet ve kapasiteye ne ad verilir?[cite: 1]",
+      "İşletmeyi rakiplerinden farklılaştıran kabiliyet ve kapasiteye ne ad verilir?",
     options: [
       "Rekabet avantajı",
       "Operasyonel plan",
@@ -2782,7 +2648,7 @@ const StratejikYonetim = [
   {
     id: 13,
     questionText:
-      "Olası rakiplerin pazara girişini maliyetli duruma getirmek ve bu sayede sektördeki mevcut işletmeleri rekabetten korumak amacıyla geliştirilen faktörlere ne ad verilir?[cite: 1]",
+      "Olası rakiplerin pazara girişini maliyetli duruma getirmek ve bu sayede sektördeki mevcut işletmeleri rekabetten korumak amacıyla geliştirilen faktörlere ne ad verilir?",
     options: [
       "Ölçek ekonomileri",
       "Pazara giriş engelleri",
@@ -2795,20 +2661,14 @@ const StratejikYonetim = [
   {
     id: 14,
     questionText:
-      '14-) "İşletme faaliyet veya iş alanında mevcut durumunu koruma amacı" aşağıdaki temel stratejilerden hangisinin tanımıdır?[cite: 1]',
-    options: [
-      "Durağan",
-      "Büyüme",
-      "Küçülme",
-      "Karma",
-      "Farklılaştırma",
-    ],
+      '"İşletme faaliyet veya iş alanında mevcut durumunu koruma amacı" aşağıdaki temel stratejilerden hangisinin tanımıdır?',
+    options: ["Durağan", "Büyüme", "Küçülme", "Karma", "Farklılaştırma"],
     correctAnswer: "Durağan",
   },
   {
     id: 15,
     questionText:
-      "İşletmelerin maksatlı olarak mevcut iş ve faaliyetlerinden bazılarını sürekli olarak terk etmesi, vazgeçmesi veya durdurması stratejisine ne ad verilir?[cite: 1]",
+      "İşletmelerin maksatlı olarak mevcut iş ve faaliyetlerinden bazılarını sürekli olarak terk etmesi, vazgeçmesi veya durdurması stratejisine ne ad verilir?",
     options: [
       "Tam tasfiye stratejisi",
       "Tasarruf stratejisi",
@@ -2821,7 +2681,7 @@ const StratejikYonetim = [
   {
     id: 16,
     questionText:
-      "Aşağıdakilerden hangisi strateji oluşturma kapsamında yer almaz?[cite: 1]",
+      "Aşağıdakilerden hangisi strateji oluşturma kapsamında yer almaz?",
     options: [
       "Vizyon ve misyonun oluşturulması",
       "Stratejilerin değerlenmesi",
@@ -2834,7 +2694,7 @@ const StratejikYonetim = [
   {
     id: 17,
     questionText:
-      "Boston Danışma Grubu İşbirimleri Portföy Yönetim Matrisinde hem pazarın büyüme hızı, hem de göreceli pazar payı düşük olan işletmelere ne ad verilir?[cite: 1]",
+      "Boston Danışma Grubu İşbirimleri Portföy Yönetim Matrisinde hem pazarın büyüme hızı, hem de göreceli pazar payı düşük olan işletmelere ne ad verilir?",
     options: [
       "Yıldızlar",
       "Belirsizler",
@@ -2847,7 +2707,7 @@ const StratejikYonetim = [
   {
     id: 18,
     questionText:
-      "Boston Danışma Grubu İşbirimleri Portföy Yönetim Matrisinde göreceli pazar payının belirlenmesinde kullanılan formül aşağıdakilerden hangisidir?[cite: 1]",
+      "Boston Danışma Grubu İşbirimleri Portföy Yönetim Matrisinde göreceli pazar payının belirlenmesinde kullanılan formül aşağıdakilerden hangisidir?",
     options: [
       "İşbiriminin satışları/Sektörde toplam satışlar",
       "İşbiriminin cari yıl satışları/Sektör ortalama satışları",
@@ -2860,7 +2720,7 @@ const StratejikYonetim = [
   {
     id: 19,
     questionText:
-      '19-) "Beş Güç Modeli" ile ilgili aşağıdaki ifadelerden hangisi doğrudur?[cite: 1]',
+      '"Beş Güç Modeli" ile ilgili aşağıdaki ifadelerden hangisi doğrudur?',
     options: [
       "Örgütün iş çevresinin analizinde kullanılır",
       "Modelde yer alan faktörlerin güçlenmesi işletmenin karlılığını artırır.",
@@ -2873,7 +2733,7 @@ const StratejikYonetim = [
   {
     id: 20,
     questionText:
-      "İşletmenin amaçlarına nasıl ulaşacağını belirleyen, rakiplerin faaliyetlerinin izlenmesini içeren, nihai sonuca odaklı, uzun dönemli bakış açısına dayalı, dinamik kararlar topluluğuna ne ad verilir?[cite: 1]",
+      "İşletmenin amaçlarına nasıl ulaşacağını belirleyen, rakiplerin faaliyetlerinin izlenmesini içeren, nihai sonuca odaklı, uzun dönemli bakış açısına dayalı, dinamik kararlar topluluğuna ne ad verilir?",
     options: [
       "Taktik",
       "Yönetim",
@@ -2886,7 +2746,7 @@ const StratejikYonetim = [
   {
     id: 21,
     questionText:
-      "İşletmenin sahip olduğu yeteneklerin başka alternatif yetenekler kullanılarak gerçekleştirilememesi ile ilgili olan temel yetenek kriteri aşağıdakilerden hangisidir?[cite: 1]",
+      "İşletmenin sahip olduğu yeteneklerin başka alternatif yetenekler kullanılarak gerçekleştirilememesi ile ilgili olan temel yetenek kriteri aşağıdakilerden hangisidir?",
     options: [
       "Nadir olması",
       "Taklit edilemez olması",
@@ -2899,7 +2759,7 @@ const StratejikYonetim = [
   {
     id: 22,
     questionText:
-      "Aşağıdakilerden hangisi yeni işletmelerin pazara girişini zorlaştıran nedenlerden biri değildir?[cite: 1]",
+      "Aşağıdakilerden hangisi yeni işletmelerin pazara girişini zorlaştıran nedenlerden biri değildir?",
     options: [
       "Pazardaki mevcut firmaların ölçek ekonomisine sahip olması",
       "Pazardaki işletmelerin sadık müşteri grubuna sahip olması",
@@ -2913,7 +2773,7 @@ const StratejikYonetim = [
   {
     id: 23,
     questionText:
-      "Aşağıdakilerden hangisi örgütsel misyon içerisinde yer alabilecek unsurlardan biri değildir?[cite: 1]",
+      "Aşağıdakilerden hangisi örgütsel misyon içerisinde yer alabilecek unsurlardan biri değildir?",
     options: [
       "Örgütün rekabet stratejileri",
       "Örgütün faaliyet alanı",
@@ -2926,7 +2786,7 @@ const StratejikYonetim = [
   {
     id: 24,
     questionText:
-      '24-) Aşağıdakilerden hangisi işletmenin genel çevresinde yer alan "politik faktörler" içinde yer almaz?[cite: 1]',
+      'Aşağıdakilerden hangisi işletmenin genel çevresinde yer alan "politik faktörler" içinde yer almaz?',
     options: [
       "Adil rekabet kararları",
       "Enflasyon oranları",
@@ -2939,7 +2799,7 @@ const StratejikYonetim = [
   {
     id: 25,
     questionText:
-      "Aşağıdaki durumlardan hangisinde tedarikçilerin alıcılara karşı pazarlık gücü yüksektir?[cite: 1]",
+      "Aşağıdaki durumlardan hangisinde tedarikçilerin alıcılara karşı pazarlık gücü yüksektir?",
     options: [
       "Bir çok tedarikçinin varlığı söz konusuysa",
       "Yeterli düzeyde ikame tedarik kaynağı mevcutsa",
@@ -2953,7 +2813,7 @@ const StratejikYonetim = [
   {
     id: 26,
     questionText:
-      "Aşağıdakilerden hangisi amaçların oluşturulmasında dikkate alınması gereken ilkelerden biri değildir?[cite: 1]",
+      "Aşağıdakilerden hangisi amaçların oluşturulmasında dikkate alınması gereken ilkelerden biri değildir?",
     options: [
       "Ölçülebilir olması",
       "Gerçekçi olması",
@@ -2966,46 +2826,28 @@ const StratejikYonetim = [
   {
     id: 27,
     questionText:
-      "İşletmelerin amaçlarını gerçekleştirmeye çalışırken etkiledikleri ve etkilendikleri birey ve gruplara ne ad verilir?[cite: 1]",
-    options: [
-      "Rakipler",
-      "Çalışanlar",
-      "Paydaşlar",
-      "Müşteriler",
-      "Medya",
-    ],
+      "İşletmelerin amaçlarını gerçekleştirmeye çalışırken etkiledikleri ve etkilendikleri birey ve gruplara ne ad verilir?",
+    options: ["Rakipler", "Çalışanlar", "Paydaşlar", "Müşteriler", "Medya"],
     correctAnswer: "Paydaşlar",
   },
   {
     id: 28,
     questionText:
-      '28-) "Biz ne olmak istiyoruz" sorusunun cevabı aşağıdakilerden hangisini ifade eder?[cite: 1]',
-    options: [
-      "Vizyon",
-      "Amaçlar",
-      "Fırsatlar",
-      "Hedefler",
-      "Misyon",
-    ],
+      '"Biz ne olmak istiyoruz" sorusunun cevabı aşağıdakilerden hangisini ifade eder?',
+    options: ["Vizyon", "Amaçlar", "Fırsatlar", "Hedefler", "Misyon"],
     correctAnswer: "Vizyon",
   },
   {
     id: 29,
     questionText:
-      '29-) "İşletme olarak bizim işimiz nedir?" sorusunun cevabını veren kavram aşağıdakilerden hangisidir?[cite: 1]',
-    options: [
-      "Vizyon",
-      "Amaçlar",
-      "Misyon",
-      "Fırsatlar",
-      "Görev tanımları",
-    ],
+      '"İşletme olarak bizim işimiz nedir?" sorusunun cevabını veren kavram aşağıdakilerden hangisidir?',
+    options: ["Vizyon", "Amaçlar", "Misyon", "Fırsatlar", "Görev tanımları"],
     correctAnswer: "Misyon",
   },
   {
     id: 30,
     questionText:
-      "Aşağıdakilerden hangisi Porter yaklaşımının temel katkılarından biri değildir?[cite: 1]",
+      "Aşağıdakilerden hangisi Porter yaklaşımının temel katkılarından biri değildir?",
     options: [
       "Beş rekabetçi güç analizi",
       "Jenerik rekabet stratejileri",
@@ -3018,20 +2860,14 @@ const StratejikYonetim = [
   {
     id: 31,
     questionText:
-      "Aşağıdakilerden hangisi Değer Zincirini oluşturan temel faaliyetler arasında yer almaz?[cite: 1]",
-    options: [
-      "İç lojistik",
-      "İşlemler",
-      "Dış lojistik",
-      "Tedarik",
-      "Servis",
-    ],
+      "Aşağıdakilerden hangisi Değer Zincirini oluşturan temel faaliyetler arasında yer almaz?",
+    options: ["İç lojistik", "İşlemler", "Dış lojistik", "Tedarik", "Servis"],
     correctAnswer: "Tedarik",
   },
   {
     id: 32,
     questionText:
-      "Mintzberg'in sınıflandırmasına göre başlangıçta planlanmayan ancak süreçte ortaya çıkan strateji türü hangisidir?[cite: 1]",
+      "Mintzberg'in sınıflandırmasına göre başlangıçta planlanmayan ancak süreçte ortaya çıkan strateji türü hangisidir?",
     options: [
       "Amaçlanan strateji",
       "Kurumsal strateji",
@@ -3044,7 +2880,7 @@ const StratejikYonetim = [
   {
     id: 33,
     questionText:
-      '33-) "Strateji doğru işi seçer, plan seçilen işi uygular" ifadesine göre aşağıdakilerden hangisi plan örneğidir?[cite: 1]',
+      '"Strateji doğru işi seçer, plan seçilen işi uygular" ifadesine göre aşağıdakilerden hangisi plan örneğidir?',
     options: [
       "Premium müşteri segmentine odaklanma kararı",
       "Farklılaşma stratejisiyle rekabet etme",
@@ -3057,7 +2893,7 @@ const StratejikYonetim = [
   {
     id: 34,
     questionText:
-      "Aşağıdakilerden hangisi uyumlu bir amaç-hedef-strateji setidir?[cite: 1]",
+      "Aşağıdakilerden hangisi uyumlu bir amaç-hedef-strateji setidir?",
     options: [
       "Amaç: Kârlılık artışı / Hedef: Instagram takipçisi +50% / Strateji: çekiliş",
       "Amaç: İş seyahati segmentinde güçlenme / Hedef: Hafta içi doluluk %62 -> %75 / Strateji: kurumsal müşteri odaklı farklılaşma",
@@ -3071,7 +2907,7 @@ const StratejikYonetim = [
   {
     id: 35,
     questionText:
-      '35-) Aşağıdakilerden hangisi "strateji-politika" ayrımını en doğru ifade eder?[cite: 1]',
+      'Aşağıdakilerden hangisi "strateji-politika" ayrımını en doğru ifade eder?',
     options: [
       "Strateji iç kuralları, politika dış çevreyi belirler",
       "Strateji ve politika eş anlamlıdır",
@@ -3085,7 +2921,7 @@ const StratejikYonetim = [
   {
     id: 36,
     questionText:
-      "Peters ve Waterman yaklaşımında stratejik başarının kilit unsuru hangisidir?[cite: 1]",
+      "Peters ve Waterman yaklaşımında stratejik başarının kilit unsuru hangisidir?",
     options: [
       "Sadece sektör analizi",
       "Sadece portföy matrisi",
@@ -3093,13 +2929,12 @@ const StratejikYonetim = [
       "Sadece yazılı plan dokümanı",
       "Sadece düşük maliyet",
     ],
-    correctAnswer:
-      "Uygulama kalitesi, kültür, liderlik ve müşteri yakınlığı",
+    correctAnswer: "Uygulama kalitesi, kültür, liderlik ve müşteri yakınlığı",
   },
   {
     id: 37,
     questionText:
-      "Aşağıdakilerden hangisi strateji ile taktik arasındaki farkı doğru verir?[cite: 1]",
+      "Aşağıdakilerden hangisi strateji ile taktik arasındaki farkı doğru verir?",
     options: [
       "Strateji kısa vadeli, taktik uzun vadelidir",
       "Strateji iç süreç, taktik dış çevredir",
@@ -3112,7 +2947,7 @@ const StratejikYonetim = [
   },
   {
     id: 38,
-    questionText: "Aşağıdakilerden hangisi strateji ifadesidir?[cite: 1]",
+    questionText: "Aşağıdakilerden hangisi strateji ifadesidir?",
     options: [
       "Bu hafta sosyal medya reklamı başlatmak",
       "Ay sonuna kadar 3 personel almak",
@@ -3120,25 +2955,18 @@ const StratejikYonetim = [
       "Günlük doluluk raporu hazırlamak",
       "Bütçeyi üç aylık revize etmek",
     ],
-    correctAnswer:
-      "Kitle turizmi yerine yüksek harcama segmentine odaklanmak",
+    correctAnswer: "Kitle turizmi yerine yüksek harcama segmentine odaklanmak",
   },
   {
     id: 39,
     questionText:
-      '39-) "Kim, neyi, ne zaman, hangi kaynakla yapacak?" sorusu en çok hangi kavrama aittir?[cite: 1]',
-    options: [
-      "Vizyon",
-      "Misyon",
-      "Strateji",
-      "Plan",
-      "Politika",
-    ],
+      '"Kim, neyi, ne zaman, hangi kaynakla yapacak?" sorusu en çok hangi kavrama aittir?',
+    options: ["Vizyon", "Misyon", "Strateji", "Plan", "Politika"],
     correctAnswer: "Plan",
   },
   {
     id: 40,
-    questionText: "Aşağıdakilerden hangisi amaç ifadesidir?[cite: 1]",
+    questionText: "Aşağıdakilerden hangisi amaç ifadesidir?",
     options: [
       "6 ayda satışları %12 artırmak",
       "2027'de premium segmentte güçlü marka olmak",
@@ -3151,7 +2979,7 @@ const StratejikYonetim = [
   {
     id: 41,
     questionText:
-      '41-) Aşağıdaki senaryolardan hangisi Andy Grove\'un "Stratejik Kırılma Noktası"nı en iyi tarif eder?[cite: 1]',
+      'Aşağıdaki senaryolardan hangisi Andy Grove\'un "Stratejik Kırılma Noktası"nı en iyi tarif eder?',
     options: [
       "Şirketin yıllık satış hedeflerine ulaşamaması.",
       "Rakip bir firmanın yeni bir reklam kampanyası başlatması.",
@@ -3164,8 +2992,7 @@ const StratejikYonetim = [
   },
   {
     id: 42,
-    questionText:
-      "Strateji-operasyon ayrımı için en doğru ifade hangisidir?[cite: 1]",
+    questionText: "Strateji-operasyon ayrımı için en doğru ifade hangisidir?",
     options: [
       "İkisi de aynı anlama gelir",
       "Operasyon yönü belirler, strateji günlük işleri yürütür",
@@ -3179,7 +3006,7 @@ const StratejikYonetim = [
   {
     id: 43,
     questionText:
-      "Aşağıdakilerden hangisi Porter'ın Beş Rekabetçi Güç modelinde yer almaz?[cite: 1]",
+      "Aşağıdakilerden hangisi Porter'ın Beş Rekabetçi Güç modelinde yer almaz?",
     options: [
       "Mevcut rakipler arasındaki rekabet",
       "Tedarikçilerin pazarlık gücü",
@@ -3192,7 +3019,7 @@ const StratejikYonetim = [
   {
     id: 44,
     questionText:
-      "Hamel ve Prahalad'ın stratejik yönetime en önemli katkısı aşağıdakilerden hangisidir?[cite: 1]",
+      "Hamel ve Prahalad'ın stratejik yönetime en önemli katkısı aşağıdakilerden hangisidir?",
     options: [
       "Beş Güç modelini geliştirmek",
       "Stratejik kırılma noktası kavramını ortaya koymak",
@@ -3204,7 +3031,7 @@ const StratejikYonetim = [
   },
   {
     id: 45,
-    questionText: "Aşağıdaki eşleştirmelerden hangisi yanlıştır?[cite: 1]",
+    questionText: "Aşağıdaki eşleştirmelerden hangisi yanlıştır?",
     options: [
       "Porter - Sektör ve rekabet analizi",
       "Barney - Kaynak temelli yaklaşım",
@@ -3217,7 +3044,7 @@ const StratejikYonetim = [
   {
     id: 46,
     questionText:
-      "Aşağıdakilerden hangisi Endüstriyel Örgüt (I/O) yaklaşımının temel varsayımını en doğru şekilde yansıtır?[cite: 1]",
+      "Aşağıdakilerden hangisi Endüstriyel Örgüt (I/O) yaklaşımının temel varsayımını en doğru şekilde yansıtır?",
     options: [
       "İşletme performansını yalnızca içsel kaynaklar belirler",
       "Rekabet avantajı işletmenin kültürel yapısından doğar",
@@ -3231,7 +3058,7 @@ const StratejikYonetim = [
   {
     id: 47,
     questionText:
-      "Yapı-Davranış-Performans (SCP) paradigmasına göre, bir sektörde faaliyet gösteren firma sayısının çok az olması ve giriş engellerinin yüksekliği öncelikle hangi aşamayı belirler ve bu durum performansı nasıl etkiler?[cite: 1]",
+      "Yapı-Davranış-Performans (SCP) paradigmasına göre, bir sektörde faaliyet gösteren firma sayısının çok az olması ve giriş engellerinin yüksekliği öncelikle hangi aşamayı belirler ve bu durum performansı nasıl etkiler?",
     options: [
       "Davranış aşamasını belirler; aşırı kârlılığa yol açar.",
       "Yapı aşamasını belirler; fiyat rekabetinin azalmasına ve yüksek kârlılığa zemin hazırlar.",
@@ -3245,7 +3072,7 @@ const StratejikYonetim = [
   {
     id: 48,
     questionText:
-      "I/O Teorisi ile RBV arasındaki temel farkı en iyi hangi seçenek açıklar?[cite: 1]",
+      "I/O Teorisi ile RBV arasındaki temel farkı en iyi hangi seçenek açıklar?",
     options: [
       'A) I/O "ne yapıldığına", RBV "nasıl yapıldığına" odaklanır.',
       "I/O sektörel çekiciliği (dış çevre), RBV ise içsel yetenekleri (kaynaklar) temel alır.",
@@ -3259,7 +3086,7 @@ const StratejikYonetim = [
   {
     id: 49,
     questionText:
-      "Bir firmanın sahip olduğu patentli bir teknoloji, sektördeki diğer tüm firmalar tarafından kolayca lisanslanabiliyorsa, RBV perspektifinden bu kaynak için ne söylenebilir?[cite: 1]",
+      "Bir firmanın sahip olduğu patentli bir teknoloji, sektördeki diğer tüm firmalar tarafından kolayca lisanslanabiliyorsa, RBV perspektifinden bu kaynak için ne söylenebilir?",
     options: [
       "Sürdürülebilir rekabet avantajı sağlar.",
       "Değerli (Valuable) olsa bile nadir (Rare) olmadığı için sadece rekabet eşitliği sağlar.",
@@ -3273,7 +3100,7 @@ const StratejikYonetim = [
   {
     id: 50,
     questionText:
-      '50-) Slywotzky\'nin "İş Tasarımı" modelinde yer alan "Müşteri Seçimi" bileşeni hakkında hangisi en doğru ifadedir?[cite: 1]',
+      'Slywotzky\'nin "İş Tasarımı" modelinde yer alan "Müşteri Seçimi" bileşeni hakkında hangisi en doğru ifadedir?',
     options: [
       "Şirketin ulaşabileceği her müşteriye ürün satma çabasıdır.",
       "Pazardaki en ucuz ürünü talep eden kitleye odaklanmaktır.",
@@ -3287,7 +3114,7 @@ const StratejikYonetim = [
   {
     id: 51,
     questionText:
-      "Aşağıdakilerden hangisi işletmelerin stratejik işbirliği yapma amaçları arasında yer almaz?[cite: 2]",
+      "Aşağıdakilerden hangisi işletmelerin stratejik işbirliği yapma amaçları arasında yer almaz?",
     options: [
       "Potansiyel rakiplerle işbirliği yaparak tehdit oluşturmalarını önlemek",
       "Tek başlarına geliştiremedikleri tamamlayıcı ürünleri/hizmetleri dışarıdan temin etmek",
@@ -3300,7 +3127,7 @@ const StratejikYonetim = [
   {
     id: 52,
     questionText:
-      "Stratejik değerlendirme ve kontrol sürecinde 'Standartların Belirlenmesi' aşamasıyla ilgili aşağıdaki ifadelerden hangisi doğrudur?[cite: 2]",
+      "Stratejik değerlendirme ve kontrol sürecinde 'Standartların Belirlenmesi' aşamasıyla ilgili aşağıdaki ifadelerden hangisi doğrudur?",
     options: [
       "Standartlar, çalışanların tepkisini çekmemek için her zaman ulaşılabilecek en düşük seviyede belirlenmelidir.",
       "Standartlar bir kez belirlendikten sonra, dış çevre koşulları ne kadar değişirse değişsin şirket tarihi boyunca asla revize edilmemelidir.",
@@ -3314,7 +3141,7 @@ const StratejikYonetim = [
   {
     id: 53,
     questionText:
-      "PIMS (Profit Impact of Market Strategy) Analizi ile ilgili olarak aşağıda verilen ifadelerden hangisi doğrudur?[cite: 2]",
+      "PIMS (Profit Impact of Market Strategy) Analizi ile ilgili olarak aşağıda verilen ifadelerden hangisi doğrudur?",
     options: [
       "Yeni kurulan start-up'ların ve yüksek teknoloji şirketlerinin stratejik kontrolünde en yüksek etkinliğe sahip yöntemdir.",
       "İşletmenin kendi performansını dünya genelindeki binlerce gerçek şirketin ampirik verileri ve endüstri standartları ile kıyaslamasını sağlayan bir benchmarking aracıdır.",
@@ -3328,7 +3155,7 @@ const StratejikYonetim = [
   {
     id: 54,
     questionText:
-      "Stratejik kontrolde kullanılan 'Açıklık (Gap) Analizi' yöneticilere tam olarak hangi analitik çıktıyı sağlar?[cite: 2]",
+      "Stratejik kontrolde kullanılan 'Açıklık (Gap) Analizi' yöneticilere tam olarak hangi analitik çıktıyı sağlar?",
     options: [
       "İşletmenin mevcut performans düzeyi ile gelecekte ulaşmayı hedeflediği stratejik konum arasındaki 'makası' (boşluğu) ve gereken kaynak ihtiyacını gösterir.",
       "Sadece pazarlama departmanının reklam harcamalarındaki bütçe firesini kuruşu kuruşuna hesaplar.",
@@ -3342,7 +3169,7 @@ const StratejikYonetim = [
   {
     id: 55,
     questionText:
-      "Balanced Scorecard (Kurumsal Karne) yaklaşımında, 'Eğitimli personelin süreçleri İyileştirmesi, hatasız süreçlerin müşteri memnuniyetini artırması ve bunun da finansal başarıyı getirmesi' döngüsü modelin hangi stratejik özelliğini kanıtlar?[cite: 2]",
+      "Balanced Scorecard (Kurumsal Karne) yaklaşımında, 'Eğitimli personelin süreçleri İyileştirmesi, hatasız süreçlerin müşteri memnuniyetini artırması ve bunun da finansal başarıyı getirmesi' döngüsü modelin hangi stratejik özelliğini kanıtlar?",
     options: [
       "Maliyet merkezlerinin bütçe sapmalarını esnek olarak hesapladığını",
       "Pazar payı ile karlılık arasındaki ampirik sektörel ilişkileri ölçtüğünü",
@@ -3356,7 +3183,7 @@ const StratejikYonetim = [
   {
     id: 56,
     questionText:
-      "Bir e-ticaret platformunun üst yönetimi, stratejik değerlendirme sürecinde 'Yapay Zeka Destekli Kişiselleştirilmiş Öneri Motoru' geliştirmeyi hedeflemektedir. Bu hedef, stratejik kontrol hiyerarşisinde hangi kavramın altında incelenmelidir?[cite: 2]",
+      "Bir e-ticaret platformunun üst yönetimi, stratejik değerlendirme sürecinde 'Yapay Zeka Destekli Kişiselleştirilmiş Öneri Motoru' geliştirmeyi hedeflemektedir. Bu hedef, stratejik kontrol hiyerarşisinde hangi kavramın altında incelenmelidir?",
     options: [
       "Maliyet Merkezi bütçe varyans analizi",
       "Geleneksel kontrolün tek döngülü öğrenme mekanizması",
@@ -3435,13 +3262,7 @@ const StratejikYonetim = [
     id: 62,
     questionText:
       "I. Müşteriler\nII. Yasal unsurlar\nIII. Tedarikçiler\nYukarıdakilerden hangisi ya da hangileri yakın çevre unsurları kapsamına girmektedir?",
-    options: [
-      "Yalnız I",
-      "I ve III",
-      "II ve III",
-      "I, II ve III",
-      "I ve II",
-    ],
+    options: ["Yalnız I", "I ve III", "II ve III", "I, II ve III", "I ve II"],
     correctAnswer: "I ve III",
   },
   {
@@ -3502,26 +3323,14 @@ const StratejikYonetim = [
     id: 68,
     questionText:
       "Özel bir amaç dizisini gerçekleştirmek için tasarlanan, geniş kapsamlı faaliyetler dizisini içeren tek kullanımlı plana ne ad verilir?",
-    options: [
-      "Taktik",
-      "Misyon",
-      "Vizyon",
-      "Program",
-      "Politika",
-    ],
+    options: ["Taktik", "Misyon", "Vizyon", "Program", "Politika"],
     correctAnswer: "Program",
   },
   {
     id: 69,
     questionText:
       "I. Vizyonu diğerlerine anlatabilme yeteneği\nII. Liderin vizyon paylaşımını yazılı ve sözlü iletişimle sınırlı tutması\nIII. Vizyonu, farklı liderlik durumlarına ya da ortamlarına uygun şekilde genişletebilmek\nYukarıdakilerden hangisi ya da hangileri vizyoner liderliğin özellikleri arasında yer alır?",
-    options: [
-      "Yalnız I",
-      "I ve II",
-      "I ve III",
-      "I, II ve III",
-      "II ve III",
-    ],
+    options: ["Yalnız I", "I ve II", "I ve III", "I, II ve III", "II ve III"],
     correctAnswer: "I ve III",
   },
   {
@@ -3580,7 +3389,7 @@ const StratejikYonetim = [
   {
     id: 74,
     questionText:
-      '18-) "Eğer belirli bir miktarın üzerinde satış gerçekleştirirsen sana araba alırım." şeklindeki ifade aşağıdaki liderlik yaklaşımlarından hangisi ile özdeşleşmektedir?',
+      '"Eğer belirli bir miktarın üzerinde satış gerçekleştirirsen sana araba alırım." şeklindeki ifade aşağıdaki liderlik yaklaşımlarından hangisi ile özdeşleşmektedir?',
     options: [
       "Etkileşimci liderlik",
       "Stratejik liderlik",
@@ -3686,7 +3495,7 @@ const KalkinmaEkonomisi = [
   {
     id: 6,
     questionText:
-      '6-) Aşağıdakilerden hangisi Birleşmiş Milletler tarafından tanımlanan "kötü büyüme" türlerinden biri değildir?',
+      'Aşağıdakilerden hangisi Birleşmiş Milletler tarafından tanımlanan "kötü büyüme" türlerinden biri değildir?',
     options: [
       "Dengesiz büyüme",
       "Sessiz büyüme",
@@ -3700,13 +3509,7 @@ const KalkinmaEkonomisi = [
     id: 7,
     questionText:
       "Uluslararası bağımlılık teorileri hangi dönemde önem kazanmıştır?",
-    options: [
-      "1990'lar",
-      "1980'ler",
-      "1970'ler",
-      "1960'lar",
-      "1920'ler",
-    ],
+    options: ["1990'lar", "1980'ler", "1970'ler", "1960'lar", "1920'ler"],
     correctAnswer: "1960'lar",
   },
   {
@@ -3752,13 +3555,7 @@ const KalkinmaEkonomisi = [
     id: 11,
     questionText:
       "Aşağıdaki ülkelerden hangisi neo-liberal kalkınma modelini deneyimleyen ülkelerden değildir?",
-    options: [
-      "Güney Kore",
-      "Çin",
-      "Singapur",
-      "Hong Kong",
-      "Tayvan",
-    ],
+    options: ["Güney Kore", "Çin", "Singapur", "Hong Kong", "Tayvan"],
     correctAnswer: "Çin",
   },
   {
@@ -3831,13 +3628,7 @@ const KalkinmaEkonomisi = [
     id: 17,
     questionText:
       "Yapısalcılara göre ekonomik kalkınmada temel unsur aşağıdakilerden hangisidir?",
-    options: [
-      "Sermaye birikimi",
-      "İnsan",
-      "Çevre",
-      "Sanayi",
-      "Teknoloji",
-    ],
+    options: ["Sermaye birikimi", "İnsan", "Çevre", "Sanayi", "Teknoloji"],
     correctAnswer: "Sanayi",
   },
   {
@@ -3870,13 +3661,7 @@ const KalkinmaEkonomisi = [
     id: 20,
     questionText:
       "D.Seers'a göre kalkınmanın merkezinde yer alan faktör aşağıdakilerden hangisidir?",
-    options: [
-      "Üretim",
-      "İnsan",
-      "Tasarruf",
-      "Refah artışı",
-      "Sanayi",
-    ],
+    options: ["Üretim", "İnsan", "Tasarruf", "Refah artışı", "Sanayi"],
     correctAnswer: "İnsan",
   },
   {
@@ -3909,13 +3694,7 @@ const KalkinmaEkonomisi = [
     id: 23,
     questionText:
       "Sürdürülebilir kalkınma anlayışının odağında hangi faktör yatar?",
-    options: [
-      "İnsan",
-      "Verimlilik",
-      "Sermaye",
-      "Artı değer",
-      "Çevre",
-    ],
+    options: ["İnsan", "Verimlilik", "Sermaye", "Artı değer", "Çevre"],
     correctAnswer: "Çevre",
   },
   {
@@ -3972,8 +3751,7 @@ const KalkinmaEkonomisi = [
   },
   {
     id: 28,
-    questionText:
-      "Aşağıdakilerden hangisi Barro'nun varsayımlarından biridir?",
+    questionText: "Aşağıdakilerden hangisi Barro'nun varsayımlarından biridir?",
     options: [
       "Kamu harcamaları büyüme sürecini hızlandıran önemli bir etkendir.",
       "Vergilendirmeden kaynaklanan özel tasarruflardaki azalma büyümeyi olumsuz etkiler.",
@@ -3993,7 +3771,7 @@ const KalkinmaEkonomisi = [
   {
     id: 30,
     questionText:
-      '30-) "Hızlı kentleşme ile birlikte modern ve geleneksel kesimin faaliyetlerini beraber sürdürmeye çalıştığı...... bir yapı ortaya çıkmaktadır. Söz konusu...... yapı hem gelişmiş hem de az gelişmiş ülkelerde görülebilmektedir. Fakat az gelişmiş ülkelerde daha çok rastlanan bir olgudur" şeklindeki paragrafta bulunan boşluklara aşağıdaki ifadelerden hangisi gelmelidir?',
+      '"Hızlı kentleşme ile birlikte modern ve geleneksel kesimin faaliyetlerini beraber sürdürmeye çalıştığı...... bir yapı ortaya çıkmaktadır. Söz konusu...... yapı hem gelişmiş hem de az gelişmiş ülkelerde görülebilmektedir. Fakat az gelişmiş ülkelerde daha çok rastlanan bir olgudur" şeklindeki paragrafta bulunan boşluklara aşağıdaki ifadelerden hangisi gelmelidir?',
     options: [
       "Monoist (Tekli)",
       "Dualist (İkili)",
@@ -4045,7 +3823,7 @@ const KalkinmaEkonomisi = [
   {
     id: 34,
     questionText:
-      '34-) "...... söz konusu olduğu ülkelerde gelişme daha hızlı yaşanmakta, girişimler daha fazla desteklenmekte ve yenilikçilik toplumsal kesime daha uygun hale gelmektedir." ifadesini noktalı alan en doğru şekilde aşağıdaki ifadelerin hangisiyle doldurulabilir?',
+      '"...... söz konusu olduğu ülkelerde gelişme daha hızlı yaşanmakta, girişimler daha fazla desteklenmekte ve yenilikçilik toplumsal kesime daha uygun hale gelmektedir." ifadesini noktalı alan en doğru şekilde aşağıdaki ifadelerin hangisiyle doldurulabilir?',
     options: [
       "Kendi kendine yeterliliğin",
       "Enflasyonda çok düşük bir seviyenin",
@@ -4059,13 +3837,7 @@ const KalkinmaEkonomisi = [
     id: 35,
     questionText:
       "İktisatçı Amartya Sen, kalkınma kavramının geniş kapsamlı yapısını hangi çerçevede değerlendirmeyi tercih etmiştir?",
-    options: [
-      "Eşitlik",
-      "Demokrasi",
-      "Özgürlük",
-      "Adalet",
-      "Bağımsızlık",
-    ],
+    options: ["Eşitlik", "Demokrasi", "Özgürlük", "Adalet", "Bağımsızlık"],
     correctAnswer: "Özgürlük",
   },
   {
@@ -4085,7 +3857,7 @@ const KalkinmaEkonomisi = [
   {
     id: 37,
     questionText:
-      '37-) Aşağıdakilerin hangisi "ekonomik kalkınmanın gerçekleşmesi için gereken" olmazsa olmazlardan biri değildir?',
+      'Aşağıdakilerin hangisi "ekonomik kalkınmanın gerçekleşmesi için gereken" olmazsa olmazlardan biri değildir?',
     options: [
       "Ekonomik büyüme",
       "Üretim artışı",
@@ -4158,13 +3930,7 @@ const KalkinmaEkonomisi = [
     id: 43,
     questionText:
       "Harrod-Domar büyüme modeline göre aşağıdakilerden hangisi ekonominin itici gücüdür?",
-    options: [
-      "İşçiler",
-      "Tasarruflar",
-      "Sanayi",
-      "Tüketim",
-      "Yatırımlar",
-    ],
+    options: ["İşçiler", "Tasarruflar", "Sanayi", "Tüketim", "Yatırımlar"],
     correctAnswer: "Yatırımlar",
   },
   {
@@ -4178,8 +3944,7 @@ const KalkinmaEkonomisi = [
       "Faiz haddi farklılıklarının ortadan kalkması",
       "Hiçbiri",
     ],
-    correctAnswer:
-      "İşçi başına yatırımın, işçi başına yıpranmaya eşit olması",
+    correctAnswer: "İşçi başına yatırımın, işçi başına yıpranmaya eşit olması",
   },
   {
     id: 45,
@@ -4367,7 +4132,7 @@ const KalkinmaEkonomisi = [
   {
     id: 59,
     questionText:
-      '59-) "Büyümenin sınırları paradigması" ilk dönem çevre politikaları için önemli bir referans olarak kabul edilmektedir. Söz konusu paradigmayı ortaya atan rapor hangi oluşum tarafından ne zaman açıklanmıştır?',
+      '"Büyümenin sınırları paradigması" ilk dönem çevre politikaları için önemli bir referans olarak kabul edilmektedir. Söz konusu paradigmayı ortaya atan rapor hangi oluşum tarafından ne zaman açıklanmıştır?',
     options: [
       "Chicago Okulu, 2000'li yıllar",
       "Frankfurt Okulu, 1980'li yıllar",
@@ -4393,7 +4158,7 @@ const KalkinmaEkonomisi = [
   {
     id: 61,
     questionText:
-      '61-) Kurumsal yapı büyümenin kaynaklarından biridir. "Mülkiyet haklarını koruyan ve sözleşmelerin işlemesini sağlayan" kurumlar, iktisadi büyüme terminolojisinde hangi isimle anılır?',
+      'Kurumsal yapı büyümenin kaynaklarından biridir. "Mülkiyet haklarını koruyan ve sözleşmelerin işlemesini sağlayan" kurumlar, iktisadi büyüme terminolojisinde hangi isimle anılır?',
     options: [
       "Piyasa yaratıcı kurumlar",
       "Piyasa düzenleyici kurumlar",
@@ -4406,7 +4171,7 @@ const KalkinmaEkonomisi = [
   {
     id: 62,
     questionText:
-      '62-) "Ekonomik birimler arasındaki etkileşim için istikrarlı bir yapı kurarak belirsizliği azaltmayı amaçlayan" kurumlar hangi isimle anılır?',
+      '"Ekonomik birimler arasındaki etkileşim için istikrarlı bir yapı kurarak belirsizliği azaltmayı amaçlayan" kurumlar hangi isimle anılır?',
     options: [
       "Piyasa yaratıcı kurumlar",
       "Piyasa düzenleyici kurumlar",
@@ -4446,19 +4211,12 @@ const KalkinmaEkonomisi = [
     id: 65,
     questionText:
       "Aşağıdaki faktörlerden hangisinde yaşanacak olan artışın sonunda iktisadi büyüme sağlanabilir?",
-    options: [
-      "Tarım ürünleri",
-      "İstihdam",
-      "Enflasyon",
-      "Tüketim",
-      "Hiçbiri",
-    ],
+    options: ["Tarım ürünleri", "İstihdam", "Enflasyon", "Tüketim", "Hiçbiri"],
     correctAnswer: "İstihdam",
   },
   {
     id: 66,
-    questionText:
-      "Bir ekonomide büyüme aşağıdakilerden hangisine bağlıdır?",
+    questionText: "Bir ekonomide büyüme aşağıdakilerden hangisine bağlıdır?",
     options: [
       "Üretim faktörleri arzı",
       "İstihdam",
@@ -4582,13 +4340,7 @@ const KalkinmaEkonomisi = [
     id: 76,
     questionText:
       "Schumpeter'e göre iktisadi gelişme bir çeşit sıçramadır. Ünlü iktisatçıya göre bu sıçramayı sağlayan en önemli itici güç aşağıdakilerden hangisidir?",
-    options: [
-      "Girişimciler",
-      "İşçiler",
-      "Büyüme",
-      "Krediler",
-      "Teknoloji",
-    ],
+    options: ["Girişimciler", "İşçiler", "Büyüme", "Krediler", "Teknoloji"],
     correctAnswer: "Girişimciler",
   },
   {
