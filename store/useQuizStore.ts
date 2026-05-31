@@ -12,6 +12,14 @@ const fisherYatesShuffle = <T>(arr: T[]): T[] => {
   return a;
 };
 
+// Hem soruların sırasını hem her sorunun şıklarını karıştırır.
+// correctAnswer string referansı değişmediğinden cevap kontrolü hâlâ doğru çalışır.
+const shuffleQuestionsWithOptions = (questions: Question[]): Question[] =>
+  fisherYatesShuffle(questions).map((q) => ({
+    ...q,
+    options: fisherYatesShuffle(q.options),
+  }));
+
 const findLesson = (id: string | null) =>
   id ? lessons.find((l) => l.id === id) : undefined;
 
@@ -108,7 +116,7 @@ export const useQuizStore = create<QuizState>()(
         set((state) => {
           const base = findLesson(state.selectedLessonId)?.questions ?? [];
           return {
-            shuffledQuestions: fisherYatesShuffle(base),
+            shuffledQuestions: shuffleQuestionsWithOptions(base),
             activeQuestionIndex: 0,
             userAnswers: {},
           };
@@ -171,7 +179,7 @@ export const useQuizStore = create<QuizState>()(
           const base =
             lessons.find((l) => l.id === state.studyLessonId)?.questions ?? [];
           return {
-            studyShuffled: fisherYatesShuffle(base),
+            studyShuffled: shuffleQuestionsWithOptions(base),
             studyQuestionIndex: 0,
           };
         }),

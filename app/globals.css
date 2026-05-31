@@ -101,6 +101,19 @@ textarea,
   }
 }
 
+/* Ders kartındaki ">" oku — mobilde tıklanabilir olduğunu belirtmek için
+   hafif sağ-sol titreme. Sadece @media(hover:none) cihazlarda çalışır (dokunmatik). */
+@keyframes arrowNudge {
+  0%, 100% { transform: translateX(0); }
+  35%       { transform: translateX(4px); }
+  65%       { transform: translateX(1px); }
+}
+@media (hover: none) {
+  .arrow-nudge {
+    animation: arrowNudge 2s ease-in-out infinite;
+  }
+}
+
 @keyframes suspWiggle {
   0%, 100% { transform: rotate(0deg) scale(1); }
   15%       { transform: rotate(-12deg) scale(1.15); }

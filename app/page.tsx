@@ -491,28 +491,26 @@ export default function QuizApp() {
             </span>
           </div>
           <div className="shrink-0 flex items-center gap-2">
-            {studyQuestionIndex === 0 && (
-              <button
-                onClick={shuffleStudyQuestions}
-                className="shrink-0 px-2.5 py-1 text-[clamp(10px,1.2dvh,12px)] font-bold tracking-wider uppercase rounded-lg border bg-emerald-500/10 text-emerald-400 border-emerald-500/20 hover:bg-emerald-500/20 hover:scale-105 active:scale-95 transition-all flex items-center gap-1.5"
-                aria-label="Soruları karıştır"
+            <button
+              onClick={shuffleStudyQuestions}
+              className="shrink-0 px-2.5 py-1 text-[clamp(10px,1.2dvh,12px)] font-black tracking-wider uppercase rounded-lg border bg-gradient-to-r from-emerald-500/25 to-teal-500/20 text-emerald-300 border-emerald-500/40 hover:from-emerald-500/40 hover:to-teal-500/35 hover:text-emerald-200 hover:border-emerald-400/60 hover:shadow-[0_0_12px_rgba(52,211,153,0.35)] active:scale-95 transition-all flex items-center gap-1.5"
+              aria-label="Soruları karıştır"
+            >
+              <svg
+                className="w-[14px] h-[14px]"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
               >
-                <svg
-                  className="w-[14px] h-[14px]"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2.5"
-                    d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"
-                  />
-                </svg>
-                Karıştır
-              </button>
-            )}
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2.5"
+                  d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"
+                />
+              </svg>
+              Karıştır
+            </button>
             <div className="text-[clamp(12px,1.5dvh,14px)] font-semibold text-slate-400">
               <span className="text-white">{studyQuestionIndex + 1}</span> /{" "}
               {totalStudyQuestions}
@@ -895,7 +893,7 @@ export default function QuizApp() {
                       {!isLocked && (
                         <div className="shrink-0 flex flex-col items-end gap-0.5">
                           <svg
-                            className={`w-5 h-5 ${accent.text} transition-transform group-hover:translate-x-1`}
+                            className={`w-5 h-5 ${accent.text} transition-transform group-hover:translate-x-1 arrow-nudge`}
                             fill="none"
                             stroke="currentColor"
                             viewBox="0 0 24 24"
@@ -922,22 +920,27 @@ export default function QuizApp() {
                       <div className="grid grid-cols-2 gap-2.5">
                         <button
                           onClick={() => startStudyMode(lesson.id, "list")}
-                          className="flex items-center justify-center gap-2 px-3 py-3 rounded-2xl bg-white/[0.05] border border-white/15 text-slate-200 hover:text-white hover:bg-white/[0.09] hover:border-white/25 text-sm font-semibold transition-all active:scale-95 shadow-sm"
+                          className="flex flex-col items-center justify-center gap-1 px-3 py-3 rounded-2xl bg-white/[0.05] border border-white/15 text-slate-200 hover:text-white hover:bg-white/[0.09] hover:border-white/25 text-sm font-semibold transition-all active:scale-95 shadow-sm"
                         >
-                          <svg
-                            className="w-4 h-4 shrink-0"
-                            fill="none"
-                            viewBox="0 0 24 24"
-                            stroke="currentColor"
-                          >
-                            <path
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
-                              strokeWidth="2.5"
-                              d="M4 6h16M4 10h16M4 14h16M4 18h16"
-                            />
-                          </svg>
-                          Liste
+                          <div className="flex items-center gap-2">
+                            <svg
+                              className="w-4 h-4 shrink-0"
+                              fill="none"
+                              viewBox="0 0 24 24"
+                              stroke="currentColor"
+                            >
+                              <path
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                strokeWidth="2.5"
+                                d="M4 6h16M4 10h16M4 14h16M4 18h16"
+                              />
+                            </svg>
+                            Liste
+                          </div>
+                          <span className="text-[9px] font-medium text-slate-500 tracking-wide">
+                            (soruları ezberle!)
+                          </span>
                         </button>
                         <button
                           onClick={() => startStudyMode(lesson.id, "reveal")}
@@ -969,7 +972,7 @@ export default function QuizApp() {
                       {/* YARIŞMA */}
                       <button
                         onClick={() => enterCompetition(lesson.id)}
-                        className="group/comp relative w-full flex items-center justify-center gap-2 px-4 py-3.5 rounded-2xl font-black text-sm tracking-wide text-white overflow-hidden transition-all active:scale-[0.98] bg-gradient-to-r from-fuchsia-600 via-pink-600 to-rose-600 shadow-lg shadow-fuchsia-500/30 hover:shadow-fuchsia-500/50"
+                        className="group/comp relative w-full flex items-center justify-center gap-2 px-4 py-3.5 rounded-2xl font-bold text-sm tracking-wide text-white/90 overflow-hidden transition-all active:scale-[0.98] bg-gradient-to-r from-fuchsia-700/70 via-pink-700/65 to-rose-700/70 border border-fuchsia-500/20 shadow-md shadow-fuchsia-500/10 hover:shadow-fuchsia-500/20"
                       >
                         <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/25 to-transparent -translate-x-full group-hover/comp:translate-x-full transition-transform duration-700 ease-out" />
                         <svg
@@ -985,11 +988,7 @@ export default function QuizApp() {
                             d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"
                           />
                         </svg>
-                        <span className="relative">YARIŞMA!</span>
-                        <span className="relative ml-1 px-1.5 py-0.5 rounded-md bg-white/20 text-[9px] font-bold tracking-widest uppercase flex items-center gap-1">
-                          <span className="w-1.5 h-1.5 rounded-full bg-white animate-pulse" />
-                          Canlı
-                        </span>
+                        <span className="relative">ONLINE KAPIŞMA</span>
                       </button>
                     </div>
                   )}
@@ -1266,10 +1265,10 @@ export default function QuizApp() {
             {isWrongAnswersMode ? "Hata Modu" : selectedLesson.title}
           </span>
 
-          {!isWrongAnswersMode && activeQuestionIndex === 0 && (
+          {!isWrongAnswersMode && (
             <button
               onClick={shuffleQuestions}
-              className="shrink-0 px-2.5 py-1 text-[clamp(10px,1.2dvh,12px)] font-bold tracking-wider uppercase rounded-lg border bg-fuchsia-500/10 text-fuchsia-400 border-fuchsia-500/20 hover:bg-fuchsia-500/20 hover:scale-105 active:scale-95 transition-all flex items-center gap-1.5 animate-in fade-in slide-in-from-left-2 duration-300"
+              className="shrink-0 px-2.5 py-1 text-[clamp(10px,1.2dvh,12px)] font-black tracking-wider uppercase rounded-lg border bg-gradient-to-r from-fuchsia-500/25 to-pink-500/20 text-fuchsia-300 border-fuchsia-500/40 hover:from-fuchsia-500/40 hover:to-pink-500/35 hover:text-fuchsia-200 hover:border-fuchsia-400/60 hover:shadow-[0_0_12px_rgba(217,70,239,0.35)] active:scale-95 transition-all flex items-center gap-1.5"
             >
               <svg
                 className="w-[14px] h-[14px]"
@@ -1288,107 +1287,120 @@ export default function QuizApp() {
             </button>
           )}
 
-          {!isWrongAnswersMode &&
-            currentQuestionsList.length > 10 && (
-              <div className="relative  shrink-0">
-                <button
-                  onClick={() => setJumpOpen((o) => !o)}
-                  className="shrink-0 px-2.5 py-1 text-[clamp(10px,1.2dvh,12px)] font-bold tracking-wider uppercase rounded-lg border bg-sky-500/10 text-sky-400 border-sky-500/20 hover:bg-sky-500/20  hover:scale-105 active:scale-95 transition-all flex items-center gap-1.5"
-                  aria-label="Soruya atla"
+          {!isWrongAnswersMode && currentQuestionsList.length > 10 && (
+            <div className="relative  shrink-0">
+              <button
+                onClick={() => setJumpOpen((o) => !o)}
+                className="shrink-0 px-2.5 py-1 text-[clamp(10px,1.2dvh,12px)] font-bold tracking-wider uppercase rounded-lg border bg-sky-500/10 text-sky-400 border-sky-500/20 hover:bg-sky-500/20  hover:scale-105 active:scale-95 transition-all flex items-center gap-1.5"
+                aria-label="Soruya atla"
+              >
+                <svg
+                  className="w-[14px]  h-[14px]"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
                 >
-                  <svg
-                    className="w-[14px]  h-[14px]"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth="2.5"
-                      d="M13 5l7 7-7 7M5 5l7 7-7 7"
-                    />
-                  </svg>
-                  Atla
-                </button>
-                {jumpOpen && (
-                  <>
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2.5"
+                    d="M13 5l7 7-7 7M5 5l7 7-7 7"
+                  />
+                </svg>
+                Atla
+              </button>
+              {jumpOpen && (
+                <>
+                  <div
+                    className="fixed inset-0 z-40 bg-black/70 backdrop-blur-sm"
+                    onClick={() => setJumpOpen(false)}
+                  />
+                  <div className="fixed inset-0 z-50 flex items-center justify-center p-4 pointer-events-none">
                     <div
-                      className="fixed inset-0 z-40 bg-black/70 backdrop-blur-sm"
-                      onClick={() => setJumpOpen(false)}
-                    />
-                    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 pointer-events-none">
-                      <div
-                        className="pointer-events-auto w-full max-w-xs p-5 rounded-3xl border border-white/10 bg-[#0d0d0f]/95 backdrop-blur-xl shadow-2xl shadow-black/60 animate-in fade-in zoom-in-95 duration-200"
-                        onClick={(e) => e.stopPropagation()}
-                      >
-                        <div className="flex items-center justify-between mb-4">
-                          <h3 className="text-sm font-bold text-white tracking-wide">Soruya Atla</h3>
-                          <button
-                            onClick={() => setJumpOpen(false)}
-                            className="w-8 h-8 flex items-center justify-center rounded-xl bg-white/[0.06] text-slate-400 hover:text-white hover:bg-white/[0.12] active:scale-90 transition-all"
+                      className="pointer-events-auto w-full max-w-xs p-5 rounded-3xl border border-white/10 bg-[#0d0d0f]/95 backdrop-blur-xl shadow-2xl shadow-black/60 animate-in fade-in zoom-in-95 duration-200"
+                      onClick={(e) => e.stopPropagation()}
+                    >
+                      <div className="flex items-center justify-between mb-4">
+                        <h3 className="text-sm font-bold text-white tracking-wide">
+                          Soruya Atla
+                        </h3>
+                        <button
+                          onClick={() => setJumpOpen(false)}
+                          className="w-8 h-8 flex items-center justify-center rounded-xl bg-white/[0.06] text-slate-400 hover:text-white hover:bg-white/[0.12] active:scale-90 transition-all"
+                        >
+                          <svg
+                            className="w-4 h-4"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="currentColor"
                           >
-                            <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M6 18L18 6M6 6l12 12" />
-                            </svg>
-                          </button>
-                        </div>
-                        <div className="grid grid-cols-5 gap-2 mb-4">
-                          {Array.from(
-                            {
-                              length: Math.floor(currentQuestionsList.length / 10),
-                            },
-                            (_, i) => (i + 1) * 10,
-                          ).map((n) => (
-                            <button
-                              key={n}
-                              onClick={() => {
-                                jumpToQuestion(n - 1);
-                                setJumpOpen(false);
-                              }}
-                              className="py-2.5 rounded-xl text-sm font-bold text-slate-200 bg-white/[0.05] border border-white/10 hover:bg-sky-500/20 hover:text-sky-300 hover:border-sky-500/30 active:scale-90 transition-all"
-                            >
-                              {n}
-                            </button>
-                          ))}
-                        </div>
-                        <div className="flex items-center gap-2 border-t border-white/10 pt-4">
-                          <input
-                            type="text"
-                            inputMode="numeric"
-                            value={jumpInput}
-                            onChange={(e) =>
-                              setJumpInput(e.target.value.replace(/[^0-9]/g, ""))
-                            }
-                            onKeyDown={(e) => {
-                              if (e.key === "Enter") {
-                                const n = parseInt(jumpInput, 10);
-                                if (!Number.isNaN(n)) jumpToQuestion(n - 1);
-                                setJumpOpen(false);
-                                setJumpInput("");
-                              }
-                            }}
-                            placeholder={`1–${currentQuestionsList.length}`}
-                            className="flex-1 min-w-0 px-3 py-2.5 rounded-xl bg-white/[0.05] border border-white/10 text-sm text-white text-center outline-none focus:border-sky-500/40 placeholder:text-slate-600"
-                          />
+                            <path
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              strokeWidth="2.5"
+                              d="M6 18L18 6M6 6l12 12"
+                            />
+                          </svg>
+                        </button>
+                      </div>
+                      <div className="grid grid-cols-5 gap-2 mb-4">
+                        {Array.from(
+                          {
+                            length: Math.floor(
+                              currentQuestionsList.length / 10,
+                            ),
+                          },
+                          (_, i) => (i + 1) * 10,
+                        ).map((n) => (
                           <button
+                            key={n}
                             onClick={() => {
+                              jumpToQuestion(n - 1);
+                              setJumpOpen(false);
+                            }}
+                            className="py-2.5 rounded-xl text-sm font-bold text-slate-200 bg-white/[0.05] border border-white/10 hover:bg-sky-500/20 hover:text-sky-300 hover:border-sky-500/30 active:scale-90 transition-all"
+                          >
+                            {n}
+                          </button>
+                        ))}
+                      </div>
+                      <div className="flex items-center gap-2 border-t border-white/10 pt-4">
+                        <input
+                          type="text"
+                          inputMode="numeric"
+                          value={jumpInput}
+                          onChange={(e) =>
+                            setJumpInput(e.target.value.replace(/[^0-9]/g, ""))
+                          }
+                          onKeyDown={(e) => {
+                            if (e.key === "Enter") {
                               const n = parseInt(jumpInput, 10);
                               if (!Number.isNaN(n)) jumpToQuestion(n - 1);
                               setJumpOpen(false);
                               setJumpInput("");
-                            }}
-                            className="shrink-0 px-4 py-2.5 rounded-xl bg-sky-500/20 text-sky-300 border border-sky-500/30 text-sm font-bold hover:bg-sky-500/30 active:scale-90 transition-all"
-                          >
-                            Git
-                          </button>
-                        </div>
+                            }
+                          }}
+                          placeholder={`1–${currentQuestionsList.length}`}
+                          className="flex-1 min-w-0 px-3 py-2.5 rounded-xl bg-white/[0.05] border border-white/10 text-sm text-white text-center outline-none focus:border-sky-500/40 placeholder:text-slate-600"
+                        />
+                        <button
+                          onClick={() => {
+                            const n = parseInt(jumpInput, 10);
+                            if (!Number.isNaN(n)) jumpToQuestion(n - 1);
+                            setJumpOpen(false);
+                            setJumpInput("");
+                          }}
+                          className="shrink-0 px-4 py-2.5 rounded-xl bg-sky-500/20 text-sky-300 border border-sky-500/30 text-sm font-bold hover:bg-sky-500/30 active:scale-90 transition-all"
+                        >
+                          Git
+                        </button>
                       </div>
                     </div>
-                  </>
-                )}
-              </div>
-            )}
+                  </div>
+                </>
+              )}
+            </div>
+          )}
 
           {currentSuspicion && (
             <button
