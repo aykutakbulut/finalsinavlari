@@ -1250,7 +1250,7 @@ const AcikKaynak = [
       "D) MiddleWare",
       "E) Site",
     ],
-    correctAnswer: "D) MiddleWare",
+    correctAnswer: "A) Software",
   },
   {
     id: 102,
