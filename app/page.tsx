@@ -968,12 +968,11 @@ export default function QuizApp() {
                           Aktif Tahmin
                         </button>
                       </div>
-                      {/* YARIŞMA */}
+                      {/* YARIŞMA — BAKIM MODU */}
                       <button
-                        onClick={() => enterCompetition(lesson.id)}
-                        className="group/comp relative w-full flex items-center justify-center gap-2 px-4 py-3.5 rounded-2xl font-bold text-sm tracking-wide text-white/90 overflow-hidden transition-all active:scale-[0.98] bg-gradient-to-r from-fuchsia-700/70 via-pink-700/65 to-rose-700/70 border border-fuchsia-500/20 shadow-md shadow-fuchsia-500/10 hover:shadow-fuchsia-500/20"
+                        disabled
+                        className="group/comp relative w-full flex items-center justify-center gap-2 px-4 py-3.5 rounded-2xl font-bold text-sm tracking-wide text-white/40 overflow-hidden transition-all cursor-not-allowed bg-gradient-to-r from-slate-800/70 via-slate-700/65 to-slate-800/70 border border-white/[0.06] shadow-none grayscale opacity-60"
                       >
-                        <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/25 to-transparent -translate-x-full group-hover/comp:translate-x-full transition-transform duration-700 ease-out" />
                         <svg
                           className="w-5 h-5 shrink-0 relative"
                           fill="none"
@@ -984,10 +983,19 @@ export default function QuizApp() {
                             strokeLinecap="round"
                             strokeLinejoin="round"
                             strokeWidth="2"
-                            d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"
+                            d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.066 2.573c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.573 1.066c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.066-2.573c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.573-1.066z"
+                          />
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth="2"
+                            d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
                           />
                         </svg>
-                        <span className="relative">ONLINE KAPIŞMA</span>
+                        <span className="relative flex flex-col items-center leading-tight">
+                          <span>ONLINE KAPIŞMA</span>
+                          <span className="text-[10px] font-semibold text-amber-400/70 tracking-wider">🔧 Bakım Yapılıyor</span>
+                        </span>
                       </button>
                     </div>
                   )}
