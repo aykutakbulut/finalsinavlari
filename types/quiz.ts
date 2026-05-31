@@ -41,10 +41,10 @@ export interface QuizState {
   playerAvatar: string | null;
   competitionLessonId: string | null;
 
-  /** Son 3 oturumun yanlışları (max 3 eleman, FIFO) */
+  /** Yanlış oturumları — ders başına en fazla 3 oturum tutulur (FIFO) */
   wrongAnswersBank: WrongSession[];
-  /** Ardışık full (yanlış=0) sınav sayacı — 3 olunca banka temizlenir */
-  consecutiveFullCount: number;
+  /** Ders bazında ardışık full (yanlış=0) sayacı — 3 olunca o dersin yanlışları temizlenir */
+  consecutiveFullByLesson: Record<string, number>;
   /** Yanlışlarım modu aktif mi */
   isMyWrongsMode: boolean;
   /** Yanlışlarım modundaki birleştirilmiş sorular */
@@ -69,6 +69,6 @@ export interface QuizState {
   setPlayerId: (id: string) => void;
   enterCompetition: (lessonId: string) => void;
   exitCompetition: () => void;
-  startMyWrongsMode: () => void;
+  startMyWrongsMode: (lessonId: string) => void;
   exitMyWrongsMode: () => void;
 }

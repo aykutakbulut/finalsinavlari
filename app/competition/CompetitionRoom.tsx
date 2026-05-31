@@ -20,6 +20,7 @@ import {
   getLeaderboard,
   toggleReady,
 } from "./actions";
+import LobbyChat, { type ChatTier } from "./LobbyChat";
 
 /* ── Props ─────────────────────────────────────────────────────────────────── */
 
@@ -256,6 +257,12 @@ export default function CompetitionRoom({
     () => parts.find((p) => p.player_id === pid) ?? null,
     [parts, pid],
   );
+
+  // Sohbette gösterilecek ünvan — küresel skor tablosundaki ilk 3 (Reis/King/Kingo).
+  const myChatTier = useMemo<ChatTier | null>(() => {
+    const idx = leaderboard.findIndex((e) => e.id === pid);
+    return idx === 0 ? "reis" : idx === 1 ? "king" : idx === 2 ? "kingo" : null;
+  }, [leaderboard, pid]);
 
   // Etkin oy = anlık seçim ?? sunucudaki kayıtlı oy. Sunucudan türetmek sayfa
   // yenilemeye dayanıklıdır (yenileyince seçim kaybolmaz, çift oy görünmez).
@@ -660,6 +667,16 @@ export default function CompetitionRoom({
                 })}
               </div>
             </div>
+          )}
+
+          {/* Lobi sohbeti — yüzen ikon + tama yakın sohbet ekranı */}
+          {matchId && (
+            <LobbyChat
+              matchId={matchId}
+              username={playerName}
+              avatar={playerAvatar}
+              tier={myChatTier}
+            />
           )}
         </div>
       </Shell>

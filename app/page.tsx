@@ -134,17 +134,22 @@ export default function QuizApp() {
 
   const wrongAnswersBank = useQuizStore((s) => s.wrongAnswersBank);
   const isMyWrongsMode = useQuizStore((s) => s.isMyWrongsMode);
+  const myWrongsQuestions = useQuizStore((s) => s.myWrongsQuestions);
   const startMyWrongsMode = useQuizStore((s) => s.startMyWrongsMode);
   const exitMyWrongsMode = useQuizStore((s) => s.exitMyWrongsMode);
 
-  const totalBankQuestions = useMemo(
-    () => {
-      const seen = new Set<number>();
-      for (const s of wrongAnswersBank) for (const q of s.questions) seen.add(q.id);
-      return seen.size;
-    },
-    [wrongAnswersBank],
-  );
+  // Ders başına farklı yanlış soru sayısı (dedupe'lu). Yanlışlarım artık derse
+  // özel: her dersin butonu yalnızca o dersin yanlışlarını gösterir/açar.
+  const wrongCountByLesson = useMemo(() => {
+    const seenByLesson: Record<string, Set<number>> = {};
+    for (const s of wrongAnswersBank) {
+      const set = (seenByLesson[s.lessonId] ??= new Set<number>());
+      for (const q of s.questions) set.add(q.id);
+    }
+    const counts: Record<string, number> = {};
+    for (const id in seenByLesson) counts[id] = seenByLesson[id].size;
+    return counts;
+  }, [wrongAnswersBank]);
 
   const mounted = useSyncExternalStore(
     subscribeHydration,
@@ -172,12 +177,21 @@ export default function QuizApp() {
   const currentQuestionsList = useMemo(
     () =>
       getActiveQuestions({
+        isMyWrongsMode,
+        myWrongsQuestions,
         isWrongAnswersMode,
         wrongQuestions,
         shuffledQuestions,
         selectedLessonId,
       } as never),
-    [isWrongAnswersMode, wrongQuestions, shuffledQuestions, selectedLessonId],
+    [
+      isMyWrongsMode,
+      myWrongsQuestions,
+      isWrongAnswersMode,
+      wrongQuestions,
+      shuffledQuestions,
+      selectedLessonId,
+    ],
   );
 
   const currentQuestion = currentQuestionsList[activeQuestionIndex];
@@ -991,8 +1005,8 @@ export default function QuizApp() {
                         {/* YANLIŞLARIM BUTONU */}
                         <button
                           onClick={() => {
-                            if (totalBankQuestions > 0) {
-                              startMyWrongsMode();
+                            if ((wrongCountByLesson[lesson.id] ?? 0) > 0) {
+                              startMyWrongsMode(lesson.id);
                             } else {
                               setEmptyBankToast(true);
                               setTimeout(() => setEmptyBankToast(false), 2500);
@@ -1014,9 +1028,9 @@ export default function QuizApp() {
                             />
                           </svg>
                           Yanlışlarım
-                          {totalBankQuestions > 0 && (
+                          {(wrongCountByLesson[lesson.id] ?? 0) > 0 && (
                             <span className="shrink-0 min-w-[1.25rem] h-5 px-1 flex items-center justify-center rounded-full bg-rose-500/25 text-rose-300 text-[10px] font-black border border-rose-500/40">
-                              {totalBankQuestions}
+                              {wrongCountByLesson[lesson.id] ?? 0}
                             </span>
                           )}
                         </button>

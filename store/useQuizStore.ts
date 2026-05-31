@@ -53,7 +53,7 @@ export const useQuizStore = create<QuizState>()(
       competitionLessonId: null,
 
       wrongAnswersBank: [],
-      consecutiveFullCount: 0,
+      consecutiveFullByLesson: {},
       isMyWrongsMode: false,
       myWrongsQuestions: [],
 
@@ -125,30 +125,41 @@ export const useQuizStore = create<QuizState>()(
             return { isQuizFinished: true, wrongQuestions: newWrongQs };
           }
 
+          const lessonId = state.selectedLessonId ?? "unknown";
           let nextBank = [...state.wrongAnswersBank];
-          let nextConsecutive = state.consecutiveFullCount;
+          const nextConsecutive = { ...state.consecutiveFullByLesson };
 
           if (newWrongQs.length > 0) {
-            // Yanlış var → bankaya ekle (FIFO, max 3)
+            // Yanlış var → bu derse ait yeni oturum ekle.
             const lesson = findLesson(state.selectedLessonId);
             const session = {
-              lessonId: state.selectedLessonId ?? "unknown",
+              lessonId,
               lessonTitle: lesson?.title ?? "Bilinmeyen",
               questions: newWrongQs,
               timestamp: Date.now(),
             };
             nextBank = [...nextBank, session];
-            if (nextBank.length > 3) {
-              nextBank = nextBank.slice(nextBank.length - 3); // en eski düşer
+
+            // Yalnızca BU dersin oturumlarını max 3'te tut (FIFO, en eski düşer);
+            // diğer derslerin yanlışlarına dokunma.
+            const lessonSessions = nextBank.filter((s) => s.lessonId === lessonId);
+            if (lessonSessions.length > 3) {
+              const toDrop = new Set(
+                lessonSessions.slice(0, lessonSessions.length - 3),
+              );
+              nextBank = nextBank.filter((s) => !toDrop.has(s));
             }
-            nextConsecutive = 0; // ardışık full sayacı sıfırlanır
+
+            nextConsecutive[lessonId] = 0; // bu dersin ardışık full sayacı sıfırlanır
           } else {
-            // Full geçti → sayaç artar
-            nextConsecutive = nextConsecutive + 1;
-            if (nextConsecutive >= 3) {
-              // 3 ardışık full → banka temizlenir
-              nextBank = [];
-              nextConsecutive = 0;
+            // Full geçti → bu dersin ardışık full sayacı artar.
+            const c = (nextConsecutive[lessonId] ?? 0) + 1;
+            if (c >= 3) {
+              // 3 ardışık full → yalnızca BU dersin yanlışları temizlenir.
+              nextBank = nextBank.filter((s) => s.lessonId !== lessonId);
+              nextConsecutive[lessonId] = 0;
+            } else {
+              nextConsecutive[lessonId] = c;
             }
           }
 
@@ -156,7 +167,7 @@ export const useQuizStore = create<QuizState>()(
             isQuizFinished: true,
             wrongQuestions: newWrongQs,
             wrongAnswersBank: nextBank,
-            consecutiveFullCount: nextConsecutive,
+            consecutiveFullByLesson: nextConsecutive,
           };
         }),
 
@@ -242,12 +253,13 @@ export const useQuizStore = create<QuizState>()(
 
       exitCompetition: () => set({ competitionLessonId: null }),
 
-      startMyWrongsMode: () =>
+      startMyWrongsMode: (lessonId) =>
         set((state) => {
-          // Tüm oturumların yanlışlarını birleştir, id'ye göre deduplicate
+          // Yalnızca verilen dersin yanlışlarını birleştir, id'ye göre dedupe et.
           const seen = new Set<number>();
           const merged: Question[] = [];
           for (const session of state.wrongAnswersBank) {
+            if (session.lessonId !== lessonId) continue;
             for (const q of session.questions) {
               if (!seen.has(q.id)) {
                 seen.add(q.id);
@@ -300,7 +312,7 @@ export const useQuizStore = create<QuizState>()(
         playerName: state.playerName,
         playerAvatar: state.playerAvatar,
         wrongAnswersBank: state.wrongAnswersBank,
-        consecutiveFullCount: state.consecutiveFullCount,
+        consecutiveFullByLesson: state.consecutiveFullByLesson,
       }),
     },
   ),
