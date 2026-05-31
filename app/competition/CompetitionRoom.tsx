@@ -5,6 +5,7 @@ import { lessons } from "@/store/questions";
 import { COMPETITION_CONFIG } from "@/lib/competition/config";
 import { useMatch, type MatchRow, type MatchPlayerRow } from "@/lib/competition/useMatch";
 import { useFitScale } from "@/lib/useFitScale";
+import { QuestionText } from "@/lib/QuestionText";
 import {
   claimProfile,
   joinCompetition,
@@ -588,9 +589,10 @@ export default function CompetitionRoom({
         {/* Soru kartı */}
         <div ref={fitRef} className="flex-1 min-h-0 bg-white/[0.02] backdrop-blur-xl border border-white/[0.05] rounded-[2rem] p-[clamp(1rem,3dvh,2rem)] flex flex-col shadow-2xl">
           <div className="shrink-0 mb-[calc(clamp(1rem,3dvh,2rem)*var(--fit,1))]">
-            <h2 className="text-[calc(clamp(1.1rem,2.6dvh,1.6rem)*var(--fit,1))] font-semibold text-slate-100 leading-[1.3] tracking-tight">
-              {question?.questionText ?? "…"}
-            </h2>
+            <QuestionText
+              text={question?.questionText ?? "…"}
+              className="text-[calc(clamp(1.1rem,2.6dvh,1.6rem)*var(--fit,1))] font-semibold text-slate-100 leading-[1.3] tracking-tight"
+            />
           </div>
 
           <div className="flex-1 min-h-0 flex flex-col justify-center gap-[calc(clamp(0.5rem,1.4dvh,0.9rem)*var(--fit,1))]">

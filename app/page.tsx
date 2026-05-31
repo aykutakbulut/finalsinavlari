@@ -14,6 +14,7 @@ import { suspiciousQuestions } from "@/store/suspiciousQuestions";
 import CompetitionRoom from "./competition/CompetitionRoom";
 import InstallPrompt from "./InstallPrompt";
 import { useFitScale } from "@/lib/useFitScale";
+import { QuestionText } from "@/lib/QuestionText";
 import { claimProfile } from "./competition/actions";
 
 const subscribeHydration = (cb: () => void) =>
@@ -528,9 +529,10 @@ export default function QuizApp() {
           >
             {/* Soru metni */}
             <div className="shrink-0 mb-[calc(clamp(1rem,3dvh,2.5rem)*var(--fit,1))]">
-              <h2 className="text-[calc(clamp(1.1rem,2.8dvh,1.75rem)*var(--fit,1))] font-semibold text-slate-100 leading-[1.3] tracking-tight">
-                {studyQuestion.questionText}
-              </h2>
+              <QuestionText
+                text={studyQuestion.questionText}
+                className="text-[calc(clamp(1.1rem,2.8dvh,1.75rem)*var(--fit,1))] font-semibold text-slate-100 leading-[1.3] tracking-tight"
+              />
             </div>
 
             {/* Şıklar alanı */}
@@ -1437,9 +1439,10 @@ export default function QuizApp() {
           className="flex-1 min-h-0 bg-white/[0.02] backdrop-blur-xl border border-white/[0.05] rounded-[2rem] p-[clamp(1rem,3dvh,2.5rem)] flex flex-col shadow-2xl relative"
         >
           <div className="shrink-0 mb-[calc(clamp(1rem,3dvh,2.5rem)*var(--fit,1))]">
-            <h2 className="text-[calc(clamp(1.1rem,2.8dvh,1.75rem)*var(--fit,1))] font-semibold text-slate-100 leading-[1.3] tracking-tight">
-              {currentQuestion.questionText}
-            </h2>
+            <QuestionText
+              text={currentQuestion.questionText}
+              className="text-[calc(clamp(1.1rem,2.8dvh,1.75rem)*var(--fit,1))] font-semibold text-slate-100 leading-[1.3] tracking-tight"
+            />
           </div>
           <div className="flex-1 min-h-0 flex flex-col justify-center gap-[calc(clamp(0.5rem,1.5dvh,1rem)*var(--fit,1))]">
             {currentQuestion.options.map((option, index) => {
