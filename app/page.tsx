@@ -80,6 +80,8 @@ const AVATARS = [
 // Easter egg dersinin id'si — bu derste bitiş raporunda özel video oynar.
 // Hem sonuç ekranı hem önden-yükleme aynı id'yi kullanmalı (yoksa farklı video
 // indirilir). Tek kaynak olarak burada tutuluyor.
+const OPTION_LABELS = ["A", "B", "C", "D", "E"];
+
 const EASTER_EGG_LESSON_ID = "sabri";
 
 // Kilidi açık derslerin id'leri. Listede olmayanlar "Yakında açılacak" görünür.
@@ -396,7 +398,7 @@ export default function QuizApp() {
                 </p>
               </div>
               <div className="px-5 pb-5 flex flex-col gap-2">
-                {q.options.map((opt) => {
+                {q.options.map((opt, optIdx) => {
                   const isCorrect = opt === q.correctAnswer;
                   return (
                     <div
@@ -423,7 +425,7 @@ export default function QuizApp() {
                           />
                         </svg>
                       )}
-                      <span className={isCorrect ? "" : "pl-7"}>{opt}</span>
+                      <span className={isCorrect ? "" : "pl-7"}>{OPTION_LABELS[optIdx]}) {opt}</span>
                     </div>
                   );
                 })}
@@ -555,7 +557,7 @@ export default function QuizApp() {
                           className="animate-in zoom-in duration-300 flex items-center justify-between p-[calc(clamp(0.75rem,2dvh,1.25rem)*var(--fit,1))] rounded-[1rem] sm:rounded-[1.25rem] border-2 border-emerald-500/50 bg-emerald-500/10 text-emerald-300 scale-[1.02] shadow-[0_0_20px_rgba(16,185,129,0.15)]"
                         >
                           <span className="text-[calc(clamp(0.85rem,2.2dvh,1.1rem)*var(--fit,1))] font-medium leading-[1.3] pr-4">
-                            {opt}
+                            {OPTION_LABELS[idx]}) {opt}
                           </span>
                           <span className="animate-in zoom-in duration-300">
                             <svg
@@ -585,7 +587,7 @@ export default function QuizApp() {
                         className={`flex items-center p-[calc(clamp(0.75rem,2dvh,1.25rem)*var(--fit,1))] rounded-[1rem] sm:rounded-[1.25rem] border border-white/[0.05] bg-white/[0.01] text-slate-600 transition-opacity duration-500 ${othersVisible ? "opacity-40" : "opacity-0"}`}
                       >
                         <span className="text-[calc(clamp(0.85rem,2.2dvh,1.1rem)*var(--fit,1))] font-medium leading-[1.3]">
-                          {opt}
+                          {OPTION_LABELS[idx]}) {opt}
                         </span>
                       </div>
                     );
@@ -1511,7 +1513,7 @@ export default function QuizApp() {
                   className={`group w-full flex items-center justify-between p-[calc(clamp(0.75rem,2dvh,1.25rem)*var(--fit,1))] rounded-[1rem] sm:rounded-[1.25rem] border-2 transition-all duration-300 outline-none text-left ${baseStyle} ${!hasAnswered && "active:scale-[0.98]"}`}
                 >
                   <span className="text-[calc(clamp(0.85rem,2.2dvh,1.1rem)*var(--fit,1))] font-medium leading-[1.3] pr-4">
-                    {option}
+                    {OPTION_LABELS[index]}) {option}
                   </span>
                   {icon && (
                     <span className="animate-in zoom-in duration-300">

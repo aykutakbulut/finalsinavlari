@@ -195,7 +195,7 @@ export const useQuizStore = create<QuizState>()(
       exitCompetition: () => set({ competitionLessonId: null }),
     }),
     {
-      name: "quiz-state-v1",
+      name: "quiz-state-v2",
       storage: createJSONStorage(() => localStorage),
       partialize: (state) => ({
         selectedLessonId: state.selectedLessonId,

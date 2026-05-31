@@ -24,6 +24,7 @@ type Props = {
 };
 
 const LIMIT = COMPETITION_CONFIG.questionTimeLimitMs;
+const OPTION_LABELS = ["A", "B", "C", "D", "E"];
 
 // Lobi/geri sayım/sonuç ekranlarının ortak çerçevesi. Modül seviyesinde tanımlı:
 // bileşen içinde tanımlanırsa her render'da (sayaç 200ms'de bir) yeni bir bileşen
@@ -629,7 +630,7 @@ export default function CompetitionRoom({
                   className={`group w-full flex items-center justify-between p-[calc(clamp(0.7rem,1.8dvh,1.1rem)*var(--fit,1))] rounded-[1rem] sm:rounded-[1.25rem] border-2 transition-all duration-200 outline-none text-left ${style} ${!feedback && !pendingOption && "active:scale-[0.98]"}`}
                 >
                   <span className="text-[calc(clamp(0.85rem,2.1dvh,1.05rem)*var(--fit,1))] font-medium leading-[1.3] pr-3">
-                    {option}
+                    {OPTION_LABELS[index]}) {option}
                   </span>
                 </button>
               );
