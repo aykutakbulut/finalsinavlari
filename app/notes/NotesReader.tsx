@@ -1,120 +1,168 @@
 "use client";
 
 import { memo, useCallback, useEffect, useRef, useState } from "react";
+import type { CSSProperties } from "react";
 import type { NoteBlock, NoteLesson } from "@/types/notes";
 
-// ── Renk paleti (page.tsx'teki ACCENT_STYLES ile aynı dil) ────────────────────
+// ── Liste ekranı renk paleti (page.tsx'teki ACCENT_STYLES ile aynı dil) ───────
+// NOT: Bu yalnızca konu LİSTESİ ekranında kullanılır; uygulamanın koyu temasıyla
+// bütünlük için aynı kalır. Asıl OKUMA ekranı aşağıdaki READ_THEMES ile çalışır.
 type AccentKey = NoteLesson["accent"];
 const ACCENT: Record<
   AccentKey,
-  {
-    chip: string;
-    text: string;
-    ring: string;
-    glow: string;
-    bar: string;
-    dot: string;
-    soft: string; // yumuşak arka plan + kenarlık (callout/stat için)
-  }
+  { chip: string; text: string; ring: string; glow: string }
 > = {
   indigo: {
     chip: "bg-indigo-500/10 text-indigo-300 border-indigo-500/20",
     text: "text-indigo-300",
     ring: "border-indigo-500/30 hover:border-indigo-400/60",
     glow: "bg-indigo-600/20",
-    bar: "bg-indigo-500 shadow-[0_0_10px_rgba(99,102,241,0.8)]",
-    dot: "bg-indigo-400",
-    soft: "bg-indigo-500/10 border-indigo-500/25",
   },
   fuchsia: {
     chip: "bg-fuchsia-500/10 text-fuchsia-300 border-fuchsia-500/20",
     text: "text-fuchsia-300",
     ring: "border-fuchsia-500/30 hover:border-fuchsia-400/60",
     glow: "bg-fuchsia-600/20",
-    bar: "bg-fuchsia-500 shadow-[0_0_10px_rgba(217,70,239,0.8)]",
-    dot: "bg-fuchsia-400",
-    soft: "bg-fuchsia-500/10 border-fuchsia-500/25",
   },
   emerald: {
     chip: "bg-emerald-500/10 text-emerald-300 border-emerald-500/20",
     text: "text-emerald-300",
     ring: "border-emerald-500/30 hover:border-emerald-400/60",
     glow: "bg-emerald-600/20",
-    bar: "bg-emerald-500 shadow-[0_0_10px_rgba(16,185,129,0.8)]",
-    dot: "bg-emerald-400",
-    soft: "bg-emerald-500/10 border-emerald-500/25",
   },
   amber: {
     chip: "bg-amber-500/10 text-amber-300 border-amber-500/20",
     text: "text-amber-300",
     ring: "border-amber-500/30 hover:border-amber-400/60",
     glow: "bg-amber-600/20",
-    bar: "bg-amber-500 shadow-[0_0_10px_rgba(245,158,11,0.8)]",
-    dot: "bg-amber-400",
-    soft: "bg-amber-500/10 border-amber-500/25",
   },
   sky: {
     chip: "bg-sky-500/10 text-sky-300 border-sky-500/20",
     text: "text-sky-300",
     ring: "border-sky-500/30 hover:border-sky-400/60",
     glow: "bg-sky-600/20",
-    bar: "bg-sky-500 shadow-[0_0_10px_rgba(14,165,233,0.8)]",
-    dot: "bg-sky-400",
-    soft: "bg-sky-500/10 border-sky-500/25",
   },
 };
 
-// Callout türlerine sabit renkler (key → dersin accent'i)
-const CALLOUT: Record<
-  "info" | "tip" | "warn",
-  { wrap: string; label: string; icon: string }
+// ── OKUMA TEMALARI ────────────────────────────────────────────────────────────
+// Uzun okuma konforu için: saf siyah yerine yumuşak koyu nötr, sıcak off-white
+// metin, daha büyük gövde. Renkler CSS değişkenleriyle veriliyor; tema değişince
+// tüm okuma alanı anında uyum sağlar. SADECE notların okuma ekranını etkiler.
+type ReadTheme = "dark" | "sepia" | "light";
+
+const READ_THEMES: Record<
+  ReadTheme,
+  { label: string; next: ReadTheme; icon: string; vars: CSSProperties }
 > = {
+  dark: {
+    label: "Koyu",
+    next: "sepia",
+    icon: "M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z",
+    vars: {
+      "--rd-bg": "#0e0f12",
+      "--rd-fg": "#d7d3cb",
+      "--rd-heading": "#f5f4f1",
+      "--rd-muted": "#8b8a85",
+      "--rd-accent": "#6b9d8a",
+      "--rd-accent-strong": "#79d4b4",
+      "--rd-soft-bg": "rgba(121,212,180,0.08)",
+      "--rd-soft-border": "rgba(121,212,180,0.20)",
+      "--rd-card-bg": "rgba(255,255,255,0.03)",
+      "--rd-border": "rgba(255,255,255,0.09)",
+      "--rd-header-bg": "rgba(14,15,18,0.88)",
+      "--rd-progress-track": "rgba(255,255,255,0.06)",
+      "--rd-progress-bar": "#79d4b4",
+    } as CSSProperties,
+  },
+  sepia: {
+    label: "Sepya",
+    next: "light",
+    icon: "M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25",
+    vars: {
+      "--rd-bg": "#f3ead6",
+      "--rd-fg": "#4a3f31",
+      "--rd-heading": "#332a1f",
+      "--rd-muted": "#8a7b63",
+      "--rd-accent": "#a8804a",
+      "--rd-accent-strong": "#8a5a28",
+      "--rd-soft-bg": "rgba(138,90,40,0.10)",
+      "--rd-soft-border": "rgba(138,90,40,0.24)",
+      "--rd-card-bg": "rgba(90,60,25,0.06)",
+      "--rd-border": "rgba(80,58,32,0.20)",
+      "--rd-header-bg": "rgba(243,234,214,0.90)",
+      "--rd-progress-track": "rgba(80,58,32,0.14)",
+      "--rd-progress-bar": "#a8804a",
+    } as CSSProperties,
+  },
+  light: {
+    label: "Açık",
+    next: "dark",
+    icon: "M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z",
+    vars: {
+      "--rd-bg": "#faf9f6",
+      "--rd-fg": "#33312c",
+      "--rd-heading": "#1c1b18",
+      "--rd-muted": "#7c7a73",
+      "--rd-accent": "#4f9e85",
+      "--rd-accent-strong": "#2f8a6b",
+      "--rd-soft-bg": "rgba(47,138,107,0.08)",
+      "--rd-soft-border": "rgba(47,138,107,0.22)",
+      "--rd-card-bg": "rgba(0,0,0,0.035)",
+      "--rd-border": "rgba(0,0,0,0.10)",
+      "--rd-header-bg": "rgba(250,249,246,0.90)",
+      "--rd-progress-track": "rgba(0,0,0,0.08)",
+      "--rd-progress-bar": "#2f8a6b",
+    } as CSSProperties,
+  },
+};
+
+const THEME_STORAGE_KEY = "notesReadTheme";
+
+// Callout türlerine sabit, orta tonlu renkler — hem koyu hem açık temada okunur.
+// "key" türü temanın kendi accent'ini kullanır.
+const CALLOUT_TONE: Record<"info" | "tip" | "warn", { color: string; icon: string }> = {
   info: {
-    wrap: "bg-sky-500/[0.07] border-sky-500/25",
-    label: "text-sky-300",
+    color: "#5f8fb5",
     icon: "M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z",
   },
   tip: {
-    wrap: "bg-emerald-500/[0.07] border-emerald-500/25",
-    label: "text-emerald-300",
+    color: "#4ea47c",
     icon: "M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z",
   },
   warn: {
-    wrap: "bg-amber-500/[0.07] border-amber-500/25",
-    label: "text-amber-300",
+    color: "#c08a3c",
     icon: "M12 9v2m0 4h.01M5.07 19h13.86c1.54 0 2.5-1.67 1.73-3L13.73 4a2 2 0 00-3.46 0L3.34 16c-.77 1.33.19 3 1.73 3z",
   },
 };
 
-// ── Tek bir blok ──────────────────────────────────────────────────────────────
-const Block = memo(function Block({
-  block,
-  accent,
-}: {
-  block: NoteBlock;
-  accent: AccentKey;
-}) {
-  const a = ACCENT[accent];
+const KEY_ICON = "M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z";
 
+// ── Tek bir blok ──────────────────────────────────────────────────────────────
+// Renkler tema CSS değişkenlerinden (--rd-*) gelir; böylece tek bir görünüm tüm
+// temalarda doğru renge bürünür.
+const Block = memo(function Block({ block }: { block: NoteBlock }) {
   switch (block.type) {
     case "heading":
       return (
-        <h2 className="first:mt-0 mt-9 mb-4 text-[1.5rem] sm:text-[1.7rem] font-black text-white tracking-tight leading-snug flex items-center gap-3">
-          <span className={`w-1.5 h-7 rounded-full ${a.bar} shrink-0`} />
+        <h2 className="first:mt-0 mt-9 mb-4 text-[1.45rem] sm:text-[1.65rem] font-black tracking-tight leading-snug flex items-center gap-3 text-[color:var(--rd-heading)]">
+          <span
+            className="w-1.5 h-7 rounded-full shrink-0"
+            style={{ backgroundColor: "var(--rd-accent)" }}
+          />
           {block.text}
         </h2>
       );
 
     case "subheading":
       return (
-        <h3 className="first:mt-0 mt-7 mb-3 text-lg sm:text-xl font-bold text-slate-100 tracking-tight">
+        <h3 className="first:mt-0 mt-7 mb-3 text-lg sm:text-xl font-bold tracking-tight text-[color:var(--rd-heading)]">
           {block.text}
         </h3>
       );
 
     case "paragraph":
       return (
-        <p className="first:mt-0 mb-5 text-[15.5px] sm:text-[16.5px] text-slate-300/95 leading-[1.8] whitespace-pre-line">
+        <p className="first:mt-0 mb-5 text-[16.5px] sm:text-[17px] leading-[1.75] whitespace-pre-line text-[color:var(--rd-fg)]">
           {block.text}
         </p>
       );
@@ -125,9 +173,10 @@ const Block = memo(function Block({
           {block.items.map((item, i) => (
             <li key={i} className="flex items-start gap-3">
               <span
-                className={`mt-[0.6rem] w-1.5 h-1.5 rounded-full ${a.dot} shrink-0`}
+                className="mt-[0.62rem] w-1.5 h-1.5 rounded-full shrink-0"
+                style={{ backgroundColor: "var(--rd-accent)" }}
               />
-              <span className="text-[15.5px] sm:text-base text-slate-300/95 leading-[1.7]">
+              <span className="text-[16px] sm:text-[16.5px] leading-[1.7] text-[color:var(--rd-fg)]">
                 {item}
               </span>
             </li>
@@ -141,11 +190,16 @@ const Block = memo(function Block({
           {block.items.map((item, i) => (
             <li key={i} className="flex items-start gap-3.5">
               <span
-                className={`shrink-0 w-7 h-7 rounded-xl border flex items-center justify-center text-xs font-black ${a.chip}`}
+                className="shrink-0 w-7 h-7 rounded-xl border flex items-center justify-center text-xs font-black"
+                style={{
+                  backgroundColor: "var(--rd-soft-bg)",
+                  borderColor: "var(--rd-soft-border)",
+                  color: "var(--rd-accent-strong)",
+                }}
               >
                 {i + 1}
               </span>
-              <span className="pt-0.5 text-[15.5px] sm:text-base text-slate-300/95 leading-[1.7]">
+              <span className="pt-0.5 text-[16px] sm:text-[16.5px] leading-[1.7] text-[color:var(--rd-fg)]">
                 {item}
               </span>
             </li>
@@ -156,18 +210,22 @@ const Block = memo(function Block({
     case "callout": {
       const variant = block.variant ?? "info";
       const isKey = variant === "key";
-      const wrap = isKey ? a.soft : CALLOUT[variant].wrap;
-      const label = isKey ? a.text : CALLOUT[variant].label;
-      const iconPath = isKey
-        ? "M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"
-        : CALLOUT[variant].icon;
+      const tone = isKey ? "var(--rd-accent-strong)" : CALLOUT_TONE[variant].color;
+      const iconPath = isKey ? KEY_ICON : CALLOUT_TONE[variant].icon;
       return (
         <div
-          className={`first:mt-0 my-6 rounded-2xl border p-4 sm:p-5 backdrop-blur-sm ${wrap}`}
+          className="first:mt-0 my-6 rounded-2xl border p-4 sm:p-5"
+          style={{
+            backgroundColor: isKey ? "var(--rd-soft-bg)" : "var(--rd-card-bg)",
+            borderColor: "var(--rd-border)",
+            borderLeftWidth: "4px",
+            borderLeftColor: tone,
+          }}
         >
           <div className="flex items-start gap-3">
             <svg
-              className={`w-5 h-5 shrink-0 mt-0.5 ${label}`}
+              className="w-5 h-5 shrink-0 mt-0.5"
+              style={{ color: tone }}
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
@@ -182,12 +240,13 @@ const Block = memo(function Block({
             <div className="min-w-0">
               {block.title && (
                 <p
-                  className={`text-xs font-bold tracking-wider uppercase mb-1.5 ${label}`}
+                  className="text-xs font-bold tracking-wider uppercase mb-1.5"
+                  style={{ color: tone }}
                 >
                   {block.title}
                 </p>
               )}
-              <p className="text-[15px] sm:text-base text-slate-200/90 leading-[1.7] whitespace-pre-line">
+              <p className="text-[15.5px] sm:text-[16px] leading-[1.7] whitespace-pre-line text-[color:var(--rd-fg)]">
                 {block.text}
               </p>
             </div>
@@ -199,12 +258,17 @@ const Block = memo(function Block({
     case "stat":
       return (
         <div
-          className={`first:mt-0 my-6 rounded-2xl border ${a.soft} overflow-hidden backdrop-blur-sm`}
+          className="first:mt-0 my-6 rounded-2xl border overflow-hidden"
+          style={{
+            backgroundColor: "var(--rd-soft-bg)",
+            borderColor: "var(--rd-soft-border)",
+          }}
         >
           {block.title && (
             <div className="px-5 pt-4 pb-2">
               <p
-                className={`text-xs font-bold tracking-widest uppercase ${a.text}`}
+                className="text-xs font-bold tracking-widest uppercase"
+                style={{ color: "var(--rd-accent-strong)" }}
               >
                 {block.title}
               </p>
@@ -214,27 +278,35 @@ const Block = memo(function Block({
             {block.rows.map((row, i) => (
               <div
                 key={i}
-                className={`flex items-center justify-between gap-4 rounded-xl px-3.5 py-3 ${
-                  row.highlight
-                    ? `${a.soft} border`
-                    : "bg-white/[0.02] border border-transparent"
-                }`}
+                className="flex items-center justify-between gap-4 rounded-xl px-3.5 py-3 border"
+                style={{
+                  backgroundColor: row.highlight
+                    ? "var(--rd-soft-bg)"
+                    : "var(--rd-card-bg)",
+                  borderColor: row.highlight
+                    ? "var(--rd-soft-border)"
+                    : "transparent",
+                }}
               >
                 <span
-                  className={`text-sm sm:text-[15px] ${
-                    row.highlight
-                      ? "font-bold text-white"
-                      : "font-medium text-slate-400"
-                  }`}
+                  className={`text-sm sm:text-[15px] ${row.highlight ? "font-bold" : "font-medium"}`}
+                  style={{
+                    color: row.highlight ? "var(--rd-heading)" : "var(--rd-muted)",
+                  }}
                 >
                   {row.label}
                 </span>
                 <span
                   className={`shrink-0 tabular-nums tracking-tight ${
                     row.highlight
-                      ? `text-lg sm:text-xl font-black ${a.text}`
-                      : "text-base sm:text-lg font-bold text-slate-100"
+                      ? "text-lg sm:text-xl font-black"
+                      : "text-base sm:text-lg font-bold"
                   }`}
+                  style={{
+                    color: row.highlight
+                      ? "var(--rd-accent-strong)"
+                      : "var(--rd-heading)",
+                  }}
                 >
                   {row.value}
                 </span>
@@ -246,15 +318,22 @@ const Block = memo(function Block({
 
     case "table":
       return (
-        <div className="first:mt-0 my-6 rounded-2xl border border-white/[0.08] overflow-hidden">
+        <div
+          className="first:mt-0 my-6 rounded-2xl border overflow-hidden"
+          style={{ borderColor: "var(--rd-border)" }}
+        >
           <div className="overflow-x-auto">
             <table className="w-full border-collapse text-left">
               <thead>
-                <tr className="bg-white/[0.04]">
+                <tr style={{ backgroundColor: "var(--rd-card-bg)" }}>
                   {block.headers.map((h, i) => (
                     <th
                       key={i}
-                      className={`px-4 py-3 text-xs font-bold tracking-wider uppercase ${a.text} border-b border-white/[0.08]`}
+                      className="px-4 py-3 text-xs font-bold tracking-wider uppercase border-b"
+                      style={{
+                        color: "var(--rd-accent-strong)",
+                        borderColor: "var(--rd-border)",
+                      }}
                     >
                       {h}
                     </th>
@@ -265,16 +344,19 @@ const Block = memo(function Block({
                 {block.rows.map((row, ri) => (
                   <tr
                     key={ri}
-                    className="odd:bg-white/[0.01] border-b border-white/[0.05] last:border-0"
+                    className="border-b last:border-0"
+                    style={{ borderColor: "var(--rd-border)" }}
                   >
                     {row.map((cell, ci) => (
                       <td
                         key={ci}
-                        className={`px-4 py-3 text-[14.5px] leading-[1.6] align-top ${
-                          ci === 0
-                            ? "font-semibold text-slate-100"
-                            : "text-slate-300/90"
+                        className={`px-4 py-3 text-[14.5px] sm:text-[15px] leading-[1.6] align-top ${
+                          ci === 0 ? "font-semibold" : ""
                         }`}
+                        style={{
+                          color:
+                            ci === 0 ? "var(--rd-heading)" : "var(--rd-fg)",
+                        }}
                       >
                         {cell}
                       </td>
@@ -289,12 +371,15 @@ const Block = memo(function Block({
 
     case "quote":
       return (
-        <figure className="first:mt-0 my-6 pl-4 sm:pl-5 border-l-2 border-white/15">
-          <blockquote className="text-[16px] sm:text-lg italic text-slate-200/90 leading-[1.7]">
+        <figure
+          className="first:mt-0 my-6 pl-4 sm:pl-5 border-l-2"
+          style={{ borderColor: "var(--rd-soft-border)" }}
+        >
+          <blockquote className="text-[16.5px] sm:text-lg italic leading-[1.7] text-[color:var(--rd-heading)]">
             “{block.text}”
           </blockquote>
           {block.cite && (
-            <figcaption className="mt-2 text-sm text-slate-500">
+            <figcaption className="mt-2 text-sm text-[color:var(--rd-muted)]">
               — {block.cite}
             </figcaption>
           )}
@@ -303,7 +388,13 @@ const Block = memo(function Block({
 
     case "divider":
       return (
-        <hr className="first:mt-0 my-8 border-0 h-px bg-gradient-to-r from-transparent via-white/15 to-transparent" />
+        <hr
+          className="first:mt-0 my-8 border-0 h-px"
+          style={{
+            backgroundImage:
+              "linear-gradient(to right, transparent, var(--rd-border), transparent)",
+          }}
+        />
       );
 
     case "image":
@@ -315,10 +406,11 @@ const Block = memo(function Block({
             alt={block.caption ?? ""}
             loading="lazy"
             decoding="async"
-            className="w-full rounded-2xl border border-white/10"
+            className="w-full rounded-2xl border"
+            style={{ borderColor: "var(--rd-border)" }}
           />
           {block.caption && (
-            <figcaption className="mt-2 text-center text-xs text-slate-500">
+            <figcaption className="mt-2 text-center text-xs text-[color:var(--rd-muted)]">
               {block.caption}
             </figcaption>
           )}
@@ -342,11 +434,28 @@ export default function NotesReader({
   // null → konu listesi, sayı → o konunun okuma ekranı
   const [topicIndex, setTopicIndex] = useState<number | null>(null);
   const [progress, setProgress] = useState(0);
+  const [readTheme, setReadTheme] = useState<ReadTheme>(() => {
+    if (typeof window === "undefined") return "dark";
+    const saved = window.localStorage.getItem(THEME_STORAGE_KEY);
+    return saved === "sepia" || saved === "light" || saved === "dark"
+      ? saved
+      : "dark";
+  });
   const scrollRef = useRef<HTMLDivElement>(null);
   const rafRef = useRef<number | null>(null);
 
   const topic = topicIndex !== null ? lesson.topics[topicIndex] : null;
   const total = lesson.topics.length;
+  const theme = READ_THEMES[readTheme];
+
+  // Tema tercihini hatırla
+  useEffect(() => {
+    try {
+      window.localStorage.setItem(THEME_STORAGE_KEY, readTheme);
+    } catch {
+      // localStorage erişilemezse sessizce geç
+    }
+  }, [readTheme]);
 
   // Okuma kaydırma ilerlemesi — passive + rAF ile jank'sız.
   const handleScroll = useCallback(() => {
@@ -380,8 +489,7 @@ export default function NotesReader({
     [],
   );
   const goNext = useCallback(
-    () =>
-      setTopicIndex((i) => (i !== null && i < total - 1 ? i + 1 : i)),
+    () => setTopicIndex((i) => (i !== null && i < total - 1 ? i + 1 : i)),
     [total],
   );
 
@@ -398,6 +506,7 @@ export default function NotesReader({
   }, [topicIndex, goNext, goPrev]);
 
   // ============================ KONU LİSTESİ ===============================
+  // (Uygulamanın koyu temasıyla bütünlük için bilinçli olarak app stilinde.)
   if (topic === null || topicIndex === null) {
     return (
       <div className="min-h-[100dvh] w-full bg-[#050505] text-slate-200 flex flex-col relative selection:bg-emerald-500/30 overflow-y-auto safe-area">
@@ -510,21 +619,41 @@ export default function NotesReader({
   const isLast = topicIndex === total - 1;
 
   return (
-    <div className="h-[100dvh] w-full bg-[#050505] text-slate-200 flex flex-col overflow-hidden relative selection:bg-emerald-500/30 safe-area">
-      {/* Okuma ilerleme çubuğu */}
-      <div className="absolute top-0 left-0 w-full h-1 bg-white/5 z-50">
+    <div
+      style={theme.vars}
+      className="h-[100dvh] w-full flex flex-col overflow-hidden relative safe-area bg-[var(--rd-bg)] transition-colors duration-300"
+    >
+      {/* Okuma ilerleme çubuğu (yumuşak, parlamasız) */}
+      <div
+        className="absolute top-0 left-0 w-full h-1 z-50"
+        style={{ backgroundColor: "var(--rd-progress-track)" }}
+      >
         <div
-          className={`h-full ${a.bar} transition-[width] duration-150 ease-out`}
-          style={{ width: `${progress * 100}%` }}
+          className="h-full transition-[width] duration-150 ease-out"
+          style={{
+            width: `${progress * 100}%`,
+            backgroundColor: "var(--rd-progress-bar)",
+          }}
         />
       </div>
 
       {/* Sticky header */}
-      <div className="shrink-0 w-full bg-[#050505]/90 backdrop-blur-xl border-b border-white/[0.04] z-20">
+      <div
+        className="shrink-0 w-full backdrop-blur-xl border-b z-20 transition-colors duration-300"
+        style={{
+          backgroundColor: "var(--rd-header-bg)",
+          borderColor: "var(--rd-border)",
+        }}
+      >
         <div className="w-full max-w-3xl mx-auto px-4 py-3 flex items-center gap-2">
           <button
             onClick={() => setTopicIndex(null)}
-            className="shrink-0 flex items-center gap-1.5 px-2.5 py-1 text-[clamp(10px,1.2dvh,12px)] font-bold tracking-wider uppercase rounded-lg border bg-white/[0.04] text-slate-300 border-white/10 hover:bg-white/[0.08] hover:border-white/20 hover:text-white active:scale-95 transition-all"
+            className="shrink-0 flex items-center gap-1.5 px-2.5 py-1 text-[clamp(10px,1.2dvh,12px)] font-bold tracking-wider uppercase rounded-lg border active:scale-95 transition-all"
+            style={{
+              backgroundColor: "var(--rd-card-bg)",
+              borderColor: "var(--rd-border)",
+              color: "var(--rd-fg)",
+            }}
           >
             <svg
               className="w-[14px] h-[14px]"
@@ -542,12 +671,49 @@ export default function NotesReader({
             Konular
           </button>
           <span
-            className={`px-2.5 py-1 text-[clamp(10px,1.2dvh,12px)] font-bold tracking-wider uppercase rounded-lg border truncate ${a.chip}`}
+            className="px-2.5 py-1 text-[clamp(10px,1.2dvh,12px)] font-bold tracking-wider uppercase rounded-lg border truncate"
+            style={{
+              backgroundColor: "var(--rd-soft-bg)",
+              borderColor: "var(--rd-soft-border)",
+              color: "var(--rd-accent-strong)",
+            }}
           >
             {lesson.title}
           </span>
-          <span className="ml-auto shrink-0 text-[clamp(12px,1.5dvh,14px)] font-semibold text-slate-400">
-            <span className="text-white">{topicIndex + 1}</span> / {total}
+
+          {/* Tema değiştirme */}
+          <button
+            onClick={() => setReadTheme(theme.next)}
+            aria-label={`Okuma teması: ${theme.label} — değiştir`}
+            className="ml-auto shrink-0 flex items-center gap-1.5 px-2.5 py-1 text-[clamp(10px,1.2dvh,12px)] font-bold tracking-wider uppercase rounded-lg border active:scale-95 transition-all"
+            style={{
+              backgroundColor: "var(--rd-card-bg)",
+              borderColor: "var(--rd-border)",
+              color: "var(--rd-fg)",
+            }}
+          >
+            <svg
+              className="w-[14px] h-[14px]"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d={theme.icon}
+              />
+            </svg>
+            {theme.label}
+          </button>
+
+          <span
+            className="shrink-0 text-[clamp(12px,1.5dvh,14px)] font-semibold"
+            style={{ color: "var(--rd-muted)" }}
+          >
+            <span style={{ color: "var(--rd-heading)" }}>{topicIndex + 1}</span>{" "}
+            / {total}
           </span>
         </div>
       </div>
@@ -559,22 +725,30 @@ export default function NotesReader({
         className="flex-1 min-h-0 overflow-y-auto overscroll-contain"
       >
         <article className="w-full max-w-2xl mx-auto px-5 sm:px-6 pt-7 pb-4">
-          <h1 className="text-[1.75rem] sm:text-[2.1rem] font-black text-white tracking-tight leading-[1.15] mb-6">
+          <h1 className="text-[1.75rem] sm:text-[2.1rem] font-black tracking-tight leading-[1.15] mb-6 text-[color:var(--rd-heading)]">
             {topic.title}
           </h1>
 
           <div className="flex flex-col">
             {topic.blocks.map((block, i) => (
-              <Block key={i} block={block} accent={lesson.accent} />
+              <Block key={i} block={block} />
             ))}
           </div>
 
           {/* Alt navigasyon */}
-          <div className="mt-10 pt-6 border-t border-white/[0.06] flex items-center justify-between gap-3">
+          <div
+            className="mt-10 pt-6 border-t flex items-center justify-between gap-3"
+            style={{ borderColor: "var(--rd-border)" }}
+          >
             <button
               onClick={goPrev}
               disabled={isFirst}
-              className="flex items-center gap-2 px-4 py-3 rounded-2xl bg-white/[0.04] border border-white/10 text-slate-300 text-sm font-semibold hover:bg-white/[0.08] hover:text-white disabled:opacity-20 disabled:pointer-events-none active:scale-95 transition-all"
+              className="flex items-center gap-2 px-4 py-3 rounded-2xl border text-sm font-semibold disabled:opacity-30 disabled:pointer-events-none active:scale-95 transition-all"
+              style={{
+                backgroundColor: "var(--rd-card-bg)",
+                borderColor: "var(--rd-border)",
+                color: "var(--rd-fg)",
+              }}
             >
               <svg
                 className="w-5 h-5"
@@ -595,14 +769,23 @@ export default function NotesReader({
             {isLast ? (
               <button
                 onClick={() => setTopicIndex(null)}
-                className={`flex-1 flex items-center justify-center gap-2 px-4 py-3 rounded-2xl border text-sm font-bold tracking-wide active:scale-[0.98] transition-all ${a.chip} hover:brightness-125`}
+                className="flex-1 flex items-center justify-center gap-2 px-4 py-3 rounded-2xl border text-sm font-bold tracking-wide active:scale-[0.98] transition-all"
+                style={{
+                  backgroundColor: "var(--rd-soft-bg)",
+                  borderColor: "var(--rd-soft-border)",
+                  color: "var(--rd-accent-strong)",
+                }}
               >
                 Konulara Dön
               </button>
             ) : (
               <button
                 onClick={goNext}
-                className="flex-1 flex items-center justify-center gap-2 px-4 py-3 rounded-2xl bg-white text-black text-sm font-bold tracking-wide hover:bg-slate-200 active:scale-[0.98] transition-all"
+                className="flex-1 flex items-center justify-center gap-2 px-4 py-3 rounded-2xl text-sm font-bold tracking-wide active:scale-[0.98] transition-all"
+                style={{
+                  backgroundColor: "var(--rd-heading)",
+                  color: "var(--rd-bg)",
+                }}
               >
                 Sonraki Konu
                 <svg
