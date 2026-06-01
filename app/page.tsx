@@ -12,6 +12,8 @@ import {
 import type { Lesson } from "@/types/quiz";
 import { suspiciousQuestions } from "@/store/suspiciousQuestions";
 import CompetitionRoom from "./competition/CompetitionRoom";
+import NotesReader from "./notes/NotesReader";
+import { noteLessons } from "@/store/notes";
 import InstallPrompt from "./InstallPrompt";
 import { useFitScale } from "@/lib/useFitScale";
 import { QuestionText } from "@/lib/QuestionText";
@@ -215,6 +217,13 @@ export default function QuizApp() {
   const [claimingProfile, setClaimingProfile] = useState(false);
   const [nameError, setNameError] = useState<string | null>(null);
   const [emptyBankToast, setEmptyBankToast] = useState(false);
+
+  // Anasayfa üst sekmesi (Sorular / Notlar) + açık not dersi — soru akışına
+  // dokunmayan, tamamen yerel state. Varsayılan "questions" → eski davranış aynı.
+  const [homeTab, setHomeTab] = useState<"questions" | "notes">("questions");
+  const [activeNoteLessonId, setActiveNoteLessonId] = useState<string | null>(
+    null,
+  );
 
   // Aktif tahmin modu local state
   const [revealed, setRevealed] = useState(false);
@@ -840,6 +849,20 @@ export default function QuizApp() {
     );
   }
 
+  // === NOTLAR OKUMA EKRANI ===
+  // Not dersi açıkken tüm ekranı NotesReader devralır (soru akışından bağımsız).
+  if (activeNoteLessonId) {
+    const noteLesson = noteLessons.find((n) => n.id === activeNoteLessonId);
+    if (noteLesson) {
+      return (
+        <NotesReader
+          lesson={noteLesson}
+          onExit={() => setActiveNoteLessonId(null)}
+        />
+      );
+    }
+  }
+
   // === DERS SEÇİM EKRANI ===
   if (!selectedLesson && !isMyWrongsMode) {
     return (
@@ -848,20 +871,58 @@ export default function QuizApp() {
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-2xl h-[40vh] bg-indigo-600/10 blur-[100px] pointer-events-none rounded-full" />
 
         <div className="flex-1 w-full max-w-3xl mx-auto px-4 sm:px-6 py-10 sm:py-16 z-10 flex flex-col">
+          {/* Sorular / Notlar geçişi */}
+          <div className="flex justify-center mb-8 sm:mb-10">
+            <div className="inline-flex p-1 rounded-2xl bg-white/[0.04] border border-white/10 backdrop-blur-xl">
+              <button
+                onClick={() => setHomeTab("questions")}
+                className={`px-6 sm:px-8 py-2.5 rounded-xl text-sm font-bold tracking-wide transition-all active:scale-95 ${
+                  homeTab === "questions"
+                    ? "bg-white text-black shadow-lg"
+                    : "text-slate-400 hover:text-white"
+                }`}
+              >
+                Sorular
+              </button>
+              <button
+                onClick={() => setHomeTab("notes")}
+                className={`px-6 sm:px-8 py-2.5 rounded-xl text-sm font-bold tracking-wide transition-all active:scale-95 ${
+                  homeTab === "notes"
+                    ? "bg-white text-black shadow-lg"
+                    : "text-slate-400 hover:text-white"
+                }`}
+              >
+                Notlar
+              </button>
+            </div>
+          </div>
+
           <header className="mb-10 sm:mb-14 text-center">
             <span className="inline-block px-3 py-1 text-[10px] font-bold tracking-[0.2em] uppercase rounded-lg border bg-indigo-500/10 text-indigo-300 border-indigo-500/20 mb-4">
-              Ders Seçimi
+              {homeTab === "questions" ? "Ders Seçimi" : "Ders Notları"}
             </span>
             <h1 className="text-3xl sm:text-5xl font-black text-transparent bg-clip-text bg-gradient-to-b from-white to-white/50 tracking-tighter">
-              Hangi derse çalışalım?
+              {homeTab === "questions"
+                ? "Hangi derse çalışalım?"
+                : "Hangi dersin notları?"}
             </h1>
             <p className="mt-3 text-sm sm:text-base text-slate-400 max-w-md mx-auto">
-              Bir ders seç, sorular yüklensin. İstediğin zaman üstteki{" "}
-              <span className="text-slate-200 font-semibold">Dersler</span>{" "}
-              butonundan geri dönebilirsin.
+              {homeTab === "questions" ? (
+                <>
+                  Bir ders seç, sorular yüklensin. İstediğin zaman üstteki{" "}
+                  <span className="text-slate-200 font-semibold">Dersler</span>{" "}
+                  butonundan geri dönebilirsin.
+                </>
+              ) : (
+                <>
+                  Bir ders seç, notlar açılsın. Rahatça okunsun diye
+                  hazırlandı — uygulamadan çıkmana gerek yok.
+                </>
+              )}
             </p>
           </header>
 
+          {homeTab === "questions" && (
           <div className="grid gap-4 sm:gap-5">
             {lessons.map((lesson) => {
               const accent = ACCENT_STYLES[lesson.accent];
@@ -1062,6 +1123,72 @@ export default function QuizApp() {
               );
             })}
           </div>
+          )}
+
+          {/* === NOT DERSLERİ === */}
+          {homeTab === "notes" && (
+            <div className="grid gap-4 sm:gap-5">
+              {noteLessons.map((nl) => {
+                const accent = ACCENT_STYLES[nl.accent];
+                return (
+                  <button
+                    key={nl.id}
+                    onClick={() => setActiveNoteLessonId(nl.id)}
+                    className={`group relative text-left backdrop-blur-xl border-2 rounded-3xl overflow-hidden bg-white/[0.03] ${accent.ring} hover:bg-white/[0.05] transition-all duration-300 p-6 sm:p-7 active:scale-[0.99]`}
+                  >
+                    <div
+                      className={`absolute -top-12 -right-12 w-40 h-40 ${accent.glow} blur-3xl rounded-full pointer-events-none opacity-60 group-hover:opacity-100 transition-opacity`}
+                    />
+                    <div className="relative flex items-center gap-4">
+                      <div
+                        className={`shrink-0 w-12 h-12 sm:w-14 sm:h-14 rounded-2xl border flex items-center justify-center ${accent.chip}`}
+                      >
+                        <svg
+                          className="w-6 h-6"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          stroke="currentColor"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth="2"
+                            d="M12 6.5V20m0-13.5C10.5 5 8 4.5 5.5 5.5V18c2.5-1 5 .5 6.5 2m0-13.5C13.5 5 16 4.5 18.5 5.5V18c-2.5-1-5 .5-6.5 2"
+                          />
+                        </svg>
+                      </div>
+                      <div className="flex-1 min-w-0">
+                        <h2 className="text-lg sm:text-xl font-bold tracking-tight text-white">
+                          {nl.title}
+                        </h2>
+                        <p className="text-xs sm:text-sm mt-1 line-clamp-2 text-slate-400">
+                          {nl.description}
+                        </p>
+                      </div>
+                      <div className="shrink-0 flex flex-col items-end gap-0.5">
+                        <svg
+                          className={`w-7 h-7 ${accent.text} transition-transform group-hover:translate-x-1 arrow-nudge`}
+                          fill="none"
+                          stroke="currentColor"
+                          viewBox="0 0 24 24"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth="2"
+                            d="M9 5l7 7-7 7"
+                          />
+                        </svg>
+                        <span className="text-xs text-slate-500 font-bold">
+                          {nl.topics.length} konu
+                        </span>
+                      </div>
+                    </div>
+                  </button>
+                );
+              })}
+            </div>
+          )}
 
           <footer className="mt-auto pt-10 flex flex-col items-center gap-4">
             <div className="flex items-center gap-3">

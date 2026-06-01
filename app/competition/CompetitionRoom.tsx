@@ -175,22 +175,25 @@ export default function CompetitionRoom({
     let cancelled = false;
     (async () => {
       try {
-        let effectiveId = playerId;
-        if (!effectiveId) {
-          const claim = await claimProfile({
-            id: playerId,
-            name: playerName,
-            avatar: playerAvatar,
-          });
-          if (cancelled) return;
-          if (!claim.ok) {
-            setJoinError(true);
-            return;
-          }
-          effectiveId = claim.id;
-          setPid(claim.id);
-          onPlayerId(claim.id);
+        // Profili HER ZAMAN doğrula/oluştur. Eski bir playerId (ör. veritabanı
+        // sıfırlanmışsa) artık players tablosunda olmayabilir; bu durumda
+        // claimProfile oyuncuyu yeniden oluşturup geçerli bir id döndürür.
+        // match_players.player_id → players FK'si bunu zorunlu kılar; aksi halde
+        // katılım "foreign key" hatasıyla patlar.
+        const claim = await claimProfile({
+          id: playerId,
+          name: playerName,
+          avatar: playerAvatar,
+        });
+        if (cancelled) return;
+        if (!claim.ok) {
+          setJoinError(true);
+          return;
         }
+        const effectiveId = claim.id;
+        setPid(effectiveId);
+        if (effectiveId !== playerId) onPlayerId(effectiveId);
+
         const res = await joinCompetition({
           lessonId,
           playerId: effectiveId,
