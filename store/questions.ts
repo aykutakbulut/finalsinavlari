@@ -4397,6 +4397,536 @@ const KalkinmaEkonomisi = [
   },
 ];
 
+const ImalatSilahSanayi = [
+  {
+    "id": 1,
+    "questionText": "Aşağıdakilerden hangisi kişisel koruyucu donanım değildir?",
+    "options": [
+      "Şapka",
+      "İş önlüğü",
+      "Koruyucu gözlük",
+      "Gaz maskesi",
+      "Talaş siperliği"
+    ],
+    "correctAnswer": "Talaş siperliği"
+  },
+  {
+    "id": 2,
+    "questionText": "Aşağıdakilerden hangisi tesviyeci mengenesinin kısımlarından değildir?",
+    "options": [
+      "Örs",
+      "Tespit vidası",
+      "Mengene ağzı",
+      "Mengene kolu",
+      "Hareketli çene"
+    ],
+    "correctAnswer": "Tespit vidası"
+  },
+  {
+    "id": 3,
+    "questionText": "Aşağıdakilerden hangisi markalama aleti değildir ?",
+    "options": [
+      "Mihengir",
+      "Merkezleme çanı",
+      "Çizecek",
+      "Çelik cetvel",
+      "Vida tarağı"
+    ],
+    "correctAnswer": "Vida tarağı"
+  },
+  {
+    "id": 4,
+    "questionText": "Aşağıdakilerden hangisi düzlem yüzey kontrol aletlerindendir?",
+    "options": [
+      "Kumpas",
+      "Gönye",
+      "Çizecek",
+      "Mikrometre",
+      "Vida tarağı"
+    ],
+    "correctAnswer": "Çizecek"
+  },
+  {
+    "id": 5,
+    "questionText": "Eğeleme işlemi sırasında eğe parçanın yüzeyini çiziyor ve yüzeyden kayıyorsa ne yapılmalıdır?",
+    "options": [
+      "Eğe temizleme fırçası ile eğe temizlenmelidir .",
+      "Eğenin sapı sıkılmalıdır.",
+      "Eğenin kesme yönü değiştirilmelidir.",
+      "Parçanın konumu değiştirilmelidir.",
+      "Eğeleme işlemine ara verilmelidir."
+    ],
+    "correctAnswer": "Eğe temizleme fırçası ile eğe temizlenmelidir ."
+  },
+  {
+    "id": 6,
+    "questionText": "Aşağıdakilerden hangisi el testeresi ile kesme işleminde dikkat edilecek hususlardan biri değildir?",
+    "options": [
+      "Testere kolu öne doğru 5-10° eğik tutulup, ileri sürerken hafif bastırılır, geriye serbest çekilir.",
+      "Testere arkaya doğru kuvvetlice bastırılmalıdır.",
+      "Öne ve arkaya doğru sürülürken çok baskı uygulanmalıdır.",
+      "Arka tarafa 5-10 derece yatırılarak kesme yapılmalıdır.",
+      "Testere dişlerinin yönü önemli değildir."
+    ],
+    "correctAnswer": "Arka tarafa 5-10 derece yatırılarak kesme yapılmalıdır."
+  },
+  {
+    "id": 7,
+    "questionText": "Testere laması takılırken nelere dikkat edilmelidir?",
+    "options": [
+      "Kesici dişler arkaya doğru bakmalıdır.",
+      "Kesici dişler öne doğru 5-10 derece eğik bakmalıdır.",
+      "Kesici dişler öne bakmalı, lama düz ve gergin olarak sıkılmalıdır.",
+      "Kesici dişler arkaya bakmalı, lama gevşek sıkılmalıdır.",
+      "Kesici dişler yukarı doğru bakmalıdır."
+    ],
+    "correctAnswer": "Kesici dişler öne bakmalı, lama düz ve gergin olarak sıkılmalıdır."
+  },
+  {
+    "id": 8,
+    "questionText": "Aşağıdakilerden hangisi testere ile kesme kurallarından değildir?",
+    "options": [
+      "Ses ve titreşimi önlemek için parça mümkün olduğu kadar kısa bağlanmalıdır.",
+      "Lama , testere koluna aşırı gergin bağlanmamalıdır.",
+      "Tüm dişlerin kesme yapması için testere boydan boya sürülmelidir.",
+      "Testere ile bir miktar kesme yapıldıktan sonra kalan kısmı çekiçle vurarak koparılmalıdır.",
+      "Testere ile her iki yöndede kesme yapılmalıdır"
+    ],
+    "correctAnswer": "Testere ile bir miktar kesme yapıldıktan sonra kalan kısmı çekiçle vurarak koparılmalıdır."
+  },
+  {
+    "id": 9,
+    "questionText": "İş parçası üzerindeki delik çaplarının tolerans sınırları içerisinde yapılıp yapılmadığını kontrol etmekte kullanılan mastar çeşitleri hangisidir?",
+    "options": [
+      "Tampon mastarları",
+      "Çatal mastarlar",
+      "Kalınlık mastarları",
+      "Konik mastarlar",
+      "Vida mastarları"
+    ],
+    "correctAnswer": "Tampon mastarları"
+  },
+  {
+    "id": 10,
+    "questionText": "Üzerinde markalama işleminin yapıldığı düzlemsel yüzeye sahip metal malzemelere ne ad verilir?",
+    "options": [
+      "Mihengir",
+      "Pleyt masası",
+      "Kumpas",
+      "Gönye",
+      "Merkezleme gönyesi"
+    ],
+    "correctAnswer": "Pleyt masası"
+  },
+  {
+    "id": 11,
+    "questionText": "Aşağıdakilerden hangisi mengeneli aynaların özelliklerinden biri hangisidir?",
+    "options": [
+      "Her bir ayak birbirinden bağımsız olarak hareket eder.",
+      "Ayakların hepsi aynı anda hareket eder.",
+      "Önce 1 nolu ayak hareket eder.",
+      "Hiçbiri"
+    ],
+    "correctAnswer": "Ayakların hepsi aynı anda hareket eder."
+  },
+  {
+    "id": 12,
+    "questionText": "Aşağıdakilerden hangisi biçimlerine göre kalemlerden biridir?",
+    "options": [
+      "Sert metal uçlu kalemler",
+      "Vida kalemleri",
+      "Yuvarlak kalemler",
+      "Boşluk Kalemi"
+    ],
+    "correctAnswer": "Vida kalemleri"
+  },
+  {
+    "id": 13,
+    "questionText": "Isıl genleşme oluşmasının nedeni aşağıdakilerden hangisi olabilir?",
+    "options": [
+      "Sıcaklık artması",
+      "Kesici ömrü",
+      "Kesici açısı",
+      "Punta yüksekliği"
+    ],
+    "correctAnswer": "Sıcaklık artması"
+  },
+  {
+    "id": 14,
+    "questionText": "Aşağıdakilerden hangisi derinlik ölçme islemi verniyerli kumpasların hangi kısmı ile yapılır?",
+    "options": [
+      "Tutma kısmı",
+      "Çene kısmı",
+      "Cetvel kısmı",
+      "Kılıç kısmı"
+    ],
+    "correctAnswer": "Kılıç kısmı"
+  },
+  {
+    "id": 15,
+    "questionText": "Sabit yatağa bağlanacak işin salgısını gidermek için aşağıdakilerden hangisi kullanılır?",
+    "options": [
+      "Mikrometre",
+      "Kumpas",
+      "Komparatör",
+      "Gönye"
+    ],
+    "correctAnswer": "Gönye"
+  },
+  {
+    "id": 16,
+    "questionText": "Üzerine etki eden çekme ve basma kuvvetini depo eden, kuvvet kalktığında depo ettiği enerjiyi aynen ileten makine elemanı aşağıdakilerden hangisidir?",
+    "options": [
+      "Kama",
+      "Pim",
+      "Vida",
+      "Yay"
+    ],
+    "correctAnswer": "Yay"
+  },
+  {
+    "id": 17,
+    "questionText": "Whitworth ve metrik üçgen vidaların uç açıları nedir?",
+    "options": [
+      "Whitworth 55° Metrik 60°",
+      "Whitworth 60° Metrik 55°",
+      "Whitworth 50° Metrik 65°",
+      "Whitworth 55° Metrik 65°"
+    ],
+    "correctAnswer": "Whitworth 60° Metrik 55°"
+  },
+  {
+    "id": 18,
+    "questionText": "Metrik bir kare vida açmak için tezgâh üzerindeki tablodan neye bakarak ayar yapmalıyız?",
+    "options": [
+      "Adımına",
+      "Parmaktaki diş sayısına",
+      "Diş derinliğine",
+      "Diş yüksekliğine"
+    ],
+    "correctAnswer": "Diş derinliğine"
+  },
+  {
+    "id": 19,
+    "questionText": "Aşağıdakilerden hangisi planlı bakımın amaçlarından değildir?",
+    "options": [
+      "Üretimde meydana gelecek kesintiyi en aza indirmek",
+      "Büyük makine hasarlarının oluşumunu engellemek",
+      "Makinelerin ekonomik ömrünü azaltmak",
+      "Arıza, bakım ve onarım sayısını azaltmak"
+    ],
+    "correctAnswer": "Makinelerin ekonomik ömrünü azaltmak"
+  },
+  {
+    "id": 20,
+    "questionText": "Üretim sonrası meydana gelecek hurda ve atıkların değerlendirilmesinin planlanması hangi araştırmanın konuları arasındadır?",
+    "options": [
+      "Mali",
+      "Ekonomik",
+      "Teknik",
+      "Mali Yasal"
+    ],
+    "correctAnswer": "Ekonomik"
+  },
+  {
+    "id": 21,
+    "questionText": "Aşağıda verilen seçeneklerden hangisi malzeme seçiminde dikkat edilmesi gereken kurallardan değildir?",
+    "options": [
+      "Üretim işlerine uygunluk",
+      "Korozyon direnci",
+      "Teknolojik ve mekanik özellikle",
+      "Malzemenin ucuz olması"
+    ],
+    "correctAnswer": "Malzemenin ucuz olması"
+  },
+  {
+    "id": 22,
+    "questionText": "Kesme işlemlerinde kullanacağımız uçları sertleştirmemiz gerekmektedir. Bu sertleştirme işlemini hangi malzeme ile yapamayız?",
+    "options": [
+      "Suda sertleştirme",
+      "Yağda sertleştirme",
+      "Havada sertleştirme",
+      "Kumda sertleştirme"
+    ],
+    "correctAnswer": "Kumda sertleştirme"
+  },
+  {
+    "id": 23,
+    "questionText": "Metal malzemeleri Korozyondan korumak için hangi yöntem kullanılmaz?",
+    "options": [
+      "Boyama",
+      "Ziftleme",
+      "Vernikleme",
+      "Metal kaplama"
+    ],
+    "correctAnswer": "Ziftleme"
+  },
+  {
+    "id": 24,
+    "questionText": "Aşağıdakilerden hangisi bir talaşlı imalat yöntemidir?",
+    "options": [
+      "Haddeleme",
+      "Dövme",
+      "Tavlama",
+      "Tornalama"
+    ],
+    "correctAnswer": "Tornalama"
+  },
+  {
+    "id": 25,
+    "questionText": "Aşağıdaki işlemlerden hangisi kaynak yöntemidir?",
+    "options": [
+      "Tavlama",
+      "Sertleştirme",
+      "MIG Kaynağı",
+      "Soğuk Şekil Verme"
+    ],
+    "correctAnswer": "MIG Kaynağı"
+  },
+  {
+    "id": 26,
+    "questionText": "Isıl işlem işlemleri aşağıdakilerden hangisini kapsar?",
+    "options": [
+      "Kum kalıba döküm",
+      "Menevişleme",
+      "Taşlama",
+      "Frezeleme"
+    ],
+    "correctAnswer": "Menevişleme"
+  },
+  {
+    "id": 27,
+    "questionText": "Hangisi bir plastik şekil verme işlemidir?",
+    "options": [
+      "Ekstrüzyon",
+      "Kaynak",
+      "EDM",
+      "Tavlama"
+    ],
+    "correctAnswer": "Ekstrüzyon"
+  },
+  {
+    "id": 28,
+    "questionText": "Aşağıdakilerden hangisi talaşsız şekil verme yöntemidir?",
+    "options": [
+      "Haddeleme",
+      "Tornalama",
+      "Taşlama",
+      "Frezeleme"
+    ],
+    "correctAnswer": "Haddeleme"
+  },
+  {
+    "id": 29,
+    "questionText": "Kaynak işlemlerinde genellikle hangi enerji türü kullanılır?",
+    "options": [
+      "Mekanik enerji",
+      "Isı enerjisi",
+      "Manyetik enerji",
+      "Hidrolik enerji"
+    ],
+    "correctAnswer": "Isı enerjisi"
+  },
+  {
+    "id": 30,
+    "questionText": "Dövme işlemi aşağıdakilerden hangisine örnektir?",
+    "options": [
+      "Talaşlı imalat",
+      "Plastik şekil verme",
+      "Kaynak",
+      "Isıl işlem"
+    ],
+    "correctAnswer": "Plastik şekil verme"
+  },
+  {
+    "id": 31,
+    "questionText": "Isıl işlemlerde kullanılan 'su verme' işlemi ne sağlar?",
+    "options": [
+      "Parlatma",
+      "Sertleştirme",
+      "Soğutma",
+      "Tavlama"
+    ],
+    "correctAnswer": "Sertleştirme"
+  },
+  {
+    "id": 32,
+    "questionText": "Menevişleme işlemi hangi işlemden sonra yapılır?",
+    "options": [
+      "Tavlama",
+      "Su verme",
+      "Taşlama",
+      "Kaynak"
+    ],
+    "correctAnswer": "Su verme"
+  },
+  {
+    "id": 33,
+    "questionText": "Kum kalıba dökümün en büyük avantajı nedir?",
+    "options": [
+      "Yüzey kalitesi",
+      "Düşük maliyet",
+      "Yüksek hız",
+      "Hızlı soğuma"
+    ],
+    "correctAnswer": "Düşük maliyet"
+  },
+  {
+    "id": 34,
+    "questionText": "Ekstrüzyon işleminde hangi hareket kullanılır?",
+    "options": [
+      "Malzemenin kalıptan itilmesi",
+      "Döndürülmesi",
+      "Talaş kaldırılması",
+      "Ergitilmesi"
+    ],
+    "correctAnswer": "Malzemenin kalıptan itilmesi"
+  },
+  {
+    "id": 35,
+    "questionText": "Haddeleme işlemi sonucunda ne elde edilir?",
+    "options": [
+      "Silindirik parçalar",
+      "İnceltilmiş levhalar",
+      "Parlatılmış yüzey",
+      "Sıcak şekillendirme"
+    ],
+    "correctAnswer": "İnceltilmiş levhalar"
+  },
+  {
+    "id": 36,
+    "questionText": "Kalite kontrol neden önemlidir?",
+    "options": [
+      "Maliyeti artırmak için",
+      "Üretimde hata payını azaltmak",
+      "Parlaklık sağlamak",
+      "Renk uyumu için"
+    ],
+    "correctAnswer": "Üretimde hata payını azaltmak"
+  },
+  {
+    "id": 37,
+    "questionText": "Aşağıdakilerden hangisi bir döküm yöntemidir?",
+    "options": [
+      "Kaynak",
+      "Kum kalıba döküm",
+      "Haddeleme",
+      "Taşlama"
+    ],
+    "correctAnswer": "Kum kalıba döküm"
+  },
+  {
+    "id": 38,
+    "questionText": "Hangisi bir kaynak türüdür?",
+    "options": [
+      "Tornalama",
+      "TIG Kaynağı",
+      "Tavlama",
+      "Frezeleme"
+    ],
+    "correctAnswer": "TIG Kaynağı"
+  },
+  {
+    "id": 39,
+    "questionText": "Talaş kaldırmayan işlemlerden biri aşağıdakilerden hangisidir?",
+    "options": [
+      "Ekstrüzyon",
+      "Frezeleme",
+      "Taşlama",
+      "Delme"
+    ],
+    "correctAnswer": "Ekstrüzyon"
+  },
+  {
+    "id": 40,
+    "questionText": "Takım tezgahlarından biri değildir:",
+    "options": [
+      "Torna",
+      "Freze",
+      "Kompresör",
+      "Taşlama makinesi"
+    ],
+    "correctAnswer": "Kompresör"
+  },
+  {
+    "id": 41,
+    "questionText": "EDM işlemi hangi koşulda kullanılır?",
+    "options": [
+      "Ahşap işleme",
+      "Sert metal işleme",
+      "Plastik kalıplama",
+      "Gaz şekil verme"
+    ],
+    "correctAnswer": "Sert metal işleme"
+  },
+  {
+    "id": 42,
+    "questionText": "Soğuk şekillendirme işlemi aşağıdakilerden hangisidir?",
+    "options": [
+      "Tavlama",
+      "Çekme",
+      "Menevişleme",
+      "Sinterleme"
+    ],
+    "correctAnswer": "Çekme"
+  },
+  {
+    "id": 43,
+    "questionText": "Aşağıdaki işlemlerden hangisi yüzey kalitesini artırır?",
+    "options": [
+      "Taşlama",
+      "Çekme",
+      "Su verme",
+      "Tavlama"
+    ],
+    "correctAnswer": "Taşlama"
+  },
+  {
+    "id": 44,
+    "questionText": "Delme işleminde hangi takım kullanılır?",
+    "options": [
+      "Testereler",
+      "Matkap",
+      "Torna ucu",
+      "Planya takımı"
+    ],
+    "correctAnswer": "Matkap"
+  },
+  {
+    "id": 45,
+    "questionText": "Kalite kontrolde hangi cihaz yüksek hassasiyetlidir?",
+    "options": [
+      "Şerit metre",
+      "Mikrometre",
+      "Cetvel",
+      "Mastar"
+    ],
+    "correctAnswer": "Mikrometre"
+  },
+  {
+    "id": 46,
+    "questionText": "Haddeleme işleminin sonucunda ne olur?",
+    "options": [
+      "Parça kalınlaşır",
+      "Parça incelir",
+      "Parça döner",
+      "Parça ısınır"
+    ],
+    "correctAnswer": "Parça incelir"
+  },
+  {
+    "id": 47,
+    "questionText": "Kalıp nedir?",
+    "options": [
+      "Elektrik kaynağı",
+      "Taşlama diski",
+      "Şekil verme aracı",
+      "Termik işlem cihazı"
+    ],
+    "correctAnswer": "Şekil verme aracı"
+  }
+]
+
 export const lessons: Lesson[] = [
   {
     id: "Açık Kaynak İşletim Sistemleri",
@@ -4425,5 +4955,12 @@ export const lessons: Lesson[] = [
     description: `${KalkinmaEkonomisi.length} soruluk tam tarama testi.`,
     accent: "emerald",
     questions: KalkinmaEkonomisi,
+  },
+  {
+    id: "İmalat Silah Sanayi",
+    title: "İmalat (silah sanayi)",
+    description: `${ImalatSilahSanayi.length} soruluk tam tarama testi.`,
+    accent: "amber",
+    questions: ImalatSilahSanayi,
   },
 ];
