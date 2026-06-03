@@ -3744,7 +3744,7 @@ const KalkinmaEkonomisi = [
       "Üretim kapasitesinde artış",
       "İşsizliğin artması",
     ],
-    correctAnswer: "Üretim yapısının değişmesi",
+    correctAnswer: "İşsizliğin artması",
   },
   {
     id: 28,
