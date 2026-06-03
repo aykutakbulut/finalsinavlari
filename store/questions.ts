@@ -3651,7 +3651,7 @@ const KalkinmaEkonomisi = [
       "İşsizlik artışı",
       "Eğitim düzeyinde artış",
     ],
-    correctAnswer: "GSYİH artışı",
+    correctAnswer: "Gelir dağılımında düzelme",
   },
   {
     id: 20,
