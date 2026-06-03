@@ -6278,6 +6278,408 @@ const ButunlesikPazarlama = [
 ];
  
 
+const MakroIktisat = [
+  // ----- I. Bölüm -----
+  {
+    id: 1,
+    questionText:
+      "Aşağıdakilerden hangisi GSYH hesaplama yöntemlerinden biri değildir?",
+    options: ["Üretim Yöntemi", "Gelir Yöntemi", "Servet", "Harcama Yöntemi"],
+    correctAnswer: "Servet",
+  },
+  {
+    id: 2,
+    questionText:
+      "Üretim faktörlerinin (emek, sermaye vb.) milli gelirden aldıkları payları gösteren gelir dağılımı türü aşağıdakilerden hangisidir?",
+    options: ["Kişisel", "Bölgesel", "Fonksiyonel", "Sektörel"],
+    correctAnswer: "Fonksiyonel",
+  },
+  {
+    id: 3,
+    questionText:
+      "Gini katsayısı aşağıdaki eğrilerden hangisi yardımıyla hesaplanır?",
+    options: ["Phillips Eğrisi", "Laffer Eğrisi", "IS Eğrisi", "Lorenz"],
+    correctAnswer: "Lorenz",
+  },
+  {
+    id: 4,
+    questionText:
+      "Gini katsayıları sırasıyla X: 0.45, Y: 0.35, Z: 0.28, W: 0.50 olan ülkelerden gelir dağılımı en adil olan ülke aşağıdakilerden hangisidir?",
+    options: ["X", "Y", "Z", "W"],
+    correctAnswer: "Z",
+  },
+  {
+    id: 5,
+    questionText:
+      "Bir ekonomide 2024 (baz yıl) A malı fiyatı = 20 TL, B malı fiyatı = 10 TL'dir. 2025 yılında A malı fiyatı = 20 TL ve miktarı = 10 adet; B malı fiyatı = 20 TL ve miktarı = 30 adettir. Buna göre 2025 yılı nominal GSYH'si kaçtır?",
+    options: ["500", "600", "700", "800"],
+    correctAnswer: "800",
+  },
+  {
+    id: 6,
+    questionText:
+      "Bir ekonomide 2024 (baz yıl) A malı fiyatı = 20 TL, B malı fiyatı = 10 TL'dir. 2025 yılında A malı fiyatı = 20 TL ve miktarı = 10 adet; B malı fiyatı = 20 TL ve miktarı = 30 adettir. Baz yılı 2024 kabul edildiğinde, 2025 yılı reel GSYH'si kaçtır?",
+    options: ["400", "500", "600", "700"],
+    correctAnswer: "500",
+  },
+  {
+    id: 7,
+    questionText:
+      "Ekonomik konjonktürün, üretim ve istihdamın en alt düzeye indiği ve daralmanın en şiddetli yaşandığı evresine ne ad verilir?",
+    options: ["Depresyon", "Canlanma", "Tepe", "Genişleme"],
+    correctAnswer: "Depresyon",
+  },
+  {
+    id: 8,
+    questionText:
+      "İşçilerin iş değiştirmeleri veya yeni mezunların iş aramaları nedeniyle ortaya çıkan geçici ve arızi işsizlik türü aşağıdakilerden hangisidir?",
+    options: ["Yapısal", "Konjonktürel", "Gizli", "Friksiyonel"],
+    correctAnswer: "Friksiyonel",
+  },
+  {
+    id: 9,
+    questionText:
+      "Doğal işsizlik oranı aşağıdakilerden hangilerinin toplamından oluşur?",
+    options: [
+      "Yapısal + Friksiyonel",
+      "Yapısal + Konjonktürel",
+      "Friksiyonel + Konjonktürel",
+      "Gizli + Mevsimlik",
+    ],
+    correctAnswer: "Yapısal + Friksiyonel",
+  },
+  {
+    id: 10,
+    questionText:
+      "Bir ekonomide sivil nüfus 100.000, kurumsal olmayan sivil nüfus 80.000, işgücü 40.000 ve işsiz sayısı 5.000 ise, işsizlik oranı yüzde kaçtır?",
+    options: ["%5", "%10", "%12,5", "%15"],
+    correctAnswer: "%12,5",
+  },
+  {
+    id: 11,
+    questionText:
+      "Bir ekonomideki büyüme hızı ile işsizlik oranı arasındaki ters yönlü ilişkiyi açıklayan iktisadi kural aşağıdakilerden hangisidir?",
+    options: ["Okun Kanunu", "Say Kanunu", "Gresham Kanunu", "Lucas Kritiği"],
+    correctAnswer: "Okun Kanunu",
+  },
+  {
+    id: 12,
+    questionText:
+      "Satıcıların daha fazla kâr elde etme güdüsüyle fiyatları artırmaları sonucu ortaya çıkan enflasyon türü aşağıdakilerden hangisidir?",
+    options: ["Talep", "Maliyet", "Kar", "Yapısal"],
+    correctAnswer: "Kar",
+  },
+  {
+    id: 13,
+    questionText:
+      "Hükümetin fiyat kontrolü uygulamadığı, fiyatların serbest piyasada belirlendiği enflasyon türüne ne ad verilir?",
+    options: ["Bastırılmış", "Açık", "Kronik", "Hiperenflasyon"],
+    correctAnswer: "Açık",
+  },
+  {
+    id: 14,
+    questionText:
+      "Deflasyonist süreçten çıkmak amacıyla, ekonomiyi canlandırmak için fiyatlar genel düzeyinin bilinçli olarak artırılması politikasına ne ad verilir?",
+    options: ["Devalüasyon", "Stagnasyon", "Reflasyon", "Stagflasyon"],
+    correctAnswer: "Reflasyon",
+  },
+  {
+    id: 15,
+    questionText:
+      "Enflasyon oranı ile işsizlik oranı arasındaki ters yönlü kısa dönemli ilişkiyi gösteren eğri aşağıdakilerden hangisidir?",
+    options: ["Phillips Eğrisi", "Lorenz Eğrisi", "Laffer Eğrisi", "IS Eğrisi"],
+    correctAnswer: "Phillips Eğrisi",
+  },
+  {
+    id: 16,
+    questionText:
+      "Bir ekonomideki sefalet endeksi (misery index) aşağıdakilerden hangisinin toplamıyla hesaplanır?",
+    options: [
+      "Büyüme Oranı + Enflasyon Oranı",
+      "İşsizlik Oranı + Faiz Oranı",
+      "Bütçe Açığı + Dış Ticaret Açığı",
+      "Enflasyon Oranı + İşsizlik Oranı",
+    ],
+    correctAnswer: "Enflasyon Oranı + İşsizlik Oranı",
+  },
+  {
+    id: 17,
+    questionText:
+      "Bir ekonomide bütçe açığı ile dış ticaret açığının aynı anda gerçekleşmesi durumuna ne ad verilir?",
+    options: [
+      "Likidite Tuzağı",
+      "Bütçe açığı ve dış ticaret açığının aynı anda gerçekleşmesi (İkiz Açık)",
+      "Yapısal Açık",
+      "Bütçe İllüzyonu",
+    ],
+    correctAnswer:
+      "Bütçe açığı ve dış ticaret açığının aynı anda gerçekleşmesi (İkiz Açık)",
+  },
+ 
+  // ----- II. Bölüm -----
+  {
+    id: 18,
+    questionText:
+      "Aşağıdakilerden hangisi milli gelir modellerinde otonom harcamaların bileşenlerinden biri olup faiz oranına duyarlıdır?",
+    options: [
+      "Kamu Harcamaları",
+      "Yatırım Harcamaları",
+      "Tüketim Harcamaları",
+      "İhracat",
+    ],
+    correctAnswer: "Yatırım Harcamaları",
+  },
+  {
+    id: 19,
+    questionText:
+      "Gelirdeki bir birimlik değişimin tüketim harcamalarında meydana getirdiği değişimi gösteren oran aşağıdakilerden hangisidir?",
+    options: [
+      "Ortalama Tüketim Eğilimi",
+      "Marjinal Tasarruf Eğilimi",
+      "Marjinal Tüketim Eğilimi",
+      "Ortalama Tasarruf Eğilimi",
+    ],
+    correctAnswer: "Marjinal Tüketim Eğilimi",
+  },
+  {
+    id: 20,
+    questionText:
+      "Bir Keynesyen tüketim fonksiyonu C = 100 + 0.4Yd şeklinde ise, bu ekonomiye ait tasarruf fonksiyonu (S) aşağıdakilerden hangisidir?",
+    options: [
+      "S = 100 - 0.6Yd",
+      "S = -100 + 0.4Yd",
+      "S = -100 + 0.6Yd",
+      "S = 100 + 0.6Yd",
+    ],
+    correctAnswer: "S = -100 + 0.6Yd",
+  },
+  {
+    id: 21,
+    questionText:
+      "Marjinal tüketim eğilimi (MPC) ile marjinal tasarruf eğiliminin (MPS) toplamı kaça eşittir?",
+    options: ["0", "1", "0.5", "Sonsuz"],
+    correctAnswer: "1",
+  },
+  {
+    id: 22,
+    questionText:
+      "Bir ekonomide marjinal tasarruf eğilimi (MPS) 0.2 ise, marjinal tüketim eğilimi (MPC) kaçtır?",
+    options: ["0.2", "0.5", "0.6", "0.8"],
+    correctAnswer: "0.8",
+  },
+  {
+    id: 23,
+    questionText:
+      "Bir ekonomide yatırımlardaki 8.000 birimlik artış milli gelirde 10.000 birimlik artışa yol açıyorsa, yatırımların gelire oranını ifade eden ΔI / ΔY katsayısı kaçtır?",
+    options: ["0.2", "0.4", "0.6", "0.8"],
+    correctAnswer: "0.8",
+  },
+  {
+    id: 24,
+    questionText:
+      "Yatırımların faize tamamen duyarsız olduğu durumda, yatırım eğrisinin matematiksel eğimi kaçtır?",
+    options: ["Sonsuz", "0", "1", "-1"],
+    correctAnswer: "Sonsuz",
+  },
+  {
+    id: 25,
+    questionText:
+      "Sabit kur rejiminde hükümet kararı ile yerli paranın dış değerinin düşürülmesine ne ad verilir?",
+    options: ["Revalüasyon", "Enflasyon", "Deflasyon", "Devalüasyon"],
+    correctAnswer: "Devalüasyon",
+  },
+  {
+    id: 26,
+    questionText:
+      "Sabit kur rejiminde hükümet kararı ile yerli paranın dış değerinin artırılmasına ne ad verilir?",
+    options: ["Revalüasyon", "Devalüasyon", "Stagnasyon", "Amortisman"],
+    correctAnswer: "Revalüasyon",
+  },
+  {
+    id: 27,
+    questionText:
+      "Hükümetlerin devalüasyon yapmasının temel amacı aşağıdakilerden hangisidir?",
+    options: [
+      "Dış ticaret açığını kapatmak",
+      "İthalatı artırmak",
+      "Enflasyonu düşürmek",
+      "Faizleri indirmek",
+    ],
+    correctAnswer: "Dış ticaret açığını kapatmak",
+  },
+  {
+    id: 28,
+    questionText:
+      "Merkez bankasının resmi bir müdahale sınırı ilan etmeden, kuru kontrol altında tutmak amacıyla döviz piyasasına zaman zaman müdahale ettiği döviz kuru rejimine ne ad verilir?",
+    options: [
+      "Sabit Kur",
+      "Serbest Dalgalı Kur",
+      "Kirli Dalgalanma",
+      "Ayarlanabilir Sabit Kur",
+    ],
+    correctAnswer: "Kirli Dalgalanma",
+  },
+ 
+  // ----- IV. Bölüm -----
+  {
+    id: 29,
+    questionText:
+      "Aşağıdakilerden hangisi paranın temel fonksiyonel özelliklerinden biri değildir?",
+    options: [
+      "Değişim aracı olması",
+      "Değer biriktirme aracı olması",
+      "Sürdürülebilirlik",
+      "Hesap birimi olması",
+    ],
+    correctAnswer: "Sürdürülebilirlik",
+  },
+  {
+    id: 30,
+    questionText:
+      "\"Kötü para iyi parayı kovar\" şeklinde ifade edilen iktisadi kanun aşağıdakilerden hangisidir?",
+    options: ["Say Kanunu", "Okun Kanunu", "Gibson Paradoksu", "Gresham Kanunu"],
+    correctAnswer: "Gresham Kanunu",
+  },
+  {
+    id: 31,
+    questionText:
+      "Arkasında kıymetli maden desteği bulunmayan, devletin yasal gücüne ve ilanına dayanan paraya ne ad verilir?",
+    options: ["Temsili Para", "İtibari Para", "Mal Para", "Kaydi Para"],
+    correctAnswer: "İtibari Para",
+  },
+  {
+    id: 32,
+    questionText:
+      "Ticari bankaların kredi açma işlemleri sonucunda mevduat sistemi aracılığıyla yarattıkları paraya ne ad verilir?",
+    options: ["Kaydi Para", "İtibari Para", "Temsili Para", "Emisyon"],
+    correctAnswer: "Kaydi Para",
+  },
+  {
+    id: 33,
+    questionText:
+      "Yerleşiklerin ulusal para yerine yabancı para birimlerini kullanmaya ve tasarruflarını bu döviz cinsinden tutmaya başlaması durumuna ne ad verilir?",
+    options: ["Seigniorage", "Dolarizasyon", "Monetizasyon", "Reflasyon"],
+    correctAnswer: "Dolarizasyon",
+  },
+  {
+    id: 34,
+    questionText:
+      "Kişilerin ve firmaların likiditeyi (nakit parayı) ellerinde tutma isteğine ne ad verilir?",
+    options: ["Para Talebi", "Para Arzı", "Çarpan", "Rezerv"],
+    correctAnswer: "Para Talebi",
+  },
+  {
+    id: 35,
+    questionText:
+      "Keynesyen yaklaşıma göre ihtiyat amacıyla para talebi aşağıdakilerden hangisine bağlıdır?",
+    options: ["Faiz Oranı", "Enflasyon", "Gelir", "Servet"],
+    correctAnswer: "Gelir",
+  },
+  {
+    id: 36,
+    questionText:
+      "Keynesyen yaklaşıma göre spekülasyon amacıyla para talebi aşağıdakilerden hangisine bağlıdır?",
+    options: ["Faiz Oranı", "Gelir", "Teknolojik Gelişmeler", "Vergi Oranları"],
+    correctAnswer: "Faiz Oranı",
+  },
+  {
+    id: 37,
+    questionText:
+      "LM eğrisinin dikleşmesine (eğiminin artmasına) neden olan durum aşağıdakilerden hangisidir?",
+    options: [
+      "Para talebinin gelire duyarlılığının düşmesi",
+      "Para talebinin faize duyarlılığının artması",
+      "Para talebinin gelire duyarlılığı ↑ ve para talebinin faize duyarlılığı ↓",
+      "Para arzının artması",
+    ],
+    correctAnswer:
+      "Para talebinin gelire duyarlılığı ↑ ve para talebinin faize duyarlılığı ↓",
+  },
+  {
+    id: 38,
+    questionText:
+      "Likidite Tercihi Teorisi'ni (Para Talebi Teorisi) ortaya koyan iktisatçı aşağıdakilerden hangisidir?",
+    options: ["Friedman", "Fisher", "Keynes", "Marshall"],
+    correctAnswer: "Keynes",
+  },
+  {
+    id: 39,
+    questionText:
+      "Para piyasasında dengeyi sağlayan farklı faiz ve gelir bileşimlerini gösteren eğri aşağıdakilerden hangisidir?",
+    options: ["IS Eğrisi", "BP Eğrisi", "AD Eğrisi", "LM Eğrisi"],
+    correctAnswer: "LM Eğrisi",
+  },
+ 
+  // ----- V. Bölüm -----
+  {
+    id: 40,
+    questionText:
+      "Mal piyasasında dengeyi sağlayan farklı faiz ve gelir bileşimlerini gösteren eğri aşağıdakilerden hangisidir?",
+    options: ["LM Eğrisi", "IS Eğrisi", "AE Eğrisi", "AS Eğrisi"],
+    correctAnswer: "IS Eğrisi",
+  },
+ 
+  // ----- VI. Bölüm -----
+  {
+    id: 41,
+    questionText:
+      "Mal ve para piyasalarında eşanlı denge aşağıdaki eğrilerden hangisi ile gösterilir?",
+    options: [
+      "Talep Eğrisi-Arz Eğrisi",
+      "IS Eğrisi-LM Eğrisi",
+      "AD Eğrisi-AS Eğrisi",
+      "Phillips Eğrisi-Lorenz Eğrisi",
+    ],
+    correctAnswer: "IS Eğrisi-LM Eğrisi",
+  },
+  {
+    id: 42,
+    questionText: "Faizlerin ineceği minimum seviyeye ne ad verilmektedir?",
+    options: [
+      "Likidite Tuzağı",
+      "Tasarruf Paradoksu",
+      "Tüketim Bilmecesi",
+      "Terkip Hatası",
+    ],
+    correctAnswer: "Likidite Tuzağı",
+  },
+ 
+  // ----- VII. Bölüm -----
+  {
+    id: 43,
+    questionText:
+      "Dış dengeyi sağlayan farklı faiz oranları ve gelir bileşimlerini gösteren eğriye ne ad verilmektedir?",
+    options: ["IS Eğrisi", "LM Eğrisi", "AD Eğrisi", "BP Eğrisi"],
+    correctAnswer: "BP Eğrisi",
+  },
+  {
+    id: 44,
+    questionText:
+      "Bir ülkenin diğer ülkeler ile gerçekleştiği ekonomik işlemleri sistematik olarak kayıt altına alan istatistiki rapor aşağıdakilerden hangisidir?",
+    options: [
+      "Ödemeler Bilançosu",
+      "Gelir-Gider Tablosu",
+      "Hesap Cetveli",
+      "Arz-Talep Tablosu",
+    ],
+    correctAnswer: "Ödemeler Bilançosu",
+  },
+ 
+  // ----- IX. Bölüm -----
+  {
+    id: 45,
+    questionText:
+      "Orijinal Phillips Eğrisi aşağıdakilerden hangi ikisi arasındaki ilişkiyi göstermektedir?",
+    options: [
+      "Nominal Ücretlerdeki Değişim Oranı ve İşsizlik",
+      "Enflasyon ve Ekonomik Büyüme",
+      "Ekonomik Büyüme ve İşsizlik",
+      "Dış Ticaret Açığı ve Döviz Kuru",
+    ],
+    correctAnswer: "Nominal Ücretlerdeki Değişim Oranı ve İşsizlik",
+  },
+];
+
 export const lessons: Lesson[] = [
   {
     id: "Kalkinma Ekonomisi",
@@ -6327,5 +6729,12 @@ export const lessons: Lesson[] = [
     description: `${ButunlesikPazarlama.length} soruluk tam tarama testi.`,
     accent: "fuchsia",
     questions: ButunlesikPazarlama,
+  },
+  {
+    id: "Makro İktisat",
+    title: "Makro İktisat",
+    description: `${MakroIktisat.length} soruluk tam tarama testi.`,
+    accent: "emerald",
+    questions: MakroIktisat,
   },
 ];
