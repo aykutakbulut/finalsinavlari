@@ -4922,7 +4922,7 @@ const ImalatSilahSanayi = [
 export const lessons: Lesson[] = [
   {
     id: "Kalkinma Ekonomisi",
-    title: "Kalkınma Ekonomisi (KİTABA GÖRE GÜNCELLENDİ!)",
+    title: "Kalkınma Ekonomisi (KİTABA GÖRE GÜNCELLENDİ! 2-3 tane yanlış vardı)",
     description: `${KalkinmaEkonomisi.length} soruluk tam tarama testi.`,
     accent: "emerald",
     questions: KalkinmaEkonomisi,
