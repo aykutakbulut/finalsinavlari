@@ -4919,6 +4919,727 @@ const ImalatSilahSanayi = [
   },
 ];
 
+const VeriMadenciligi = [
+  {
+    id: 1,
+    questionText: "Harf, rakam ya da çeşitli sembol ve işaretler ile temsil edilen ham gözlemler, işlenmemiş gerçekler ya da izlenimler hangi kavramın tanımıdır?",
+    options: [
+      "Veri Madenciliği",
+      "Veri Tabanı",
+      "Makine Öğrenimi",
+      "Veri Yönetimi",
+      "Veri"
+    ],
+    correctAnswer: "Veri"
+  },
+  {
+    id: 2,
+    questionText: "Veri madenciliğinde verilerin ilişkilendirilmiş, düzenlenmiş, anlamlandırılmış ve işlenmiş haline verilen ad nedir?",
+    options: [
+      "Veri",
+      "Bilgi",
+      "Enformasyon",
+      "Sınıflandırma",
+      "Bilgelik"
+    ],
+    correctAnswer: "Enformasyon"
+  },
+  {
+    id: 3,
+    questionText: "Aşağıdakilerden hangisi veri madenciliğinin temel kavramlarından değildir?",
+    options: [
+      "Teknoloji",
+      "Enformasyon",
+      "Veri",
+      "Bilgelik",
+      "Bilgi"
+    ],
+    correctAnswer: "Teknoloji"
+  },
+  {
+    id: 4,
+    questionText: "Uzun araştırmalar sonucunda bilgi keşfi yaptığımızı varsayalım. Bulduğumuz bilginin aşağıdaki özelliklerden hangisine sahip olması gerekmez?",
+    options: [
+      "Anlaşılabilir bir bilgi olmalıdır",
+      "Önemli bir bilgi olmalıdır",
+      "Gizli bir bilgi olmalıdır",
+      "Yararlı bir bilgi olmalıdır",
+      "Önceden bilinmeyen bir bilgi olmalıdır"
+    ],
+    correctAnswer: "Anlaşılabilir bir bilgi olmalıdır"
+  },
+  {
+    id: 5,
+    questionText: "Aşağıdakilerden hangisi veri madenciliği çalışmalarından biri değildir?",
+    options: [
+      "Kümeleme",
+      "Veri Bulma",
+      "İlişki Kurma",
+      "Veri Özetleme",
+      "Regresyon"
+    ],
+    correctAnswer: "Veri Bulma"
+  },
+  {
+    id: 6,
+    questionText: "İşletmelere ait veritabanlarının, belirli bir amaca göre konu odaklı olarak düzenlenmiş, veri madenciliğinde doğrudan kullanılabilir duruma getirilmiş hâli aşağıdakilerden hangisidir?",
+    options: [
+      "OLAP",
+      "Veri Deposu",
+      "Veri Merkezi",
+      "Veri Madenciliği",
+      "Veri Ambarı"
+    ],
+    correctAnswer: "Veri Ambarı"
+  },
+  {
+    id: 7,
+    questionText: "İşletmelerde iç veri kaynakları ile dış veri kaynaklarının birleştirilmesi ve düzenlenmesi ile oluşturulmuş, üzerinde veri madenciliği işlemlerinin gerçekleştirileceği veriyi sağlayan geniş ve özel veritabanlarına ne denir?",
+    options: [
+      "Veri Ambarı",
+      "İç Veri",
+      "Üst Veri",
+      "Veri Deposu",
+      "İç Veri Kaynakları"
+    ],
+    correctAnswer: "Veri Ambarı"
+  },
+  {
+    id: 8,
+    questionText: "Veri ambarına aktarılan veriler bir daha değiştirilmeyecek, sadece erişimin ve yeni veri yüklenmesinin mümkün olacağı verilere ne denir?",
+    options: [
+      "Ham veri",
+      "Hareketli olmayan veriler",
+      "Farklı tipteki veri",
+      "Eksik veri",
+      "Dinamik veri"
+    ],
+    correctAnswer: "Hareketli olmayan veriler"
+  },
+  {
+    id: 9,
+    questionText: "Aşağıdakilerden hangisinde \"Data Mart\"ı ifade eden bir tanım vardır?",
+    options: [
+      "Veri kaynaklarının birleştirilmesiyle başlar",
+      "Birbiriyle ilişkili bilgilerin depolandığı alandır",
+      "İlişkili verilerin sorgulandığı ve analizlerin yapılabildiği bir depodur",
+      "Veri ambarlarının alt kümeleridir",
+      "Farklı veritabanları arasında arabulucu katmandır"
+    ],
+    correctAnswer: "Veri ambarlarının alt kümeleridir"
+  },
+  {
+    id: 10,
+    questionText: "Veri pazarlarının iş yükünü azaltmadaki görevi nedir?",
+    options: [
+      "Veriyi kopyalayıp karar verme işlemi için saklar",
+      "Veri ambarının tamamına bakış sağlar",
+      "Veri tabanının küçük bir kopyasıdır",
+      "Farklı iş birimlerine uygun veri sunar",
+      "İlişkili verilerin sorgulanıp analizlerinin yapıldığı depo"
+    ],
+    correctAnswer: "Farklı iş birimlerine uygun veri sunar"
+  },
+  {
+    id: 11,
+    questionText: "İşletmelerin stratejik kararlarında destek olacak yararlı bilgiler sunan analitik işleme sistemi aşağıdakilerden hangisidir?",
+    options: [
+      "Veri Deposu",
+      "Çevrimiçi Analitik İşleme",
+      "Meta Veri",
+      "Veri Ambarı",
+      "Bilgi İşlem"
+    ],
+    correctAnswer: "Çevrimiçi Analitik İşleme"
+  },
+  {
+    id: 12,
+    questionText: "Çevrimiçi Analitik İşleme olarak adlandırılan sistem aşağıdakilerden hangisidir?",
+    options: [
+      "OLAP",
+      "Veri Deposu",
+      "Veri Ambarı",
+      "NoSQL Veritabanı",
+      "Veri Madenciliği"
+    ],
+    correctAnswer: "OLAP"
+  },
+  {
+    id: 13,
+    questionText: "Aşağıdakilerden hangisi bilgi keşfinin aşamalarından biri değildir?",
+    options: [
+      "Veri bütünleştirme",
+      "Veri madenciliği",
+      "Veri savunması",
+      "Bilgi sunumu",
+      "Veri dönüşümü"
+    ],
+    correctAnswer: "Veri savunması"
+  },
+  {
+    id: 14,
+    questionText: "\"Verilerdeki örüntülerin belirlenmesi için veri madenciliği yöntemlerinin uygulanması\" açıklaması hangi aşamaya aittir?",
+    options: [
+      "Veri madenciliği",
+      "Veri temizleme",
+      "Veri bütünleştirme",
+      "Örüntü değerlendirme",
+      "Veri dönüşümü"
+    ],
+    correctAnswer: "Veri madenciliği"
+  },
+  {
+    id: 15,
+    questionText: "Veri tabanlarında bilgi keşfi adımlarından örneklem kümesi elde edildikten sonra hatalı kayıtların çıkarıldığı ve eksik değerlerin değiştirildiği aşama hangisidir?",
+    options: [
+      "Veri Seçimi",
+      "Veri Madenciliği",
+      "Yorumlama",
+      "Veri Temizleme ve Ön İşleme",
+      "Veri Hazırlama"
+    ],
+    correctAnswer: "Veri Temizleme ve Ön İşleme"
+  },
+  {
+    id: 16,
+    questionText: "Aşağıdakilerden hangisi Veri Tabanlarında Bilgi Keşfi sürecinin ilk iki aşamasıdır?",
+    options: [
+      "Veriler Üzerinde Ön İşlemlerin Yapılması - Modelin İzlenmesi",
+      "Amacın Tanımlanması - Veriler Üzerinde Ön İşlemlerin Yapılması",
+      "Modelin İzlenmesi - Modelin Kullanılması ve Yorumlanması",
+      "Modelin Kullanılması ve Yorumlanması - Modelin Kurulması",
+      "Amacın Tanımlanması - Modelin İzlenmesi"
+    ],
+    correctAnswer: "Amacın Tanımlanması - Veriler Üzerinde Ön İşlemlerin Yapılması"
+  },
+  {
+    id: 17,
+    questionText: "Aşağıdakilerden hangisi veri tabanlarında bilgi keşif sürecinde izlenmesi gereken temel aşamalardan değildir?",
+    options: [
+      "Amacın Tanımlanması",
+      "Veriler Üzerinde Ön İşlemlerin Yapılması",
+      "Modelin Kullanılması ve Yorumlanması",
+      "Modelin İzlenmesi",
+      "Modelin Taranması"
+    ],
+    correctAnswer: "Modelin Taranması"
+  },
+  {
+    id: 18,
+    questionText: "Veritabanlarında bilgi keşfi sürecinin adımları hangi sırada verilmiştir? I) Amacın tanımlanması II) Modelin izlenmesi III) Modelin kullanılması ve yorumlanması IV) Veriler üzerinde ön işlemlerin yapılması V) Modelin kurulması ve değerlendirilmesi",
+    options: [
+      "I-III-V-II-IV",
+      "I-IV-V-III-11",
+      "V-I-III-IV-II",
+      "I-IV-III-II-V",
+      "V-IV-I-II-III"
+    ],
+    correctAnswer: "I-IV-V-III-11"
+  },
+  {
+    id: 19,
+    questionText: "Aşağıdakilerden hangisi veri ön işleme aşamalarından değildir?",
+    options: [
+      "Veri temizleme",
+      "Veri birleştirme",
+      "Veri dönüşümü",
+      "Veri azaltımı",
+      "Veri iletimi"
+    ],
+    correctAnswer: "Veri iletimi"
+  },
+  {
+    id: 20,
+    questionText: "Veri hazırlama sürecinde aşağıdakilerden hangisi yoktur?",
+    options: [
+      "Veri Temizleme",
+      "Veri Dönüştürme",
+      "Veri Bölme",
+      "Veri İndirgeme",
+      "Veri Birleştirme"
+    ],
+    correctAnswer: "Veri Bölme"
+  },
+  {
+    id: 21,
+    questionText: "Veri hazırlama süreçlerinden hangisi verideki tutarsızlıkların giderilmesi ve verideki gürültünün temizlenmesi için uygulanır?",
+    options: [
+      "Veri Dönüştürme",
+      "Veri Birleştirme",
+      "Veri Temizleme",
+      "Veri İndirgeme",
+      "Veri Denetimi"
+    ],
+    correctAnswer: "Veri Temizleme"
+  },
+  {
+    id: 22,
+    questionText: "Veri bütünleştirme hangi amaçla yapılır?",
+    options: [
+      "Birçok veri kaynağını birleştirebilmek",
+      "Yapılacak analiz ile ilgili olan verileri belirlemek",
+      "Elde edilen bilgilerin kullanıcılara sunumu",
+      "İlginç örüntüleri bulmak ve değerlendirmek",
+      "Değişen veya eklenen verileri kolayca kullanabilmek"
+    ],
+    correctAnswer: "Birçok veri kaynağını birleştirebilmek"
+  },
+  {
+    id: 23,
+    questionText: "Aşağıdakilerden hangisi veri birleştirme aşamasında karşılaşılabilecek uyumsuzluklardan biri değildir?",
+    options: [
+      "Farklı zamanlara ait veriler",
+      "Farklı ölçü birimleri",
+      "Güncelleme hataları",
+      "Aynı formatta veriler",
+      "Kodlama farklılıkları"
+    ],
+    correctAnswer: "Aynı formatta veriler"
+  },
+  {
+    id: 24,
+    questionText: "Aşağıdakilerden hangisi istatistiksel veri türü değildir?",
+    options: [
+      "Nümerik Veriler",
+      "Nominal Veriler",
+      "Koordinat Veriler",
+      "Ordinal Veriler",
+      "Ratio Veriler"
+    ],
+    correctAnswer: "Koordinat Veriler"
+  },
+  {
+    id: 25,
+    questionText: "Eğitim düzeyi, sosyoekonomik ölçek skorları gibi örnekler hangi istatistiksel veri türüne aittir?",
+    options: [
+      "Ordinal Veriler",
+      "Ratio Veriler",
+      "Sürekli Nümerik Veriler",
+      "Nümerik Veriler",
+      "Nominal Veriler"
+    ],
+    correctAnswer: "Ordinal Veriler"
+  },
+  {
+    id: 26,
+    questionText: "Sıfır başlangıç noktası tüm ölçüm araçlarında aynı anlamı taşıyan değişken tipi hangisidir?",
+    options: [
+      "İsimsel değişken",
+      "Oranlı ölçülendirilmiş değişken",
+      "İkili değişken",
+      "Sıra gösteren değişken",
+      "Tam sayılı değişken"
+    ],
+    correctAnswer: "Oranlı ölçülendirilmiş değişken"
+  },
+  {
+    id: 27,
+    questionText: "Temel değişken veri tiplerinden hangisi 0 ve 1, doğru ve yanlış, pozitif ve negatif şeklinde olan veri tipidir?",
+    options: [
+      "İkili veri",
+      "Sıra gösteren değişken",
+      "Tam sayılı değişken",
+      "Aralıklı değişken",
+      "Oranlı değişken"
+    ],
+    correctAnswer: "İkili veri"
+  },
+  {
+    id: 28,
+    questionText: "Bir anket yapılmış ve katılımcılara \"Sosyal medya kullanıyor musunuz?\" sorusu sorulmuştur. \"Evet/Hayır\" cevabı alınmıştır. Bu hangi veri türüne örnektir?",
+    options: [
+      "Nümerik veriler",
+      "Ordinal veriler",
+      "Aralıklı nümerik veriler",
+      "Binary veriler",
+      "Ratio veriler"
+    ],
+    correctAnswer: "Binary veriler"
+  },
+  {
+    id: 29,
+    questionText: "\"Nümerik verilere benzer. 100 santigrat derece 50 santigrat derecenin 2 katı denilemez ama derece Kelvin'e çevrilirse oran verilebilir.\" Tanımı verilen veri türü nedir?",
+    options: [
+      "Ratio veriler",
+      "Ordinal veriler",
+      "Nümerik veriler",
+      "Binary veriler",
+      "Nominal veriler"
+    ],
+    correctAnswer: "Ratio veriler"
+  },
+  {
+    id: 30,
+    questionText: "Aşağıdakilerden hangisi temel değişken tiplerinden değildir?",
+    options: [
+      "Tam sayılı değişkenler",
+      "Oranlı ölçümlendirilmiş değişkenler",
+      "Aralıklı ölçümlendirilmiş değişkenler",
+      "İkili değişkenler",
+      "Sıralı değişkenler"
+    ],
+    correctAnswer: "Sıralı değişkenler"
+  },
+  {
+    id: 31,
+    questionText: "Veritabanlarında doğru olmayacak kadar uç değerler, aykırı değer ya da sıra dışı değerler genel olarak ne olarak tanımlanır?",
+    options: [
+      "Kayıp Veri",
+      "Denetimsiz Veri",
+      "OLAP",
+      "Gürültülü Veri",
+      "Karmaşık Veri"
+    ],
+    correctAnswer: "Gürültülü Veri"
+  },
+  {
+    id: 32,
+    questionText: "Aşağıdakilerden hangisi veri madenciliği tekniği ile analiz edilmek istenilen verilerdeki beklenen değerlerden sapan aykırı değerler veya hatalardır?",
+    options: [
+      "Eksik Veri",
+      "Tutarsız Veri",
+      "Gürültülü Veri",
+      "Hatalı Veri",
+      "Yanlış Veri"
+    ],
+    correctAnswer: "Gürültülü Veri"
+  },
+  {
+    id: 33,
+    questionText: "Gürültülü veri nasıl düzeltilir?",
+    options: [
+      "Veri setindeki gürültülü örneklere filtreleme işlemi yapılır",
+      "Gürültülü veri analiz için önemlidir, düzeltme yapılmaz",
+      "Veri setinin %100 doğru olması için gerekli değildir",
+      "Gürültülü verileri görmezden gelmek en iyi yaklaşımdır",
+      "Model eğitimi sırasında otomatik olarak düzeltilir"
+    ],
+    correctAnswer: "Veri setindeki gürültülü örneklere filtreleme işlemi yapılır"
+  },
+  {
+    id: 34,
+    questionText: "Aşağıdakilerden hangisi verinin gürültülü olma nedenlerinden biri değildir?",
+    options: [
+      "İnsan, yazılım ya da donanım problemleri",
+      "Veri toplandığı sırada bir nitelik değerinin elde edilememesi",
+      "Boyutu büyük olan veri setlerinin bulunması",
+      "Veri iletimi sırasında yaşanan problemler",
+      "Verinin farklı veri kaynaklarında tutulması"
+    ],
+    correctAnswer: "Boyutu büyük olan veri setlerinin bulunması"
+  },
+  {
+    id: 35,
+    questionText: "Aşağıda verilen ifadelerden hangisi eksik verinin tahmin edilmesi için kullanılan başlıca stratejilerden biri değildir?",
+    options: [
+      "Eksik verinin el ile doldurulması",
+      "Eksik verinin tamamlanmasında genel bir değişkenin kullanılması",
+      "Eksik verinin tamamlanmasında genel bir sabitin kullanılması",
+      "Eksik verinin kendi sınıfında yer alan değerlerin ortalaması ile tanımlanması",
+      "Eksik verinin tamamlanmasında en uygun değerin kullanılması"
+    ],
+    correctAnswer: "Eksik verinin tamamlanmasında genel bir değişkenin kullanılması"
+  },
+  {
+    id: 36,
+    questionText: "Eksik verilerin tamamlanması için hangi yöntem daha doğru sonuçlar verebilir?",
+    options: [
+      "Veri setinin ortalama değeriyle doldurma",
+      "En sık tekrar eden değerle doldurma",
+      "Benzer örneklerin ortalamasıyla doldurma",
+      "Veri setinin mod değeriyle doldurma",
+      "Veri setinin medyan değeriyle doldurma"
+    ],
+    correctAnswer: "Benzer örneklerin ortalamasıyla doldurma"
+  },
+  {
+    id: 37,
+    questionText: "Aşağıdakilerden hangisi eksik veri oluşmasına neden olmaz?",
+    options: [
+      "Diğer veri kayıtlarıyla tutarsızlığı nedeniyle silinmesi",
+      "Fazlasıyla veri kaydı ekleme",
+      "Yanlış anlama sonucu kaydedilmeme",
+      "Bazı nitelik değerlerinin hatalı olması dolayısıyla silinmesi",
+      "Veri girişi sırasında bazı nitelikleri önemsiz görme"
+    ],
+    correctAnswer: "Fazlasıyla veri kaydı ekleme"
+  },
+  {
+    id: 38,
+    questionText: "Veri dönüştürmede düşük düzeydeki verinin kavram hiyerarşisi kullanılarak daha yüksek seviyeye dönüştürülmesine ne ad verilmektedir?",
+    options: [
+      "Genelleme",
+      "Düzeltme",
+      "Özellik oluşturma",
+      "Bir araya getirme",
+      "Normalleştirme"
+    ],
+    correctAnswer: "Genelleme"
+  },
+  {
+    id: 39,
+    questionText: "\"Verilerin kendi içerisinde yeniden düzenlenmesi işlemidir.\" Tanımda verilerin düzenlenmesinde söz konusu olan işlem başlığı aşağıdakilerden hangisidir?",
+    options: [
+      "Verilerin Dönüştürülmesi",
+      "Verilerin Azaltılması",
+      "Verilerin Normalizasyonu",
+      "Verilerin Görselleştirilmesi",
+      "Modelin İzlenmesi"
+    ],
+    correctAnswer: "Verilerin Dönüştürülmesi"
+  },
+  {
+    id: 40,
+    questionText: "Veri dönüştürme sürecinde, veri değerlerinin 0 ile 1 arasında ölçeklenmesini sağlayan yöntem hangisidir?",
+    options: [
+      "Enk-Enb Normalleştirme",
+      "Z-Skor Normalleştirme",
+      "Ondalık Ölçekleme",
+      "Aralıklı Ölçümlendirilmiş Değişkenler",
+      "Tam Sayılı Değişkenler"
+    ],
+    correctAnswer: "Enk-Enb Normalleştirme"
+  },
+  {
+    id: 41,
+    questionText: "Veri madenciliği işlevlerinden veriyi önceden belirlenmiş olan sınıflardan birine dahil eden aşama aşağıdakilerden hangisidir?",
+    options: [
+      "Eğri Uydurma",
+      "Zaman Serileri İnceleme",
+      "İstisna Analizi",
+      "Sınıflandırma",
+      "Kümeleme"
+    ],
+    correctAnswer: "Sınıflandırma"
+  },
+  {
+    id: 42,
+    questionText: "Veri madenciliği işlevinde \"veriyi gerçel değerli bir fonksiyona dönüştürme\" İşlevi aşağıdakilerden hangisidir?",
+    options: [
+      "Sınıflandırma",
+      "Zaman Serileri İnceleme",
+      "İstisna Analizi",
+      "Özetleme",
+      "Eğri Uydurma"
+    ],
+    correctAnswer: "Eğri Uydurma"
+  },
+  {
+    id: 43,
+    questionText: "Veri bir fonksiyona uydurulur. Bir değişkenin değeri diğer bir değişken kullanılarak bulunabilir. Tanımı verilen ifade aşağıdakilerden hangisidir?",
+    options: [
+      "Veri Birleştirme",
+      "Gereksiz Veri",
+      "Veri Dönüşümü",
+      "Normalizasyon",
+      "Eğri Uydurma"
+    ],
+    correctAnswer: "Eğri Uydurma"
+  },
+  {
+    id: 44,
+    questionText: "Aşağıdakilerden hangisi veri madenciliği yöntemlerinden olan denetimli yöntemlerden biri değildir?",
+    options: [
+      "En yakın k komşuluk",
+      "Karar Ağaçları",
+      "Sinir Ağları",
+      "Birliktelik Kuralları",
+      "Aşamalı Kümeleme"
+    ],
+    correctAnswer: "Aşamalı Kümeleme"
+  },
+  {
+    id: 45,
+    questionText: "Aşağıdakilerden hangisi öngörü yöntemlerinden sınıflandırma türlerine örnek verilemez?",
+    options: [
+      "Karar ağaçları",
+      "Bayes sınıflandırma",
+      "En uzak komşu",
+      "Yapay sinir ağları",
+      "En yakın komşu"
+    ],
+    correctAnswer: "En uzak komşu"
+  },
+  {
+    id: 46,
+    questionText: "Aşağıdakilerden hangisi veri madenciliği yöntemlerinden olan öngörü yöntemlerinden biri değildir?",
+    options: [
+      "Karar Ağaçları",
+      "Yapay Sinir Ağları",
+      "Sıralı Dizi Analizi",
+      "En Yakın Komşu",
+      "Bayes Sınıflandırma"
+    ],
+    correctAnswer: "Sıralı Dizi Analizi"
+  },
+  {
+    id: 47,
+    questionText: "Aşağıdakilerden hangisi tanımlayıcı modellerden biri değildir?",
+    options: [
+      "Özetleme",
+      "Birliktelik Kuralları",
+      "Yapay Sinir Ağları",
+      "İstisna Analizi",
+      "Kümeleme"
+    ],
+    correctAnswer: "Yapay Sinir Ağları"
+  },
+  {
+    id: 48,
+    questionText: "Tanımlayıcı modeller, veri madenciliğinde hangi amaçla kullanılır?",
+    options: [
+      "Gelecekteki olayları tahmin etmek için",
+      "Veriler arasındaki ilişkileri tanımlamak ve özellikleri incelemek için",
+      "Müşteri memnuniyetini artırmak için",
+      "Rekabet avantajı sağlamak için",
+      "Pazar payını artırmak için"
+    ],
+    correctAnswer: "Veriler arasındaki ilişkileri tanımlamak ve özellikleri incelemek için"
+  },
+  {
+    id: 49,
+    questionText: "Verileri basit tanımları yapılmış alt gruplar içine yerleştirme işlemidir. Karakterizasyon olarak da adlandırılır. Bu tanımlayıcı modelin adı nedir?",
+    options: [
+      "Özetleme",
+      "Birliktelik Kuralları",
+      "Karar Destek Makineleri",
+      "Kümeleme",
+      "Sıra Örüntü Analizi"
+    ],
+    correctAnswer: "Özetleme"
+  },
+  {
+    id: 50,
+    questionText: "Aşağıdakilerden hangisi Betimsel ve Keşifsel Yöntemlerden değildir?",
+    options: [
+      "Hiyerarşik Kümeleme Analizi",
+      "K-Ortalamalar Kümeleme Analizi",
+      "Sınıflandırma Analizi",
+      "Birliktelik Kuralları",
+      "Kohonen Ağlar"
+    ],
+    correctAnswer: "Sınıflandırma Analizi"
+  },
+  {
+    id: 51,
+    questionText: "Veri madenciliğinde kullanılan kümeleme algoritması olan K-means, hangi temel prensibe dayanır?",
+    options: [
+      "Hiyerarşik kümeleme",
+      "Yoğunluk temelli kümeleme",
+      "Merkez tabanlı kümeleme",
+      "Doğrusal regresyon"
+    ],
+    correctAnswer: "Merkez tabanlı kümeleme"
+  },
+  {
+    id: 52,
+    questionText: "K-means algoritmasının seçilmesinde aşağıdaki özelliklerden hangisi etkili değildir?",
+    options: [
+      "Küme sayısının okunan bir parametre olması analizi dar hale getirmektedir",
+      "Algoritmanın uygulanması kolaydır ve hızlı çalışmaktadır",
+      "Değişik dağılımlarda başarılı sonuçlar alınabilmektedir",
+      "Kategorik verilerle çalışacak şekilde adapte edilebilmektedir",
+      "Kümeleme sonuçları grafik ve yazı/rakamlarla kolayca ifade edilebilir"
+    ],
+    correctAnswer: "Küme sayısının okunan bir parametre olması analizi dar hale getirmektedir"
+  },
+  {
+    id: 53,
+    questionText: "Karar ağaçları hakkında aşağıdaki ifadelerden hangisi doğrudur?",
+    options: [
+      "Karar ağaçları sadece sınıflandırma problemleri için kullanılır",
+      "Karar ağaçları regresyon problemleri için uygun değildir",
+      "Karar ağaçları, veri setindeki özellikleri ve hedef değişkeni kullanarak karar kuralları oluşturur",
+      "Karar ağaçları yalnızca küçük boyutlu veri setleri üzerinde etkili çalışır"
+    ],
+    correctAnswer: "Karar ağaçları, veri setindeki özellikleri ve hedef değişkeni kullanarak karar kuralları oluşturur"
+  },
+  {
+    id: 54,
+    questionText: "Hangisi karar ağaçları için doğru bir ifade değildir?",
+    options: [
+      "Karar ağaçları sayısal ve kategorik verilerle çalışabilir",
+      "Hem sınıflandırma hem de regresyon problemleri için kullanılabilir",
+      "Veri kümesindeki elemanları birleştirerek regresyon öğrenmesine katkı sağlar",
+      "Sınıflandırma aşamasında veri kümesini bölerek kararlar alır",
+      "Veri setinin boyutu eğitim süresini etkileyebilir"
+    ],
+    correctAnswer: "Veri kümesindeki elemanları birleştirerek regresyon öğrenmesine katkı sağlar"
+  },
+  {
+    id: 55,
+    questionText: "Aşağıdakilerden hangisi Apriori Algoritmasının tanımında geçer?",
+    options: [
+      "Örneklem kümesindeki gereksiz niteliklerdir",
+      "Program geliştirmeye yardımcı gösterim teknikleridir",
+      "Sıra dışı veri elemanlarını bulmak için kullanılır",
+      "Sık geçen örüntülerin yakalanmasında kullanılır",
+      "Kitle üyelerinin özelliklerinden biridir"
+    ],
+    correctAnswer: "Sık geçen örüntülerin yakalanmasında kullanılır"
+  },
+  {
+    id: 56,
+    questionText: "Bayes Teoremi ne demektir?",
+    options: [
+      "Alakalı verilerin saklandığı ortamdır",
+      "Bir veri grubunda bir özelliğin olasılığını tahmin etme yöntemidir",
+      "Benzer kayıtların gruplandırılmasını sağlayan tekniktir",
+      "Etkileşim içindeki bireylerden oluşan topluluktur",
+      "Bir şeyin olmasının matematiksel değeridir"
+    ],
+    correctAnswer: "Bir veri grubunda bir özelliğin olasılığını tahmin etme yöntemidir"
+  },
+  {
+    id: 57,
+    questionText: "Bir kümenin tanımlanması için başlangıçta evrenin elemanları hakkında bazı bilgilere gereksinim olduğu varsayımına dayanan yaklaşım aşağıdakilerden hangisidir?",
+    options: [
+      "Metadata",
+      "Naive Bayes",
+      "Hipotez",
+      "Parametre",
+      "Kaba Küme"
+    ],
+    correctAnswer: "Kaba Küme"
+  },
+  {
+    id: 58,
+    questionText: "Aşağıdaki algoritmalardan hangisi sınıflama algoritmasına ait değildir? I) Naive Bayes II) Karar Ağaçları III) Korelasyon Analizi IV) Regresyon Analizi V) Kaba Kümeler",
+    options: [
+      "Naive Bayes",
+      "Karar Ağaçları",
+      "Korelasyon Analizi",
+      "Regresyon Analizi",
+      "Kaba Kümeler"
+    ],
+    correctAnswer: "Korelasyon Analizi"
+  },
+  {
+    id: 59,
+    questionText: "Aşağıdakilerden hangisi veri madenciliğinin etkileşimde olduğu disiplinler arasından biri değildir?",
+    options: [
+      "İstatistik",
+      "Makine Öğrenimi",
+      "Görselleştirme",
+      "Örüntü Tanıma",
+      "İleri Beslenmeli Ağlar"
+    ],
+    correctAnswer: "İleri Beslenmeli Ağlar"
+  },
+  {
+    id: 60,
+    questionText: "Sistem performanslarına etki eden faktörlerin ve kuralların belirlenmesi örneği veri madenciliğinin hangi uygulama alanıdır?",
+    options: [
+      "Eğitim alanı",
+      "Sağlık alanı",
+      "Pazarlama alanı",
+      "Endüstri ve mühendislik alanı",
+      "Finans alanı"
+    ],
+    correctAnswer: "Endüstri ve mühendislik alanı"
+  }
+]
+
 export const lessons: Lesson[] = [
   {
     id: "Kalkinma Ekonomisi",
@@ -4954,5 +5675,12 @@ export const lessons: Lesson[] = [
     description: `${ImalatSilahSanayi.length} soruluk tam tarama testi.`,
     accent: "amber",
     questions: ImalatSilahSanayi,
+  },
+  {
+    id: "Veri Madenciliği",
+    title: "Veri Madenciliği",
+    description: `${VeriMadenciligi.length} soruluk tam tarama testi.`,
+    accent: "sky",
+    questions: VeriMadenciligi,
   },
 ];

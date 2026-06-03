@@ -93,6 +93,7 @@ const UNLOCKED_LESSON_IDS = new Set([
   "Stratejik Yönetim",
   "Kalkinma Ekonomisi",
   "İmalat Silah Sanayi",
+  "Veri Madenciliği",
 ]);
 
 export default function QuizApp() {
