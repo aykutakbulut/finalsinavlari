@@ -3903,7 +3903,7 @@ const KalkinmaEkonomisi = [
       "Refah artışının ölçümlenmesi",
       "Sanayinin tüketim içindeki payı",
     ],
-    correctAnswer: "Sanayinin tüketim içindeki payı",
+    correctAnswer: "Büyüyen ekonominin denge şartları",
   },
  
   // ===================== 133-136 =====================
@@ -3996,7 +3996,7 @@ const KalkinmaEkonomisi = [
       "Kamu politikası modeli",
       "Cobb-Douglas fonksiyonu",
     ],
-    correctAnswer: "Bilgi üretimi ve dışsallıklar",
+    correctAnswer: "Beşeri sermaye modeli",
   },
   {
     id: 48,
@@ -4922,8 +4922,8 @@ const ImalatSilahSanayi = [
 export const lessons: Lesson[] = [
   {
     id: "Kalkinma Ekonomisi",
-    title: "Kalkınma Ekonomisi",
-    description: `KİTABA GÖRE GÜNCELLENDİ! 2-3 tane yanlış vardı`,
+    title: "Kalkınma Ekonomisi (Güncellendi)",
+    description: `${KalkinmaEkonomisi.length} soruluk tam tarama testi.`,
     accent: "emerald",
     questions: KalkinmaEkonomisi,
   },
