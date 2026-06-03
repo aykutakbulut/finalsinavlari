@@ -5640,6 +5640,644 @@ const VeriMadenciligi = [
   }
 ]
 
+const ButunlesikPazarlama = [
+  {
+    id: 1,
+    questionText:
+      "Aşağıdakilerden hangisi AIDA modelinin unsurlarından biri değildir?",
+    options: [
+      "Dikkat çekme",
+      "İlgi uyandırma",
+      "Araştırma",
+      "İstek uyandırma",
+      "Harekete geçirme",
+    ],
+    correctAnswer: "Araştırma",
+  },
+  {
+    id: 2,
+    questionText:
+      "İki işletme arasında gerçekleşen e-ticaret türü aşağıdakilerden hangisiyle ifade edilir?",
+    options: ["B2C", "B2B", "C2C", "C2B", "G2C"],
+    correctAnswer: "B2B",
+  },
+  {
+    id: 3,
+    questionText:
+      "Bir televizyon kanalının, bir işletmenin yeni bir icadıyla ilgili haber yapması ve bu icadı kamuoyuna duyurması aşağıdakilerden hangisiyle adlandırılır?",
+    options: [
+      "Duyurum",
+      "Halkla İlişkiler",
+      "Reklam",
+      "Satış Tutundurma",
+      "Sponsorluk",
+    ],
+    correctAnswer: "Duyurum",
+  },
+  {
+    id: 4,
+    questionText:
+      "Aşağıdakilerden hangisi tutundurma (Pazarlama İletişimi) karma elemanlarından değildir?",
+    options: [
+      "Halkla İlişkiler",
+      "Reklam",
+      "Satış Tutundurma",
+      "Sponsorluk",
+      "Ürün planlama",
+    ],
+    correctAnswer: "Ürün planlama",
+  },
+  {
+    id: 5,
+    questionText:
+      "Aşağıdakilerden hangisi doğrudan pazarlama yöntemlerinden biri olup potansiyel müşteriler ile doğrudan iletişim kurmak amacıyla kullanılmaktadır?",
+    options: [
+      "İnternette pazarlama",
+      "Reklam",
+      "Halkla ilişkiler",
+      "Satış tutundurma",
+      "Sponsorluk",
+    ],
+    correctAnswer: "İnternette pazarlama",
+  },
+  {
+    id: 6,
+    questionText:
+      "Aşağıdakilerden hangisi reklam ahlakının kapsamı içinde sayılmaz?",
+    options: [
+      "Dürüst olmak",
+      "Nihai kararı tüketiciye bırakmak",
+      "Yanıltmamak",
+      "Aşırı ifadelerle ürünü yüceltmek",
+      "Rakipleri kötülememek",
+    ],
+    correctAnswer: "Aşırı ifadelerle ürünü yüceltmek",
+  },
+  {
+    id: 7,
+    questionText:
+      "Bir reklam mesajının taşıması gereken özellikler dikkate alındığında aşağıdakilerden hangisi yanlıştır?",
+    options: [
+      "Reklama konu olan şey herhangi bir ürün ve/veya hizmet olabildiği gibi herhangi bir fikir de olabilir.",
+      "Reklam, belirli bir ücret karşılığı yapılır.",
+      "Reklam kitleye sesleniştir ve kitlesel araçları kullanır.",
+      "Reklamı yapan kurum veya kişi belli değildir.",
+      "Reklam amacı açıkça belirtilmesi gereken bir iletişimdir.",
+    ],
+    correctAnswer: "Reklamı yapan kurum veya kişi belli değildir.",
+  },
+  {
+    id: 8,
+    questionText:
+      "Aşağıdakilerden hangisi kişisel satışın hedeflerinden biri değildir?",
+    options: [
+      "Mevcut müşteriler ile iletişim kurmak",
+      "Sipariş almak",
+      "Yeni müşteriler elde etmek",
+      "Ödenmiş bir medya vasıtasıyla müşterilere bilgi vermek",
+      "Müşterilere teknik bilgi ve yardım sağlamak",
+    ],
+    correctAnswer: "Ödenmiş bir medya vasıtasıyla müşterilere bilgi vermek",
+  },
+  {
+    id: 9,
+    questionText:
+      "Satıcının müşterinin ihtiyaçlarını belirleyerek kendi firmasının ürün veya hizmetleri ile eşleştirmeye çabaladığı yüz yüze iletişim biçimi olarak tanımlanan kavram aşağıdakilerden hangisidir?",
+    options: [
+      "Kişisel satış",
+      "Halkla ilişkiler",
+      "Doğrudan pazarlama",
+      "Reklam",
+      "Değer",
+    ],
+    correctAnswer: "Kişisel satış",
+  },
+  {
+    id: 10,
+    questionText:
+      "Tüketici tarafından denenmesi amacıyla ürünün ücretsiz sunulduğu satış tutundurma aracı aşağıdakilerden hangisidir?",
+    options: [
+      "Kuponlar",
+      "Örnek ürün dağıtımı",
+      "İndirim",
+      "Süreklilik programı",
+      "Para iadesi",
+    ],
+    correctAnswer: "Örnek ürün dağıtımı",
+  },
+  {
+    id: 11,
+    questionText:
+      "Endüstriyel malların tanıtımında kullanılması gereken en önemli pazarlama iletişimi elemanı (tutundurma karması elemanı) hangisidir?",
+    options: [
+      "Kişisel satış",
+      "Satış tutundurma (satış geliştirme)",
+      "Doğrudan pazarlama",
+      "Reklam",
+      "Halkla ilişkiler",
+    ],
+    correctAnswer: "Kişisel satış",
+  },
+  {
+    id: 12,
+    questionText:
+      "Aşağıdakilerden hangisi tutundurmanın önemini arttıran nedenlerden değildir?",
+    options: [
+      "Üreticiler ile tüketiciler arasındaki mesafenin artması",
+      "Gelir artışı",
+      "Nüfus artışı",
+      "Rekabetin artması",
+      "Ürün fiyatlarının artması",
+    ],
+    correctAnswer: "Ürün fiyatlarının artması",
+  },
+  {
+    id: 13,
+    questionText:
+      "Tutundurma bütçesi, işletmenin finans yöneticisi ile görüşülerek ilgili dönem için ne kadar kaynak ayrılabileceği şeklindeki bilgi çerçevesinde belirleniyorsa hangi yöntem kullanılmıştır?",
+    options: [
+      "Katlanılabilir Miktar metodu",
+      "Satışların yüzdesi metodu",
+      "Rakiplerin harcamasını esas alan metot",
+      "Amaç ve görev metodu",
+      "Hiçbiri",
+    ],
+    correctAnswer: "Katlanılabilir Miktar metodu",
+  },
+  {
+    id: 14,
+    questionText:
+      "Çok sayıda kişiye aynı zamanda ulaşabilmesi, marka imajına katkısı, esnek olması ve çok sayıda ortamda yayınlanabilmesi gibi avantajlara sahip olan tutundurma karması elemanı aşağıdakilerden hangisidir?",
+    options: [
+      "Kişisel satış",
+      "Satış tutundurma (satış geliştirme)",
+      "Doğrudan pazarlama",
+      "Reklam",
+      "Halkla ilişkiler",
+    ],
+    correctAnswer: "Reklam",
+  },
+  {
+    id: 15,
+    questionText:
+      "İki yönlü iletişim aracı olmaları, müşteriye özel mesajları iletmesi gibi avantajlara sahip olan tutundurma karması elemanı aşağıdakilerden hangisidir?",
+    options: [
+      "Kişisel satış",
+      "Satış tutundurma (satış geliştirme)",
+      "Doğrudan pazarlama",
+      "Reklam",
+      "Halkla ilişkiler",
+    ],
+    correctAnswer: "Kişisel satış",
+  },
+  {
+    id: 16,
+    questionText:
+      "Kısa süreli talebi etkilemede başarılı, kısa süreli satış artışı, farklı araçları kullanma esnekliği, diğer araçları destekleme özelliği gibi avantajlara sahip olan tutundurma karması elemanı aşağıdakilerden hangisidir?",
+    options: [
+      "Kişisel satış",
+      "Satış tutundurma (satış geliştirme)",
+      "Doğrudan pazarlama",
+      "Reklam",
+      "Halkla ilişkiler",
+    ],
+    correctAnswer: "Satış tutundurma (satış geliştirme)",
+  },
+  {
+    id: 17,
+    questionText:
+      "Daha güvenilir mesajlar olarak görülmeleri, toplam maliyetinin genellikle düşük olması gibi avantajlara sahip olan tutundurma karması elemanı aşağıdakilerden hangisidir?",
+    options: [
+      "Kişisel satış",
+      "Satış tutundurma (satış geliştirme)",
+      "Doğrudan pazarlama",
+      "Reklam",
+      "Halkla ilişkiler",
+    ],
+    correctAnswer: "Halkla ilişkiler",
+  },
+  {
+    id: 18,
+    questionText:
+      "\"İletişimin Dijital Dönüşümü Nasıl Gerçekleşiyor?\" adlı parçaya göre Geleneksel medya araçları (Radyo, TV, Gazete ve diğerleri) ile sosyal medya araçları arasındaki en önemli fark nedir?",
+    options: [
+      "Geleneksel medyada tek taraflı bir ilişki, sosyal medyada iki taraflı bir ilişki söz konusudur",
+      "Sosyal medyanın daha pahalı olması",
+      "Reklamların daha etkili olması",
+      "Geleneksel medyada halkla ilişkilere önem verilmesi",
+      "Hiçbiri",
+    ],
+    correctAnswer:
+      "Geleneksel medyada tek taraflı bir ilişki, sosyal medyada iki taraflı bir ilişki söz konusudur",
+  },
+  {
+    id: 19,
+    questionText:
+      "Çok sayıda veri ve bilginin internet ortamında sınır tanımaksızın çok kısa sürede yayılmasının mümkün hale gelmesi ile önemli bir pazarlama iletişim yolu ve aracı olarak kendini göstermiştir. İnsanlar arasında \"kulaktan kulağa\" deyimi ile de eşleştirilen bu pazarlama şekli aşağıdakilerden hangisidir?",
+    options: [
+      "İnternette pazarlama",
+      "Viral pazarlama",
+      "Marka pazarlaması",
+      "Ağızdan ağıza pazarlama",
+      "Doğrudan pazarlama",
+    ],
+    correctAnswer: "Viral pazarlama",
+  },
+  {
+    id: 20,
+    questionText:
+      "\"Günümüz Çok Ekranlı Tüketicisini Anlamak\" adlı parçaya göre günümüz tüketicisinin en önemli özelliği nedir?",
+    options: [
+      "Çok okuması",
+      "Sadece televizyon izlemeyip aynı zamanda TV izlerken sosyal medyayı da kullanması",
+      "Reklamların etkisinde çok kalması",
+      "Sadece geleneksel medyaya odaklanması",
+      "Hiçbiri",
+    ],
+    correctAnswer:
+      "Sadece televizyon izlemeyip aynı zamanda TV izlerken sosyal medyayı da kullanması",
+  },
+  {
+    id: 21,
+    questionText:
+      "Aşağıdakilerden hangisi reklamları ekonomik açıdan eleştiren kişilerin öne sürdükleri görüşlerden değildir?",
+    options: [
+      "Reklamlar rekabeti kamçılar",
+      "Reklamlar ürünlerin maliyetini yükseltir",
+      "Reklamlar ürünlerin fiyatlarını yükseltir",
+      "Fonları israf edecek şekilde kullanılmasının yolunu açar",
+      "Reklamlar tekelci etkiler oluşturur",
+    ],
+    correctAnswer: "Reklamlar rekabeti kamçılar",
+  },
+  {
+    id: 22,
+    questionText:
+      "P. Kotler (2003)'e göre reklamın amaçları dört başlık altında toplanmıştır. Aşağıdakilerden hangisi bu amaçlardan değildir?",
+    options: [
+      "Bilgi vermek",
+      "İkna etmek",
+      "Hatırlatmak",
+      "Satışları belirli düzeylere getirmek",
+      "Pekiştirmek",
+    ],
+    correctAnswer: "Satışları belirli düzeylere getirmek",
+  },
+  {
+    id: 23,
+    questionText:
+      "Aşağıdakilerden hangisi İş Yaşamındaki Ahlaki Sorunları Ortaya Çıkaran Faktörlerden değildir?",
+    options: [
+      "Kar etme amacının diğer sosyal amaçların önüne geçmesi",
+      "Personeller arasında yaşanan çıkar çatışmaları",
+      "Adalet mekanizmasının yavaşlaması",
+      "İşletmede denetim ve kontrol mekanizmasının eksikliği",
+      "Çalışanların bireysel ahlaki değer yargıları",
+    ],
+    correctAnswer: "Adalet mekanizmasının yavaşlaması",
+  },
+  {
+    id: 24,
+    questionText:
+      "Aşağıdakilerden hangisi İş Yaşamındaki Ahlaki Sorunları Ortaya Çıkaran Faktörlerden değildir?",
+    options: [
+      "Kar etme amacının diğer sosyal sorumluluk amaçlarının önüne geçmesi",
+      "Bireylerin yaşam tarzının değişimiyle birlikte aşırı tüketime yönelim",
+      "Reklamların yaygınlaşması",
+      "Toplumun ahlaki yapısının zedelenmesi",
+      "Çalışanların bireysel ahlaki değer yargıları",
+    ],
+    correctAnswer: "Reklamların yaygınlaşması",
+  },
+  {
+    id: 25,
+    questionText:
+      "Satış elemanlarının müşterilerle olan ilişkilerinde ahlaki konular söz konusu olabilmektedir. Aşağıdakilerden hangisi bu ahlaki konulardan değildir?",
+    options: [
+      "Yüksek baskılı satış",
+      "Müşteriler arasında ayrımcılık yapma",
+      "Yanlış Tanıtım",
+      "Müşteriyi ikna etmek için hediye vermek",
+      "Ürün fiyatlarının yükseltilmesi",
+    ],
+    correctAnswer: "Ürün fiyatlarının yükseltilmesi",
+  },
+  {
+    id: 26,
+    questionText:
+      "Aşağıdakilerden hangisi Tutundurmanın önemini arttıran faktörlerden değildir?",
+    options: [
+      "Üreticiler ile tüketiciler arasındaki mesafenin artması",
+      "Pazarların büyümesi",
+      "İkame malların artması ile rekabetin artması",
+      "Aracı kurumların sayısının azalması",
+      "Tüketici sayısının artışı",
+    ],
+    correctAnswer: "Aracı kurumların sayısının azalması",
+  },
+  {
+    id: 27,
+    questionText:
+      "Talep eğrisinin elastikiyeti tutundurma ile azaltılabilmektedir. Bunun işletmeye sağlayacağı en büyük fayda nedir?",
+    options: [
+      "Ürünleri kısa sürede tanınır",
+      "Ürünlerin satış giderleri azalır",
+      "Fiyat yükselse bile satışlar artar",
+      "Tutundurma bütçesinden tasarruf edilir",
+      "Hiçbiri",
+    ],
+    correctAnswer: "Fiyat yükselse bile satışlar artar",
+  },
+  {
+    id: 28,
+    questionText:
+      "Ürünün tasarımı, fiyatı, ambalajının şekli ve rengi ile reklam, satış geliştirme, halkla ilişkiler, doğrudan pazarlama, kişisel satış karma elemanlarını harmanlayarak kullanan bir firma aşağıdakilerden hangisini benimsemiştir?",
+    options: [
+      "Pazarlama iletişimi",
+      "Tutundurma Karması",
+      "Bütünleşik pazarlama iletişimi",
+      "Reklam karmasını öne çıkarma",
+      "Hiçbiri",
+    ],
+    correctAnswer: "Bütünleşik pazarlama iletişimi",
+  },
+  {
+    id: 29,
+    questionText:
+      "Aşağıdakilerden hangisi AIDA modelinin unsurlarından biri değildir?",
+    options: [
+      "Dikkat çekme",
+      "İlgi uyandırma",
+      "Araştırma",
+      "İstek uyandırma",
+      "Harekete geçirme",
+    ],
+    correctAnswer: "Araştırma",
+  },
+  {
+    id: 30,
+    questionText:
+      "İki işletme arasında gerçekleşen ticaret (veya e-ticaret) türü aşağıdakilerden hangisiyle ifade edilir?",
+    options: ["B2C", "B2B", "C2C", "C2B", "4P"],
+    correctAnswer: "B2B",
+  },
+  {
+    id: 31,
+    questionText:
+      "Aşağıdakilerden hangisi tutundurma bütçesi belirlenirken kullanılan metotlardan biri değildir?",
+    options: [
+      "Satış geliştirme metodu",
+      "Katlanılabilir miktar metodu",
+      "Rakiplerin harcamalarını esas alma metodu",
+      "Amaç-görev metodu",
+      "Satış yüzdesi metodu",
+    ],
+    correctAnswer: "Satış geliştirme metodu",
+  },
+  {
+    id: 32,
+    questionText:
+      "Aşağıdakilerden hangisi tutundurma (Pazarlama İletişimi) karma elemanlarından değildir?",
+    options: [
+      "Reklam",
+      "Kişisel satış",
+      "Ürün Geliştirme",
+      "Halkla ilişkiler",
+      "Doğrudan pazarlama",
+    ],
+    correctAnswer: "Ürün Geliştirme",
+  },
+  {
+    id: 33,
+    questionText:
+      "Aşağıdakilerden hangi ürün türünde, pazarlama iletişimi sağlamak için kişisel satış yöntemi kullanılır?",
+    options: ["Kalem", "Şeker", "Şampuan", "Çay", "Tekstil makinası"],
+    correctAnswer: "Tekstil makinası",
+  },
+  {
+    id: 34,
+    questionText:
+      "Bir işletme hakkında ürünlerinin \"sağlıklı olmayan ortamlarda üretildiğine ve çalışan insanların kanser riskine maruz kaldığına\" yönelik olumsuz bir karalama kampanyası ile karşı karşıyadır. Aşağıdaki araçlardan hangisi işletmenin bu durumla mücadele etmesinde en etkin olanıdır?",
+    options: [
+      "Reklam",
+      "Satış Geliştirme",
+      "Halkla İlişkiler",
+      "Doğrudan Pazarlama",
+      "Kişisel Satış",
+    ],
+    correctAnswer: "Halkla İlişkiler",
+  },
+  {
+    id: 35,
+    questionText:
+      "Aşağıdakilerden hangisi üretici işletmenin pazarlama iletişimi faaliyetlerini nihai tüketicilere yönelttiği stratejidir?",
+    options: [
+      "İtme stratejisi",
+      "Çekme stratejisi",
+      "Pazarlama stratejisi",
+      "Farklılaştırma stratejisi",
+      "Satış geliştirme stratejisi",
+    ],
+    correctAnswer: "Çekme stratejisi",
+  },
+  {
+    id: 36,
+    questionText:
+      "Satıcının müşterinin ihtiyaçlarını belirleyerek kendi firmasının ürün veya hizmetleri ile eşleştirmeye çabaladığı yüz yüze iletişim biçimi olarak tanımlanan kavram aşağıdakilerden hangisidir?",
+    options: [
+      "Kişisel satış",
+      "Halkla ilişkiler",
+      "Doğrudan pazarlama",
+      "Reklam",
+      "Direkt satış",
+    ],
+    correctAnswer: "Kişisel satış",
+  },
+  {
+    id: 37,
+    questionText:
+      "Bir markette alış-veriş esnasında yapılan bir anons ile gıda reyonundaki ürünlerden birini alana ikincisinin bedava verileceği duyurulmuştur. Böyle bir durum tutundurma karması (pazarlama iletişimi karması) elemanlarından hangisine girmektedir?",
+    options: [
+      "Kişisel satış",
+      "Satış tutundurma (satış geliştirme)",
+      "Doğrudan pazarlama",
+      "Reklam",
+      "Halkla ilişkiler",
+    ],
+    correctAnswer: "Satış tutundurma (satış geliştirme)",
+  },
+  {
+    id: 38,
+    questionText:
+      "Bir banka elemanı telefonla aradığı banka müşterisine bankacılık ürünlerinden satmak istemektedir. Böyle bir durumda hangi tutundurma karması (pazarlama iletişimi karması) elemanı kullanılmış olmaktadır?",
+    options: [
+      "Kişisel satış",
+      "Satış tutundurma (satış geliştirme)",
+      "Doğrudan pazarlama",
+      "Reklam",
+      "Halkla ilişkiler",
+    ],
+    correctAnswer: "Doğrudan pazarlama",
+  },
+  {
+    id: 39,
+    questionText:
+      "Beyaz eşya üretimi yapan bir firmanın bir yöneticisi yeni üretmiş olduğu bir televizyon modelini insanlara tanıtabilmek amacı ile basın üyelerini firmaya davet ederek onların olduğu mekânda ürünün özellikleri hakkında bilgi vermesi durumunda hangi tutundurma karması (pazarlama iletişimi karması) elemanı kullanılmış olmaktadır?",
+    options: [
+      "Kişisel satış",
+      "Satış tutundurma (satış geliştirme)",
+      "Doğrudan pazarlama",
+      "Reklam",
+      "Halkla ilişkiler",
+    ],
+    correctAnswer: "Halkla ilişkiler",
+  },
+  {
+    id: 40,
+    questionText:
+      "Endüstriyel ürünlerin tanıtımında kullanılması gereken en önemli pazarlama iletişimi elemanı (tutundurma karması elemanı) hangisidir?",
+    options: [
+      "Kişisel satış",
+      "Satış tutundurma (satış geliştirme)",
+      "Doğrudan pazarlama",
+      "Reklam",
+      "Halkla ilişkiler",
+    ],
+    correctAnswer: "Kişisel satış",
+  },
+  {
+    id: 41,
+    questionText:
+      "Aşağıdakilerden hangisi tutundurmanın önemini arttıran nedenlerden değildir?",
+    options: [
+      "Üreticiler ile tüketiciler arasındaki mesafenin artması",
+      "Gelir artışı",
+      "Nüfus artışı",
+      "Rekabetin artması",
+      "Ürün fiyatlarının artması",
+    ],
+    correctAnswer: "Ürün fiyatlarının artması",
+  },
+  {
+    id: 42,
+    questionText:
+      "AIDA modelini kullanarak ürünlerine dikkat çekmek isteyen bir firma hangi tutundurma karması elemanlarını kullanmalıdır?",
+    options: [
+      "Reklam ve Halkla ilişkiler",
+      "Reklam ve Satış geliştirme",
+      "Kişisel satış ve satış geliştirme (satış tutundurma)",
+      "Doğrudan pazarlama ve kişisel satış",
+      "Halkla ilişkiler ve Satış geliştirme",
+    ],
+    correctAnswer: "Reklam ve Halkla ilişkiler",
+  },
+  {
+    id: 43,
+    questionText:
+      "Üretmiş oldukları ürünler için AIDA modelini kullanarak insanları satın almaları için harekete geçirmeye çalışan bir firma hangi tutundurma karması elemanlarını kullanmalıdır?",
+    options: [
+      "Reklam ve Halkla ilişkiler",
+      "Reklam ve Satış geliştirme",
+      "Kişisel satış ve satış geliştirme (satış tutundurma)",
+      "Doğrudan pazarlama ve kişisel satış",
+      "Halkla ilişkiler ve Satış geliştirme",
+    ],
+    correctAnswer: "Kişisel satış ve satış geliştirme (satış tutundurma)",
+  },
+  {
+    id: 44,
+    questionText:
+      "Tutundurma bütçesi, işletmenin finans yöneticisi ile görüşülerek ilgili dönem için ne kadar kaynak ayrılabileceği şeklindeki bilgi çerçevesinde belirleniyorsa hangi yöntem kullanılmıştır?",
+    options: [
+      "Katlanılabilir Miktar metodu",
+      "Satışların yüzdesi metodu",
+      "Rakiplerin harcamasını esas alan metot",
+      "Amaç ve görev metodu",
+      "Hiçbiri",
+    ],
+    correctAnswer: "Katlanılabilir Miktar metodu",
+  },
+  {
+    id: 45,
+    questionText:
+      "Bir işletme yapmış olduğu reklamla tüketicilerin perakendecilere giderek bu ürünü talep etmelerini sağlamaları hangi strateji kapsamında değerlendirilir?",
+    options: [
+      "İtme stratejisi",
+      "Çekme stratejisi",
+      "Reklam stratejisi",
+      "Pazarlama stratejisi",
+      "Hiçbiri",
+    ],
+    correctAnswer: "Çekme stratejisi",
+  },
+  {
+    id: 46,
+    questionText:
+      "Aşağıdakilerden hangisi tutundurma karmasının seçimini etkileyen faktörlerden değildir?",
+    options: [
+      "Tutundurma bütçesi",
+      "Pazarın niteliği",
+      "Tutundurma karmasının niteliği",
+      "Mamulün niteliği",
+      "Mamulün hayat seyrindeki dönemi",
+    ],
+    correctAnswer: "Tutundurma karmasının niteliği",
+  },
+  {
+    id: 47,
+    questionText:
+      "Çok sayıda kişiye aynı zamanda ulaşabilmesi, marka imajına olumlu katkısı, esnek olması ve çok sayıda ortamda yayınlanabilmesi gibi avantajlara sahip olan tutundurma karması elemanı aşağıdakilerden hangisidir?",
+    options: [
+      "Kişisel satış",
+      "Satış tutundurma (satış geliştirme)",
+      "Doğrudan pazarlama",
+      "Reklam",
+      "Halkla ilişkiler",
+    ],
+    correctAnswer: "Reklam",
+  },
+  {
+    id: 48,
+    questionText:
+      "Tutundurma (pazarlama iletişimi) açısından son yıllarda önem kazanan araçlar aşağıdakilerden hangisidir?",
+    options: [
+      "Dijital ve sosyal medya",
+      "Dijital reklamlar",
+      "TV reklamları",
+      "Bütünleşik pazarlama iletişimi",
+      "Pazarlama iletişimi",
+    ],
+    correctAnswer: "Dijital ve sosyal medya",
+  },
+  {
+    id: 49,
+    questionText:
+      "Bir pazarlama iletişimcisinin yapacağı ilk şey hedef kitleyi belirlemesidir. Aşağıdakilerden hangisi bu hedef kitle içinde yer almaz?",
+    options: [
+      "Üst gelir düzeyine sahip olan kişiler",
+      "Mevcut müşteriler",
+      "Potansiyel müşteriler",
+      "Satın alma kararını verenler",
+      "Satın alma kararını verenleri etkileyenler",
+    ],
+    correctAnswer: "Üst gelir düzeyine sahip olan kişiler",
+  },
+  {
+    id: 50,
+    questionText:
+      "Yeni üretilen bir ürün Mamulün hayat seyrinin ilk aşamasında iken aşağıdakilerden hangisi yapılmaz?",
+    options: [
+      "Ürünü tanıtıcı reklam",
+      "Tüketicilere iskonto ve hediye kuponu",
+      "Örnek ürün dağıtımları",
+      "Aracılara yönelik tanıtım ziyaretleri",
+      "Uygun iletişim araçlarında duyurum",
+    ],
+    correctAnswer: "Tüketicilere iskonto ve hediye kuponu",
+  },
+];
+ 
+
 export const lessons: Lesson[] = [
   {
     id: "Kalkinma Ekonomisi",
@@ -5682,5 +6320,12 @@ export const lessons: Lesson[] = [
     description: `${VeriMadenciligi.length} soruluk tam tarama testi.`,
     accent: "sky",
     questions: VeriMadenciligi,
+  },
+  {
+    id: "Bütünleşik Pazarlama",
+    title: "Bütünleşik Pazarlama",
+    description: `${ButunlesikPazarlama.length} soruluk tam tarama testi.`,
+    accent: "fuchsia",
+    questions: ButunlesikPazarlama,
   },
 ];

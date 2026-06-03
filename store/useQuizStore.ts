@@ -292,6 +292,9 @@ export const useQuizStore = create<QuizState>()(
           wrongQuestions: [],
           shuffledQuestions: null,
         }),
+
+      isUnlocked: false,
+      setUnlocked: (val) => set({ isUnlocked: val }),
     }),
     {
       name: "quiz-state-v2",
@@ -313,6 +316,7 @@ export const useQuizStore = create<QuizState>()(
         playerAvatar: state.playerAvatar,
         wrongAnswersBank: state.wrongAnswersBank,
         consecutiveFullByLesson: state.consecutiveFullByLesson,
+        isUnlocked: state.isUnlocked,
       }),
     },
   ),

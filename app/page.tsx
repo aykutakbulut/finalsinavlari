@@ -96,6 +96,11 @@ const UNLOCKED_LESSON_IDS = new Set([
   "Veri Madenciliği",
 ]);
 
+// Şifre ile açılan gizli dersler — doğru şifre girilmeden listede hiç görünmez.
+const PRIVATE_LESSON_IDS = new Set([
+  "Bütünleşik Pazarlama",
+]);
+
 export default function QuizApp() {
   const lessons = useQuizStore((s) => s.lessons);
   const selectedLessonId = useQuizStore((s) => s.selectedLessonId);
@@ -141,6 +146,9 @@ export default function QuizApp() {
   const myWrongsQuestions = useQuizStore((s) => s.myWrongsQuestions);
   const startMyWrongsMode = useQuizStore((s) => s.startMyWrongsMode);
   const exitMyWrongsMode = useQuizStore((s) => s.exitMyWrongsMode);
+
+  const isUnlocked = useQuizStore((s) => s.isUnlocked);
+  const setUnlocked = useQuizStore((s) => s.setUnlocked);
 
   // Ders başına farklı yanlış soru sayısı (dedupe'lu). Yanlışlarım artık derse
   // özel: her dersin butonu yalnızca o dersin yanlışlarını gösterir/açar.
@@ -219,6 +227,7 @@ export default function QuizApp() {
   const [claimingProfile, setClaimingProfile] = useState(false);
   const [nameError, setNameError] = useState<string | null>(null);
   const [emptyBankToast, setEmptyBankToast] = useState(false);
+
 
   // Anasayfa üst sekmesi (Sorular / Notlar) + açık not dersi — soru akışına
   // dokunmayan, tamamen yerel state. Varsayılan "questions" → eski davranış aynı.
@@ -926,9 +935,9 @@ export default function QuizApp() {
 
           {homeTab === "questions" && (
           <div className="grid gap-4 sm:gap-5">
-            {lessons.map((lesson) => {
+            {lessons.filter((l) => !PRIVATE_LESSON_IDS.has(l.id) || isUnlocked).map((lesson) => {
               const accent = ACCENT_STYLES[lesson.accent];
-              const isLocked = !UNLOCKED_LESSON_IDS.has(lesson.id);
+              const isLocked = !UNLOCKED_LESSON_IDS.has(lesson.id) && !PRIVATE_LESSON_IDS.has(lesson.id);
               return (
                 <div
                   key={lesson.id}
@@ -1268,6 +1277,7 @@ export default function QuizApp() {
             </p>
           </footer>
         </div>
+
         <InstallPrompt />
       </div>
     );

@@ -71,4 +71,7 @@ export interface QuizState {
   exitCompetition: () => void;
   startMyWrongsMode: (lessonId: string) => void;
   exitMyWrongsMode: () => void;
+
+  isUnlocked: boolean;
+  setUnlocked: (val: boolean) => void;
 }
