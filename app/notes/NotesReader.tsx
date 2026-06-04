@@ -3,6 +3,11 @@
 import { memo, useCallback, useEffect, useRef, useState } from "react";
 import type { CSSProperties } from "react";
 import type { NoteBlock, NoteLesson } from "@/types/notes";
+import dynamic from "next/dynamic";
+
+const SecurePdfViewer = dynamic(() => import("./SecurePdfViewer"), {
+  ssr: false,
+});
 
 // ── Liste ekranı renk paleti (page.tsx'teki ACCENT_STYLES ile aynı dil) ───────
 // NOT: Bu yalnızca konu LİSTESİ ekranında kullanılır; uygulamanın koyu temasıyla
@@ -560,72 +565,12 @@ export default function NotesReader({
               PDF
             </span>
 
-            {/* İndir butonu */}
-            <a
-              href={lesson.pdfUrl}
-              download
-              className="ml-auto shrink-0 flex items-center gap-1.5 px-3 py-1.5 text-[clamp(10px,1.2dvh,12px)] font-bold tracking-wider uppercase rounded-lg border bg-amber-500/10 text-amber-300 border-amber-500/25 hover:bg-amber-500/20 hover:border-amber-400/40 hover:text-amber-200 active:scale-95 transition-all"
-            >
-              <svg
-                className="w-3.5 h-3.5"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2.5"
-                  d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"
-                />
-              </svg>
-              İndir
-            </a>
           </div>
         </div>
 
-        {/* PDF embed alanı */}
-        <div className="flex-1 min-h-0 w-full z-10 flex flex-col">
-          {/* Masaüstü: doğrudan iframe */}
-          <iframe
-            src={lesson.pdfUrl}
-            title={`${lesson.title} — PDF`}
-            className="w-full flex-1 min-h-0 border-0 bg-white/5 hidden sm:block"
-            style={{ colorScheme: "dark" }}
-          />
-          {/* Mobil: Google Docs Viewer fallback (çoğu mobil tarayıcı iframe PDF desteklemez) */}
-          <div className="flex-1 min-h-0 flex flex-col sm:hidden">
-            <iframe
-              src={`https://docs.google.com/gview?embedded=true&url=${typeof window !== "undefined" ? window.location.origin : ""}${lesson.pdfUrl}`}
-              title={`${lesson.title} — PDF`}
-              className="w-full flex-1 min-h-0 border-0 bg-white/5"
-              style={{ colorScheme: "dark" }}
-            />
-            {/* Alternatif olarak tarayıcıda aç */}
-            <div className="shrink-0 px-4 py-3 flex justify-center">
-              <a
-                href={lesson.pdfUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-2 px-5 py-3 rounded-2xl bg-amber-500/15 border border-amber-500/30 text-amber-300 text-sm font-bold hover:bg-amber-500/25 hover:border-amber-400/50 active:scale-95 transition-all"
-              >
-                <svg
-                  className="w-4 h-4"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
-                  />
-                </svg>
-                Tarayıcıda Aç
-              </a>
-            </div>
-          </div>
+        {/* Güvenli PDF Embed Alanı (Canvas Rendering) */}
+        <div className="flex-1 min-h-0 w-full z-10 flex flex-col relative">
+          <SecurePdfViewer pdfUrl={lesson.pdfUrl} />
         </div>
       </div>
     );
