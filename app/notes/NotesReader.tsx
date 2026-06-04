@@ -505,6 +505,132 @@ export default function NotesReader({
     return () => window.removeEventListener("keydown", onKey);
   }, [topicIndex, goNext, goPrev]);
 
+  // ============================ PDF GÖRÜNTÜLEYICI ============================
+  // pdfUrl tanımlıysa blok/konu sistemi yerine tam ekran PDF göster.
+  if (lesson.pdfUrl) {
+    return (
+      <div className="h-[100dvh] w-full flex flex-col overflow-hidden relative bg-[#050505] text-slate-200 safe-area">
+        {/* Arka plan efektleri */}
+        <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:40px_40px] pointer-events-none" />
+        <div
+          className={`absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-2xl h-[30vh] ${a.glow} blur-[100px] pointer-events-none rounded-full`}
+        />
+
+        {/* Sticky header */}
+        <div className="shrink-0 w-full bg-[#050505]/90 backdrop-blur-xl border-b border-white/[0.04] z-20">
+          <div className="w-full max-w-5xl mx-auto px-4 py-3 flex items-center gap-2">
+            <button
+              onClick={onExit}
+              className="shrink-0 flex items-center gap-1.5 px-2.5 py-1 text-[clamp(10px,1.2dvh,12px)] font-bold tracking-wider uppercase rounded-lg border bg-white/[0.04] text-slate-300 border-white/10 hover:bg-white/[0.08] hover:border-white/20 hover:text-white active:scale-95 transition-all"
+            >
+              <svg
+                className="w-[14px] h-[14px]"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2.5"
+                  d="M15 19l-7-7 7-7"
+                />
+              </svg>
+              Geri
+            </button>
+            <span
+              className={`px-2.5 py-1 text-[clamp(10px,1.2dvh,12px)] font-bold tracking-wider uppercase rounded-lg border truncate ${a.chip}`}
+            >
+              {lesson.title}
+            </span>
+            <span className="shrink-0 px-2.5 py-1 text-[clamp(10px,1.2dvh,12px)] font-bold tracking-wider uppercase rounded-lg border bg-amber-500/10 text-amber-400 border-amber-500/20 flex items-center gap-1.5">
+              <svg
+                className="w-3.5 h-3.5"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z"
+                />
+              </svg>
+              PDF
+            </span>
+
+            {/* İndir butonu */}
+            <a
+              href={lesson.pdfUrl}
+              download
+              className="ml-auto shrink-0 flex items-center gap-1.5 px-3 py-1.5 text-[clamp(10px,1.2dvh,12px)] font-bold tracking-wider uppercase rounded-lg border bg-amber-500/10 text-amber-300 border-amber-500/25 hover:bg-amber-500/20 hover:border-amber-400/40 hover:text-amber-200 active:scale-95 transition-all"
+            >
+              <svg
+                className="w-3.5 h-3.5"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2.5"
+                  d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"
+                />
+              </svg>
+              İndir
+            </a>
+          </div>
+        </div>
+
+        {/* PDF embed alanı */}
+        <div className="flex-1 min-h-0 w-full z-10 flex flex-col">
+          {/* Masaüstü: doğrudan iframe */}
+          <iframe
+            src={lesson.pdfUrl}
+            title={`${lesson.title} — PDF`}
+            className="w-full flex-1 min-h-0 border-0 bg-white/5 hidden sm:block"
+            style={{ colorScheme: "dark" }}
+          />
+          {/* Mobil: Google Docs Viewer fallback (çoğu mobil tarayıcı iframe PDF desteklemez) */}
+          <div className="flex-1 min-h-0 flex flex-col sm:hidden">
+            <iframe
+              src={`https://docs.google.com/gview?embedded=true&url=${typeof window !== "undefined" ? window.location.origin : ""}${lesson.pdfUrl}`}
+              title={`${lesson.title} — PDF`}
+              className="w-full flex-1 min-h-0 border-0 bg-white/5"
+              style={{ colorScheme: "dark" }}
+            />
+            {/* Alternatif olarak tarayıcıda aç */}
+            <div className="shrink-0 px-4 py-3 flex justify-center">
+              <a
+                href={lesson.pdfUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 px-5 py-3 rounded-2xl bg-amber-500/15 border border-amber-500/30 text-amber-300 text-sm font-bold hover:bg-amber-500/25 hover:border-amber-400/50 active:scale-95 transition-all"
+              >
+                <svg
+                  className="w-4 h-4"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
+                  />
+                </svg>
+                Tarayıcıda Aç
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
   // ============================ KONU LİSTESİ ===============================
   // (Uygulamanın koyu temasıyla bütünlük için bilinçli olarak app stilinde.)
   if (topic === null || topicIndex === null) {
@@ -809,3 +935,4 @@ export default function NotesReader({
     </div>
   );
 }
+

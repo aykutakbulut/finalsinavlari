@@ -735,4 +735,13 @@ export const noteLessons: NoteLesson[] = [
       },
     ],
   },
+  {
+    id: "Stratejik Yönetim",
+    title: "Stratejik Yönetim",
+    description:
+      "Stratejik yönetim ders notları — PDF formatında tam içerik.",
+    accent: "amber",
+    pdfUrl: "/str.pdf",
+    topics: [],
+  },
 ];

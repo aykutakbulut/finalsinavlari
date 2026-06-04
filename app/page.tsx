@@ -1142,6 +1142,7 @@ export default function QuizApp() {
             <div className="grid gap-4 sm:gap-5">
               {noteLessons.map((nl) => {
                 const accent = ACCENT_STYLES[nl.accent];
+                const isPdf = !!nl.pdfUrl;
                 return (
                   <button
                     key={nl.id}
@@ -1155,19 +1156,35 @@ export default function QuizApp() {
                       <div
                         className={`shrink-0 w-12 h-12 sm:w-14 sm:h-14 rounded-2xl border flex items-center justify-center ${accent.chip}`}
                       >
-                        <svg
-                          className="w-6 h-6"
-                          fill="none"
-                          viewBox="0 0 24 24"
-                          stroke="currentColor"
-                        >
-                          <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            strokeWidth="2"
-                            d="M12 6.5V20m0-13.5C10.5 5 8 4.5 5.5 5.5V18c2.5-1 5 .5 6.5 2m0-13.5C13.5 5 16 4.5 18.5 5.5V18c-2.5-1-5 .5-6.5 2"
-                          />
-                        </svg>
+                        {isPdf ? (
+                          <svg
+                            className="w-6 h-6"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="currentColor"
+                          >
+                            <path
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              strokeWidth="2"
+                              d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z"
+                            />
+                          </svg>
+                        ) : (
+                          <svg
+                            className="w-6 h-6"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="currentColor"
+                          >
+                            <path
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              strokeWidth="2"
+                              d="M12 6.5V20m0-13.5C10.5 5 8 4.5 5.5 5.5V18c2.5-1 5 .5 6.5 2m0-13.5C13.5 5 16 4.5 18.5 5.5V18c-2.5-1-5 .5-6.5 2"
+                            />
+                          </svg>
+                        )}
                       </div>
                       <div className="flex-1 min-w-0">
                         <h2 className="text-lg sm:text-xl font-bold tracking-tight text-white">
@@ -1192,7 +1209,7 @@ export default function QuizApp() {
                           />
                         </svg>
                         <span className="text-xs text-slate-500 font-bold">
-                          {nl.topics.length} konu
+                          {isPdf ? "PDF" : `${nl.topics.length} konu`}
                         </span>
                       </div>
                     </div>

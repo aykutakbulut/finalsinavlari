@@ -56,4 +56,6 @@ export type NoteLesson = {
   /** Soru derslerindeki ile aynı renk paleti */
   accent: Lesson["accent"];
   topics: NoteTopic[];
+  /** Eğer tanımlıysa blok tabanlı içerik yerine PDF görüntüleyici açılır */
+  pdfUrl?: string;
 };
