@@ -1,4 +1,4 @@
-import { Lesson } from "../types/quiz";
+import { Lesson, Question } from "../types/quiz";
 
 const AcikKaynak = [
   {
@@ -6680,6 +6680,754 @@ const MakroIktisat = [
   },
 ];
 
+const StratejikSpecial: Question[] = [
+  // ---------- BÖLÜM 1: Temel Kavramlar ve 4 Teori ----------
+  {
+    id: 1,
+    questionText:
+      "Stratejik yönetim, bir işletmenin günlük ve olağan işlerinden çok öncelikle aşağıdakilerden hangisine odaklanır?",
+    options: [
+      "İşletmenin uzun dönemde yaşamını sürdürmesine, rekabet üstünlüğüne ve ortalamanın üzerinde getiriye",
+      "Bu ayki satış rakamlarının yükseltilmesine",
+      "Üretim hattının günlük olarak kontrol edilmesine",
+      "Çalışanların izin planlamasına",
+    ],
+    correctAnswer: "İşletmenin uzun dönemde yaşamını sürdürmesine, rekabet üstünlüğüne ve ortalamanın üzerinde getiriye",
+  },
+  {
+    id: 2,
+    questionText:
+      "Aşağıdakilerden hangisi işletmelerin stratejik yönetime ihtiyaç duymasının nedenlerinden biri DEĞİLDİR?",
+    options: [
+      "Çevresel belirsizliklerin artması",
+      "Günlük operasyonel kararların tek başına yeterli olması",
+      "Rekabetin ulusal ve küresel boyut kazanması",
+      "Uzun vadeli sürdürülebilirliğin sağlanması zorunluluğu",
+    ],
+    correctAnswer: "Günlük operasyonel kararların tek başına yeterli olması",
+  },
+  {
+    id: 3,
+    questionText:
+      "Stratejik yönetimi klasik (geleneksel) yönetim anlayışından ayıran temel özellik aşağıdakilerden hangisidir?",
+    options: [
+      "Yalnızca günlük faaliyetlere odaklanması",
+      "Kısa vadeli hedefleri esas alması",
+      "Çevresel analiz yapması ve uzun vadeli bir bakış açısına sahip olması",
+      "Sadece işletme içi kaynakları dikkate alması",
+    ],
+    correctAnswer: "Çevresel analiz yapması ve uzun vadeli bir bakış açısına sahip olması",
+  },
+  {
+    id: 4,
+    questionText:
+      "Rekabet unsurlarının dönemsel değişimine göre, küreselleşmenin yoğunlaştığı 2000'li yıllarda öne çıkan temel rekabet unsuru aşağıdakilerden hangisidir?",
+    options: [
+      "Üretim üstünlüğü",
+      "Maliyet",
+      "Kalite",
+      "Yenilik (inovasyon)",
+    ],
+    correctAnswer: "Yenilik (inovasyon)",
+  },
+  {
+    id: 5,
+    questionText:
+      "Endüstriyel Örgüt (I/O) teorisine göre bir işletmenin performansını ve başarısını öncelikle belirleyen şey nedir?",
+    options: [
+      "İçinde bulunduğu sektörün yapısı",
+      "İşletmenin sahip olduğu benzersiz iç kaynaklar",
+      "Yöneticilerin kişisel sezgileri",
+      "Çalışanların bireysel motivasyonu",
+    ],
+    correctAnswer: "İçinde bulunduğu sektörün yapısı",
+  },
+  {
+    id: 6,
+    questionText:
+      "SCP (Yapı-Davranış-Performans) modeline göre, bir sektörde firma sayısının çok az ve giriş engellerinin yüksek olması öncelikle hangi aşamayı belirler ve nasıl bir sonuç doğurur?",
+    options: [
+      "Davranış aşamasını belirler; ürün farklılaştırmasını imkânsız kılar",
+      "Yapı aşamasını belirler; fiyat rekabetini azaltıp yüksek kârlılığa zemin hazırlar",
+      "Performans aşamasını belirler; operasyonel verimliliği zorunlu kılar",
+      "Yapı aşamasını belirler ancak performans üzerinde hiçbir etkisi yoktur",
+    ],
+    correctAnswer: "Yapı aşamasını belirler; fiyat rekabetini azaltıp yüksek kârlılığa zemin hazırlar",
+  },
+  {
+    id: 7,
+    questionText:
+      "Kaynak Temelli Yaklaşıma (RBV) göre, bir kaynağın sürdürülebilir rekabet üstünlüğü sağlaması için taşıması gereken VRIN özelliklerinden biri DEĞİLDİR?",
+    options: [
+      "Değerli (Valuable) olmak",
+      "Nadir (Rare) olmak",
+      "Kolayca taklit edilebilir (Imitable) olmak",
+      "İkame edilemez (Non-substitutable) olmak",
+    ],
+    correctAnswer: "Kolayca taklit edilebilir (Imitable) olmak",
+  },
+  {
+    id: 8,
+    questionText:
+      "Bir firmanın sahip olduğu patentli teknoloji, sektördeki diğer tüm firmalar tarafından kolayca lisanslanabiliyorsa, RBV açısından bu kaynak için ne söylenebilir?",
+    options: [
+      "Sürdürülebilir rekabet avantajı sağlar",
+      "Şirketin kâr bölgesini sonsuza dek korur",
+      "Taklit edilemez bir kaynaktır",
+      "Değerli olsa bile nadir olmadığı için yalnızca rekabet eşitliği sağlar",
+    ],
+    correctAnswer: "Değerli olsa bile nadir olmadığı için yalnızca rekabet eşitliği sağlar",
+  },
+  {
+    id: 9,
+    questionText:
+      "Endüstriyel Örgüt (I/O) teorisi ile Kaynak Temelli Yaklaşım (RBV) arasındaki temel farkı en iyi açıklayan seçenek hangisidir?",
+    options: [
+      "I/O dış çevreyi (sektör çekiciliğini), RBV ise içsel kaynak ve yetenekleri temel alır",
+      "I/O içsel yetenekleri, RBV ise dış çevreyi temel alır",
+      "İkisi de yalnızca dış çevreyi önceler",
+      "I/O kısa vadeli, RBV ise yalnızca finansal kararlar içindir",
+    ],
+    correctAnswer: "I/O dış çevreyi (sektör çekiciliğini), RBV ise içsel kaynak ve yetenekleri temel alır",
+  },
+  {
+    id: 10,
+    questionText:
+      "Kodak'ın dijital fotoğrafçılığı, Nokia'nın ise akıllı telefon dönüşümünü zamanında fark edememesi Slywotzky'nin hangi kavramına en uygun örnektir?",
+    options: [
+      "Radar Vizyonu",
+      "Tünel Vizyonu",
+      "Değer Yakalama",
+      "Müşteri Seçimi",
+    ],
+    correctAnswer: "Tünel Vizyonu",
+  },
+  {
+    id: 11,
+    questionText:
+      "Andy Grove'un 'Stratejik Kırılma Noktası' kavramını en iyi tarif eden ifade aşağıdakilerden hangisidir?",
+    options: [
+      "Şirketin yıllık satış hedefine ulaşamaması",
+      "Bir rakibin yeni bir reklam kampanyası başlatması",
+      "Sektör kurallarının, müşteri beklentilerinin ve rekabetin geri dönülemez biçimde değiştiği an",
+      "Şirketin genel müdürünün emekli olması",
+    ],
+    correctAnswer: "Sektör kurallarının, müşteri beklentilerinin ve rekabetin geri dönülemez biçimde değiştiği an",
+  },
+  {
+    id: 12,
+    questionText:
+      "Stratejik yönetim teorisyenleri ile katkıları eşleştirildiğinde aşağıdakilerden hangisi YANLIŞTIR?",
+    options: [
+      "Porter – Beş Rekabetçi Güç ve sektör analizi",
+      "Barney – Kaynak Temelli Yaklaşım (RBV)",
+      "Hamel ve Prahalad – Temel yetenek (core competence)",
+      "Andy Grove – Beş Rekabetçi Güç modeli",
+    ],
+    correctAnswer: "Andy Grove – Beş Rekabetçi Güç modeli",
+  },
+ 
+  // ---------- BÖLÜM 2: Stratejinin Kökeni ve Benzer Kavramlar ----------
+  {
+    id: 13,
+    questionText:
+      "'Strateji' kelimesinin kökeni olan Yunanca 'Strategos' sözcüğü ne anlama gelir?",
+    options: [
+      "Ordunun sevk ve idaresi / komutanlık sanatı",
+      "Ticaret sanatı",
+      "Para yönetimi",
+      "Tarım planlaması",
+    ],
+    correctAnswer: "Ordunun sevk ve idaresi / komutanlık sanatı",
+  },
+  {
+    id: 14,
+    questionText:
+      "Mintzberg'in strateji sınıflandırmasına göre; başlangıçta hiç planlanmadığı hâlde çevresel değişim veya fırsatlar sonucu kendiliğinden gelişen strateji türü hangisidir?",
+    options: [
+      "Amaçlanan (Intended) strateji",
+      "Oluşan (Emergent) strateji",
+      "Gerçekleşen (Realized) strateji",
+      "Kurumsal strateji",
+    ],
+    correctAnswer: "Oluşan (Emergent) strateji",
+  },
+  {
+    id: 15,
+    questionText:
+      "Strateji ile taktik arasındaki farkı doğru biçimde veren ifade aşağıdakilerden hangisidir?",
+    options: [
+      "Strateji kısa vadeli, taktik uzun vadelidir",
+      "Strateji iç süreç, taktik ise dış çevredir",
+      "Strateji yön ve tercih üretir; taktik ise kısa vadeli bir uygulama hamlesidir",
+      "İkisi tamamen aynı anlama gelir",
+    ],
+    correctAnswer: "Strateji yön ve tercih üretir; taktik ise kısa vadeli bir uygulama hamlesidir",
+  },
+  {
+    id: 16,
+    questionText:
+      "'Kim, neyi, ne zaman ve hangi kaynakla yapacak?' sorusu en çok aşağıdaki kavramlardan hangisine aittir?",
+    options: [
+      "Vizyon",
+      "Misyon",
+      "Politika",
+      "Plan",
+    ],
+    correctAnswer: "Plan",
+  },
+  {
+    id: 17,
+    questionText:
+      "Strateji ile operasyon ayrımı için en doğru ifade aşağıdakilerden hangisidir?",
+    options: [
+      "Strateji yön ve tercih üretir; operasyon ise süreçleri etkin biçimde işletir",
+      "İkisi de aynı anlama gelir",
+      "Operasyon yönü belirler, strateji günlük işleri yürütür",
+      "Strateji yalnızca alt kademenin işidir",
+    ],
+    correctAnswer: "Strateji yön ve tercih üretir; operasyon ise süreçleri etkin biçimde işletir",
+  },
+ 
+  // ---------- BÖLÜM 3: Süreç, Örgüt-Çevre Kuramları ve PESTEL ----------
+  {
+    id: 18,
+    questionText:
+      "Örgüt kuramlarındaki 'Aktör–Yapı (Agency–Structure)' tartışmasının merkezindeki soru aşağıdakilerden hangisidir?",
+    options: [
+      "Şirket hangi pazarlara girmelidir?",
+      "Şirketin kaderini yöneticiler mi (aktör) yoksa içinde bulunduğu şartlar ve sistem mi (yapı) belirler?",
+      "Stratejik kontrol hangi göstergelerle yapılmalıdır?",
+      "Büyüme mi yoksa kârlılık mı önceliklidir?",
+    ],
+    correctAnswer: "Şirketin kaderini yöneticiler mi (aktör) yoksa içinde bulunduğu şartlar ve sistem mi (yapı) belirler?",
+  },
+  {
+    id: 19,
+    questionText:
+      "Koşul Bağımlılık (Contingency) Yaklaşımının temel iddiası nedir?",
+    options: [
+      "Tüm örgütler için geçerli tek bir en iyi yapı vardır",
+      "Örgütler çevreyi tamamen kontrol edebilir",
+      "En uygun örgüt yapısı ve yönetim biçimi, çevre koşullarına bağlı olarak değişir",
+      "Performansı yalnızca sektör çekiciliği belirler",
+    ],
+    correctAnswer: "En uygun örgüt yapısı ve yönetim biçimi, çevre koşullarına bağlı olarak değişir",
+  },
+  {
+    id: 20,
+    questionText:
+      "Örgütsel Ekoloji Kuramının temel vurgusuna en yakın ifade aşağıdakilerden hangisidir?",
+    options: [
+      "Başarı tamamen yöneticinin iradesi ve doğru kararlarıyla belirlenir",
+      "Tüm örgütler için tek bir en iyi yapı vardır",
+      "Örgütler her zaman çevreyi kolayca değiştirebilir",
+      "Örgütler hızlı değişime aynı hızda uyum sağlayamaz; çevre en uygun olanı seçer (uygunsuzu eler)",
+    ],
+    correctAnswer: "Örgütler hızlı değişime aynı hızda uyum sağlayamaz; çevre en uygun olanı seçer (uygunsuzu eler)",
+  },
+  {
+    id: 21,
+    questionText:
+      "'Çevreyi değiştiremezsin ama ona olan bağımlılığını yönetebilirsin' anlayışıyla; örgütlerin ittifak, birleşme ve tedarikçi çeşitlendirmesiyle çevreyi kısmen yönetebileceğini savunan kuram hangisidir?",
+    options: [
+      "Kaynak Bağımlılığı Kuramı (RDT)",
+      "Örgütsel Ekoloji Kuramı",
+      "Endüstriyel Örgüt Teorisi",
+      "Oyun Teorisi",
+    ],
+    correctAnswer: "Kaynak Bağımlılığı Kuramı (RDT)",
+  },
+  {
+    id: 22,
+    questionText:
+      "PESTEL analizinde, 'mobilyalarda ürün güvenliği standartlarının zorunlu hâle getirilmesi' aşağıdaki genel çevre unsurlarından hangisine örnektir?",
+    options: [
+      "Ekonomik çevre",
+      "Yasal çevre",
+      "Sosyo-kültürel çevre",
+      "Teknolojik çevre",
+    ],
+    correctAnswer: "Yasal çevre",
+  },
+ 
+  // ---------- BÖLÜM 4: Porter'ın Beş Gücü ----------
+  {
+    id: 23,
+    questionText:
+      "Aşağıdakilerden hangisi Porter'ın Beş Rekabetçi Güç modelinde yer almaz?",
+    options: [
+      "Mevcut rakipler arasındaki rekabet",
+      "Tedarikçilerin pazarlık gücü",
+      "Devletin doğrudan fiyat belirleme gücü",
+      "İkame ürünlerin tehdidi",
+    ],
+    correctAnswer: "Devletin doğrudan fiyat belirleme gücü",
+  },
+  {
+    id: 24,
+    questionText:
+      "Birkaç büyük işletmenin pazara hâkim olduğu ve temel kararların bu büyük firmalarca alındığı pazar yapısına ne ad verilir?",
+    options: [
+      "Tam rekabet pazarı",
+      "Monopol (tekel)",
+      "Monopollü rekabet",
+      "Oligopol",
+    ],
+    correctAnswer: "Oligopol",
+  },
+  {
+    id: 25,
+    questionText:
+      "Çok sayıda firmanın benzer mallar ürettiği, ancak bazılarının kendini farklılaştırarak fiyatını belirleyebildiği fakat pazarın genel yapısını etkileyemediği pazar türü hangisidir?",
+    options: [
+      "Monopollü rekabet",
+      "Monopol",
+      "Oligopol",
+      "Tam rekabet",
+    ],
+    correctAnswer: "Monopollü rekabet",
+  },
+  {
+    id: 26,
+    questionText:
+      "Aşağıdakilerden hangisi bir sektöre yeni firmaların girmesini zorlaştıran giriş engellerinden biri DEĞİLDİR?",
+    options: [
+      "Ölçek ekonomileri",
+      "Dağıtım kanallarına kolay erişim",
+      "Yüksek sermaye gereksinimi",
+      "Güçlü marka sadakati",
+    ],
+    correctAnswer: "Dağıtım kanallarına kolay erişim",
+  },
+  {
+    id: 27,
+    questionText:
+      "İkame ürünlerin bir sektör için tehdit oluşturması aşağıdaki durumların hangisinde artar?",
+    options: [
+      "İkame ürün daha pahalı ve daha düşük kaliteliyse",
+      "İkame ürüne geçişin maliyeti çok yüksekse",
+      "İkame ürün daha ucuz ya da aynı fiyata daha iyiyse ve geçiş kolaysa",
+      "İkame ürüne olan ilgi giderek azalıyorsa",
+    ],
+    correctAnswer: "İkame ürün daha ucuz ya da aynı fiyata daha iyiyse ve geçiş kolaysa",
+  },
+  {
+    id: 28,
+    questionText:
+      "Porter'a göre 'konumlandırma (pozisyon)' kavramı neyi ifade eder?",
+    options: [
+      "Yalnızca ürünün fiyatını belirlemeyi",
+      "Yalnızca reklam bütçesini artırmayı",
+      "Üretim kapasitesini büyütmeyi",
+      "Pazarda nerede durduğunu, kime hitap ettiğini ve rakiplerinden neden farklı olduğunu net biçimde tanımlamayı",
+    ],
+    correctAnswer: "Pazarda nerede durduğunu, kime hitap ettiğini ve rakiplerinden neden farklı olduğunu net biçimde tanımlamayı",
+  },
+ 
+  // ---------- BÖLÜM 5: İç Çevre Analizi (VRIO, Değer Zinciri, SWOT) ----------
+  {
+    id: 29,
+    questionText:
+      "VRIO analizinde bir kaynağın değerlendirildiği dört ölçütten biri DEĞİLDİR?",
+    options: [
+      "Ucuz olması",
+      "Değerli olma",
+      "Nadir bulunma",
+      "Taklit edilmesinin maliyetli/zor olması",
+    ],
+    correctAnswer: "Ucuz olması",
+  },
+  {
+    id: 30,
+    questionText:
+      "Starbucks'ın 'dünya çapında çok sayıda satış lokasyonuna sahip olması' değerli bir kaynak olsa da McDonald's ve Subway gibi rakiplerde de bulunduğu (nadir olmadığı) için bu kaynak işletmeye ne sağlar?",
+    options: [
+      "Sürdürülebilir rekabet üstünlüğü",
+      "Yalnızca rekabetçi eşitlik",
+      "Kalıcı bir tekel konumu",
+      "Rekabet dezavantajı",
+    ],
+    correctAnswer: "Yalnızca rekabetçi eşitlik",
+  },
+  {
+    id: 31,
+    questionText:
+      "Porter'ın Değer Zinciri modelinde aşağıdakilerden hangisi temel (birincil) faaliyetlerden biridir?",
+    options: [
+      "İnsan kaynakları yönetimi",
+      "Teknoloji geliştirme",
+      "Dışa yönelik lojistik",
+      "İşletmenin yönetsel altyapısı",
+    ],
+    correctAnswer: "Dışa yönelik lojistik",
+  },
+  {
+    id: 32,
+    questionText:
+      "SWOT analizinde 'fırsatlar' ve 'tehditler' aşağıdakilerden hangisinin incelenmesi sonucu belirlenir?",
+    options: [
+      "İşletmenin iç çevresinin",
+      "Yalnızca finansal tabloların",
+      "Yalnızca üretim sürecinin",
+      "İşletmenin dış çevresinin",
+    ],
+    correctAnswer: "İşletmenin dış çevresinin",
+  },
+  {
+    id: 33,
+    questionText:
+      "İşletmenin gelişmesi için 'işlerin mutlaka doğru gitmesi gereken' birkaç kilit alana ne ad verilir?",
+    options: [
+      "Kritik Başarı Faktörü (KBF)",
+      "Temel Performans Göstergesi (KPI)",
+      "Değer zinciri",
+      "Pazar bölümü",
+    ],
+    correctAnswer: "Kritik Başarı Faktörü (KBF)",
+  },
+  {
+    id: 34,
+    questionText:
+      "Bir işletmede bağımsız birimlerin birlikte çalışarak tek başlarına üretebileceklerinden daha fazla değer üretmesine ne ad verilir?",
+    options: [
+      "Yapısal atalet",
+      "Sinerji",
+      "Tasfiye",
+      "Kıyaslama",
+    ],
+    correctAnswer: "Sinerji",
+  },
+ 
+  // ---------- BÖLÜM 6: Misyon, Vizyon, Amaç, Hedef ----------
+  {
+    id: 35,
+    questionText:
+      "Bir işletmenin bugün itibarıyla varlık sebebini, ne iş yaptığını ve kime hizmet ettiğini tanımlayan ifade hangisidir?",
+    options: [
+      "Vizyon",
+      "Hedef",
+      "Misyon",
+      "Taktik",
+    ],
+    correctAnswer: "Misyon",
+  },
+  {
+    id: 36,
+    questionText:
+      "İşletmenin 5-10 yıl sonra kendisini görmek istediği ideal/zihinsel resmi ifade eden kavram hangisidir?",
+    options: [
+      "Misyon",
+      "Politika",
+      "Plan",
+      "Vizyon",
+    ],
+    correctAnswer: "Vizyon",
+  },
+  {
+    id: 37,
+    questionText:
+      "Misyon ile vizyon arasındaki farkla ilgili aşağıdakilerden hangisi doğrudur?",
+    options: [
+      "Misyon bugünü ve varlık nedenini, vizyon ise gelecekte ulaşılmak istenen durumu anlatır",
+      "Misyon geleceği, vizyon bugünü anlatır",
+      "İkisi de yalnızca sayısal finansal hedeflerdir",
+      "Vizyon zamandan bağımsızdır, misyon ise sürekli değişir",
+    ],
+    correctAnswer: "Misyon bugünü ve varlık nedenini, vizyon ise gelecekte ulaşılmak istenen durumu anlatır",
+  },
+  {
+    id: 38,
+    questionText:
+      "'Yıl sonuna kadar satışları %10 artırmak' ifadesi; ölçülebilir ve zaman sınırlı olması nedeniyle aşağıdaki kavramlardan hangisine örnektir?",
+    options: [
+      "Vizyon",
+      "Hedef",
+      "Amaç",
+      "Misyon",
+    ],
+    correctAnswer: "Hedef",
+  },
+ 
+  // ---------- BÖLÜM 7: Strateji Oluşturma ve Temel Stratejiler ----------
+  {
+    id: 39,
+    questionText:
+      "BCG matrisinde düşük büyüme hızına ama yüksek pazar payına sahip olan, işletmeye düzenli nakit sağlayan iş birimleri hangi grupta yer alır?",
+    options: [
+      "Yıldızlar",
+      "Soru işaretleri (belirsizler)",
+      "Nakit inekleri",
+      "Köpekler (sorunlular)",
+    ],
+    correctAnswer: "Nakit inekleri",
+  },
+  {
+    id: 40,
+    questionText:
+      "BCG matrisinde hem büyüme hızı hem de pazar payı düşük olan iş birimleri için genellikle hangi strateji önerilir?",
+    options: [
+      "Büyüme stratejisi",
+      "Yoğun yatırım stratejisi",
+      "İlişkisiz çeşitlendirme stratejisi",
+      "Küçülme / tasfiye stratejisi",
+    ],
+    correctAnswer: "Küçülme / tasfiye stratejisi",
+  },
+  {
+    id: 41,
+    questionText:
+      "Pazarın yaşam evresi ile pazardaki rekabet durumunu birlikte ele alan ve BCG'nin geliştirilmiş hâli sayılan portföy matrisi kime aittir?",
+    options: [
+      "C. Hofer",
+      "Michael Porter",
+      "Jay Barney",
+      "Henry Mintzberg",
+    ],
+    correctAnswer: "C. Hofer",
+  },
+  {
+    id: 42,
+    questionText:
+      "Küçülme stratejileriyle ilgili aşağıdakilerden hangisi doğrudur?",
+    options: [
+      "Her zaman bir başarısızlık ve iflas işaretidir",
+      "Hayatta kalma, yeniden yapılanma ve odaklanma için bilinçli bir tercih olabilir",
+      "Mutlaka tüm faaliyetlerin durdurulması anlamına gelir",
+      "Yalnızca büyüme amacıyla uygulanır",
+    ],
+    correctAnswer: "Hayatta kalma, yeniden yapılanma ve odaklanma için bilinçli bir tercih olabilir",
+  },
+  {
+    id: 43,
+    questionText:
+      "Bir havayolu şirketinin (Pegasus) başka bir havayolu şirketini (Onur Air) satın alarak aynı işte kapasitesini artırması hangi stratejiye örnektir?",
+    options: [
+      "Geriye yönelik dikey entegrasyon",
+      "İleriye yönelik dikey entegrasyon",
+      "Yatay büyüme",
+      "İlişkisiz çeşitlendirme",
+    ],
+    correctAnswer: "Yatay büyüme",
+  },
+  {
+    id: 44,
+    questionText:
+      "Kendi olanaklarının yanında başka bir işletmeden destek alarak, mevcut işinden tamamen farklı yeni bir alana giren işletme hangi stratejiyi uygulamaktadır?",
+    options: [
+      "Bağımsız ilişkili büyüme",
+      "Yatay küçülme",
+      "Durağan strateji",
+      "Bağımlı ilişkisiz büyüme",
+    ],
+    correctAnswer: "Bağımlı ilişkisiz büyüme",
+  },
+ 
+  // ---------- BÖLÜM 8: Kurumsal & Rekabet Stratejileri + Teknikler ----------
+  {
+    id: 45,
+    questionText:
+      "Üst yönetimin belirlediği stratejilere uygun olarak orta ve alt yönetim düzeylerince hazırlanıp uygulanan, daha çok teknik bilgi ve uzmanlık isteyen stratejilere ne ad verilir?",
+    options: [
+      "İşlevsel (operasyonel) stratejiler",
+      "Kurumsal stratejiler",
+      "Çeşitlendirme stratejileri",
+      "Rekabet stratejileri",
+    ],
+    correctAnswer: "İşlevsel (operasyonel) stratejiler",
+  },
+  {
+    id: 46,
+    questionText:
+      "Porter'ın maliyet liderliği stratejisinin temel mantığı aşağıdakilerden hangisidir?",
+    options: [
+      "Ürünleri her zaman sektördeki en düşük fiyattan satmak",
+      "Faaliyet maliyetlerini rakiplerden düşük tutup ürünü ortalama fiyattan satarak ortalamanın üzerinde getiri elde etmek",
+      "Ürünü farklılaştırarak yüksek fiyattan satmak",
+      "Yalnızca çok dar bir niş pazara hizmet etmek",
+    ],
+    correctAnswer: "Faaliyet maliyetlerini rakiplerden düşük tutup ürünü ortalama fiyattan satarak ortalamanın üzerinde getiri elde etmek",
+  },
+  {
+    id: 47,
+    questionText:
+      "Bir işletmenin daha önce hiç faaliyet göstermediği, kendisine tamamen yabancı bir iş koluna girmesine ne ad verilir ve bu strateji nasıl bir risk taşır?",
+    options: [
+      "İlişkili çeşitlendirme; düşük risk",
+      "Yatay büyüme; risk içermez",
+      "İlişkisiz çeşitlendirme; yüksek risk",
+      "Durağan strateji; risk içermez",
+    ],
+    correctAnswer: "İlişkisiz çeşitlendirme; yüksek risk",
+  },
+  {
+    id: 48,
+    questionText:
+      "Miles & Snow sınıflandırmasında; sürekli yeni pazarlar ve fırsatlar arayan, ilk yapan olmak isteyen ve yüksek risk alan işletme türü hangisidir?",
+    options: [
+      "Savunmacı (Defender)",
+      "Analizci (Analyzer)",
+      "İzleyici",
+      "Öncü (Prospector)",
+    ],
+    correctAnswer: "Öncü (Prospector)",
+  },
+  {
+    id: 49,
+    questionText:
+      "İşletme birleşmesi (merger) ile satın alma (acquisition) arasındaki temel fark nedir?",
+    options: [
+      "Birleşmede eski kimlikler sona erip yeni bir şirket doğar; satın almada her iki şirketin tüzel kişiliği devam eder",
+      "İkisinde de mutlaka yepyeni bir şirket kurulur",
+      "Satın almada eski kimlikler yok olur, birleşmede her ikisi de korunur",
+      "İkisi de yalnızca sözleşmeye dayalı geçici bir iş birliğidir",
+    ],
+    correctAnswer: "Birleşmede eski kimlikler sona erip yeni bir şirket doğar; satın almada her iki şirketin tüzel kişiliği devam eder",
+  },
+  {
+    id: 50,
+    questionText:
+      "İki veya daha fazla işletmenin yeni bir şirket kurmadan, yalnızca belirli amaçlar için sözleşmeye dayalı iş birliği yapmasına (örneğin Star Alliance) ne ad verilir?",
+    options: [
+      "Ortak girişim (joint venture)",
+      "Stratejik ortaklık (alliance)",
+      "İşletme birleşmesi (merger)",
+      "Satın alma (acquisition)",
+    ],
+    correctAnswer: "Stratejik ortaklık (alliance)",
+  },
+ 
+  // ---------- BÖLÜM 9: İşlevsel Stratejiler ----------
+  {
+    id: 51,
+    questionText:
+      "Müşteri taleplerinin çok hızlı ve öngörülemez değiştiği, ancak hammadde tedarikinin nispeten istikrarlı olduğu bir pazarda faaliyet gösteren yenilikçi bir markanın uygulaması en mantıklı tedarik zinciri stratejisi hangisidir?",
+    options: [
+      "Etkin (verimli) tedarik zinciri",
+      "Risk önleyici tedarik zinciri",
+      "Duyarlı (tepkisel) tedarik zinciri",
+      "Yalın tedarik zinciri",
+    ],
+    correctAnswer: "Duyarlı (tepkisel) tedarik zinciri",
+  },
+  {
+    id: 52,
+    questionText:
+      "Büyük bir pazarda küçük bir pay almak yerine, tek bir küçük segmentte büyük pay elde etmeyi hedefleyen ve özellikle sınırlı kaynaklı işletmeler için uygun olan hedef pazar stratejisi hangisidir?",
+    options: [
+      "Farklılaştırılmamış (kitle) pazarlama",
+      "Farklılaştırılmış (çoklu) pazarlama",
+      "Dikey pazarlama",
+      "Yoğunlaştırılmış (niş) pazarlama",
+    ],
+    correctAnswer: "Yoğunlaştırılmış (niş) pazarlama",
+  },
+  {
+    id: 53,
+    questionText:
+      "Doğrudan nihai tüketicilere yönelik reklam ve tutundurma yaparak onları ürünü perakendeciden istemeye yönlendiren tutundurma stratejisi hangisidir?",
+    options: [
+      "Çekme (pull) stratejisi",
+      "İtme (push) stratejisi",
+      "Yalın strateji",
+      "Dış kaynak (outsourcing) stratejisi",
+    ],
+    correctAnswer: "Çekme (pull) stratejisi",
+  },
+ 
+  // ---------- BÖLÜM 10: Stratejilerin Uygulanması (7-S) ----------
+  {
+    id: 54,
+    questionText:
+      "McKinsey 7-S modelinde; modelin merkezinde yer alan ve örgüt kültürünü, paylaşılan inanç ve değerleri ifade eden unsur hangisidir?",
+    options: [
+      "Strateji (Strategy)",
+      "Ortak Değerler (Shared Values)",
+      "Yapı (Structure)",
+      "Sistemler (Systems)",
+    ],
+    correctAnswer: "Ortak Değerler (Shared Values)",
+  },
+  {
+    id: 55,
+    questionText:
+      "McKinsey 7-S modelinin temel mesajı aşağıdakilerden hangisidir?",
+    options: [
+      "Yalnızca iyi bir strateji belirlemek başarı için yeterlidir",
+      "Sadece örgüt yapısı önemlidir, diğer unsurlar gereksizdir",
+      "Başarı, birbiriyle uyumlu yedi unsurun birlikte ve uyum içinde çalışmasından doğar",
+      "Strateji, uygulamadan daha önemsizdir",
+    ],
+    correctAnswer: "Başarı, birbiriyle uyumlu yedi unsurun birlikte ve uyum içinde çalışmasından doğar",
+  },
+  {
+    id: 56,
+    questionText:
+      "Burns ve Stalker'a göre; merkezi olmayan karar verme, esneklik ve gevşek (biçimsel olmayan) kurallarla öne çıkan ve belirsiz/dinamik çevreye uygun olan örgüt yapısı hangisidir?",
+    options: [
+      "Mekanik yapı",
+      "Hiyerarşik yapı",
+      "Bürokratik yapı",
+      "Organik yapı",
+    ],
+    correctAnswer: "Organik yapı",
+  },
+ 
+  // ---------- BÖLÜM 11: Stratejik Değerlendirme ve Kontrol ----------
+  {
+    id: 57,
+    questionText:
+      "Geleneksel kontrol ile çağdaş stratejik kontrolün karşılaştırılmasıyla ilgili aşağıdakilerden hangisi doğrudur?",
+    options: [
+      "Stratejik kontrol süreç boyunca ve sürekli (proaktif) işler; çift döngülü öğrenmeyle varsayımları da sorgular",
+      "Geleneksel kontrol gelecek odaklı ve proaktiftir",
+      "Stratejik kontrol yalnızca geçmiş finansal verilere bakar",
+      "Geleneksel kontrol, çevresel değişime stratejik kontrolden daha duyarlıdır",
+    ],
+    correctAnswer: "Stratejik kontrol süreç boyunca ve sürekli (proaktif) işler; çift döngülü öğrenmeyle varsayımları da sorgular",
+  },
+  {
+    id: 58,
+    questionText:
+      "Stratejik kontrolde kullanılan Rumelt kriterlerinden 'Uyum (Consonance)' kriteri neyi sorgular?",
+    options: [
+      "Stratejinin iç hedef ve politikalarla çelişip çelişmediğini",
+      "Stratejinin dış çevredeki değişim ve trendlere ayak uydurup uyduramadığını",
+      "Mevcut kaynakların stratejiyi yürütmeye yeterli olup olmadığını",
+      "Stratejinin rakibe karşı avantaj sağlayıp sağlamadığını",
+    ],
+    correctAnswer: "Stratejinin dış çevredeki değişim ve trendlere ayak uydurup uyduramadığını",
+  },
+  {
+    id: 59,
+    questionText:
+      "Kaplan ve Norton'ın Dengeli Değerlendirme Çizelgesi (Balanced Scorecard) performansı hangi dört perspektiften ölçer?",
+    options: [
+      "Yalnızca finansal perspektiften",
+      "Yalnızca müşteri ve finansal olmak üzere iki perspektiften",
+      "Finansal, Müşteri, İç Süreçler ve Öğrenme-Gelişim perspektiflerinden",
+      "Üretim, satış ve pazarlama olmak üzere üç perspektiften",
+    ],
+    correctAnswer: "Finansal, Müşteri, İç Süreçler ve Öğrenme-Gelişim perspektiflerinden",
+  },
+  {
+    id: 60,
+    questionText:
+      "Stratejik kontrolde kullanılan 'Açıklık (Gap) Analizi' yöneticilere ne sağlar?",
+    options: [
+      "Yalnızca reklam bütçesindeki sapmayı hesaplar",
+      "Rakibin gizli finansal kaynaklarını listeler",
+      "Ürünün lojistik süresini saniye bazında ölçer",
+      "İşletmenin mevcut performansı ile ulaşmak istediği hedef arasındaki 'makası' ve gereken kaynak ihtiyacını gösterir",
+    ],
+    correctAnswer: "İşletmenin mevcut performansı ile ulaşmak istediği hedef arasındaki 'makası' ve gereken kaynak ihtiyacını gösterir",
+  },
+];
+
+const Muhasebe: Question[] = [
+  // Sorular buraya eklenecek.
+];
+
 export const lessons: Lesson[] = [
   {
     id: "Kalkinma Ekonomisi",
@@ -6736,5 +7484,19 @@ export const lessons: Lesson[] = [
     description: `${MakroIktisat.length} soruluk tam tarama testi.`,
     accent: "emerald",
     questions: MakroIktisat,
+  },
+  {
+    id: "Stratejik Special",
+    title: "Stratejik Special",
+    description: `${StratejikSpecial.length} soruluk tam tarama testi.`,
+    accent: "sky",
+    questions: StratejikSpecial,
+  },
+  {
+    id: "Muhasebe",
+    title: "Muhasebe",
+    description: `${Muhasebe.length} soruluk tam tarama testi.`,
+    accent: "amber",
+    questions: Muhasebe,
   },
 ];

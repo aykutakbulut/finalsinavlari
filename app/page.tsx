@@ -100,6 +100,8 @@ const UNLOCKED_LESSON_IDS = new Set([
 const PRIVATE_LESSON_IDS = new Set([
   "Bütünleşik Pazarlama",
   "Makro İktisat",
+  "Stratejik Special",
+  "Muhasebe",
 ]);
 
 export default function QuizApp() {
