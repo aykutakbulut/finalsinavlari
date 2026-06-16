@@ -25,7 +25,7 @@ const stratejikSorular = [
       "Kaynaklar yaklaşımı",
       "Pazarlar yaklaşımı",
     ],
-    correctAnswer: "Pazarlar yaklaşımı",
+    correctAnswer: "Sektörel yaklaşım",
   },
   {
     id: 3,
