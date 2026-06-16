@@ -1,5 +1,752 @@
 import { Lesson, Question } from "../types/quiz";
 
+const stratejikSorular = [
+  {
+    id: 1,
+    questionText:
+      "Amaçların somut ve sayılarla ifade edilebilir olması aşağıdaki ilkelerden hangisiyle ilgilidir?",
+    options: [
+      "Motive edici olma",
+      "Açık ve seçik olma",
+      "Gerçekçi ve çekici düzeyde olma",
+      "Ölçülebilir olma",
+      "Esnek olma",
+    ],
+    correctAnswer: "Ölçülebilir olma",
+  },
+  {
+    id: 2,
+    questionText:
+      "Aşağıdakilerden hangisinde stratejinin belirlenme sürecinde başlangıç noktası olarak işletmenin dış çevresinin dikkate alınması gerektiğine vurgu yapılmaktadır?",
+    options: [
+      "Sektörel yaklaşım",
+      "Bütünleştirici yaklaşım",
+      "Grove yaklaşımı",
+      "Kaynaklar yaklaşımı",
+      "Pazarlar yaklaşımı",
+    ],
+    correctAnswer: "Pazarlar yaklaşımı",
+  },
+  {
+    id: 3,
+    questionText:
+      "İşletmenin temel inançları, arzuları ve etik değerleri hakkındaki bilgiler aşağıdakilerden hangisinin kapsamında yer alır?",
+    options: [
+      "Strateji",
+      "Amaç",
+      "Politika",
+      "Vizyon",
+      "Kurumsal değerler",
+    ],
+    correctAnswer: "Kurumsal değerler",
+  },
+  {
+    id: 4,
+    questionText:
+      "İşletmenin benzer veya farklı iş alanlarında fırsatlardan yararlanarak gelecekteki değerini artırmaya yönelik üst yönetim büyüme stratejisine ne ad verilir?",
+    options: [
+      "Kısmi tasfiye stratejisi",
+      "Durağan strateji",
+      "Rekabet stratejisi",
+      "Çeşitlendirme stratejisi",
+      "Karma strateji",
+    ],
+    correctAnswer: "Çeşitlendirme stratejisi",
+  },
+  {
+    id: 5,
+    questionText:
+      "Aşağıdakilerden hangisi VRIO Analizinde sorgulanması gereken bir özellik değildir?",
+    options: [
+      "Örgütlenme",
+      "Taklit edilememe",
+      "İkamesi olmama",
+      "Nadir bulunurluk",
+      "Değerli olma",
+    ],
+    correctAnswer: "İkamesi olmama",
+  },
+  {
+    id: 6,
+    questionText:
+      "Aşağıdakilerden hangisi işletmelerde Yönetimin bir fonksiyonu değildir?",
+    options: [
+      "Pazarlama",
+      "Yürütme",
+      "Kontrol",
+      "Organizasyon",
+      "Planlama",
+    ],
+    correctAnswer: "Pazarlama",
+  },
+  {
+    id: 7,
+    questionText:
+      "Aşağıdakilerden hangisi örgüt yapısı incelenirken dikkat edilmesi gereken noktalardan biri değildir?",
+    options: [
+      "Rekabet",
+      "Merkezileşme",
+      "Biçimselleşme",
+      "Yatay farklılaşma",
+      "Dikey farklılaşma",
+    ],
+    correctAnswer: "Rekabet",
+  },
+  {
+    id: 8,
+    questionText:
+      "Yüksek girdi-çıktı miktarları sayesinde maliyetlerden tasarruf edilmesi olarak tanımlanan pazara giriş engeli aşağıdakilerden hangisidir?",
+    options: [
+      "Değiştirme maliyeti",
+      "Müşterinin pazarlık gücü",
+      "Alıcıların pazarlık gücü",
+      "Ölçek ekonomisi",
+      "Ürün farklılaştırma",
+    ],
+    correctAnswer: "Ölçek ekonomisi",
+  },
+  {
+    id: 9,
+    questionText:
+      "İşletmenin faaliyette bulunduğu genel ve sektörel çevre unsurlarının halihazır durumunun incelenmesi ve işletme içindeki unsurların değerlendirilmesiyle ilgili sürece ne ad verilir?",
+    options: [
+      "Değer zinciri analizi",
+      "Beş rekabetçi güç analizi",
+      "İç çevre analizi",
+      "Stratejik analiz",
+      "Kontrol",
+    ],
+    correctAnswer: "Stratejik analiz",
+  },
+  {
+    id: 10,
+    questionText:
+      "İşletmenin uzun dönemde yaşamının devam ettirilmesine ve sürdürülebilir rekabet üstünlüğü sağlamasına yönelik bilgi toplama, analiz, seçim, karar ve uygulama faaliyetlerinin tümüne ne ad verilir?",
+    options: [
+      "Vizyon",
+      "Strateji Geliştirme",
+      "Stratejik Planlama",
+      "Çevre analizi",
+      "Stratejik Yönetim Süreci",
+    ],
+    correctAnswer: "Stratejik Yönetim Süreci",
+  },
+  {
+    id: 11,
+    questionText:
+      "İşletmenin içinde bulunduğu pazarda rakiplerine karşı nasıl hareket edeceğini ve onlarla nasıl rekabet etmesi gerektiği ile ilgili konuları inceleyen stratejilere ne ad verilir?",
+    options: [
+      "Rekabet stratejileri",
+      "Kurumsal stratejiler",
+      "Karma stratejiler",
+      "Büyüme stratejileri",
+      "Fonksiyonel stratejiler",
+    ],
+    correctAnswer: "Rekabet stratejileri",
+  },
+  {
+    id: 12,
+    questionText:
+      "Aşağıdakilerden hangisi değer zincirini oluşturan destek faaliyetlerden biridir?",
+    options: [
+      "Tedarik",
+      "Sinerji",
+      "Pazarlama ve satış",
+      "Paylaşılan değerler",
+      "Sistem ve süreçler",
+    ],
+    correctAnswer: "Tedarik",
+  },
+  {
+    id: 13,
+    questionText:
+      "İkame malların olası rakip olup olamayacağı bazı koşullara bağlıdır. Aşağıdakilerden hangisi bu koşullardan değildir?",
+    options: [
+      "İkame malların Kalite üstünlüğüne sahip olması",
+      "İkame malların Fiyat üstünlüğüne sahip olması",
+      "Ana mamülün Kalite üstünlüğüne sahip olması",
+      "İkame mallara geçişin maliyeti",
+      "Değişen tüketici eğilimleri",
+    ],
+    correctAnswer: "Ana mamülün Kalite üstünlüğüne sahip olması",
+  },
+  {
+    id: 14,
+    questionText:
+      "Aşağıdakilerden hangisi işletmenin maddi varlıklarından değildir?",
+    options: [
+      "Taşıtlar",
+      "Binalar",
+      "Teknolojik sırları",
+      "Yarı mamüller",
+      "İnsan kaynakları",
+    ],
+    correctAnswer: "İnsan kaynakları",
+  },
+  {
+    id: 15,
+    questionText:
+      "Aşağıdakilerden hangisi strateji kontrol ölçütlerinden biri değildir?",
+    options: [
+      "Avantaj",
+      "Uygulanabilirlik",
+      "Anlaşılabilirlik",
+      "Uyum",
+      "Tutarlılık",
+    ],
+    correctAnswer: "Anlaşılabilirlik",
+  },
+  {
+    id: 16,
+    questionText:
+      "İşletmenin elinde olmayan nedenlerde işleri iyi gitmeyen ve mali durumu bozulmuş olan dürüst borçluları korumak için kabul edilmiş bir hukuki uygulamadır?",
+    options: [
+      "İşbirliği",
+      "Konkordato",
+      "Know-how",
+      "Ortam Girişim",
+      "İflas",
+    ],
+    correctAnswer: "Konkordato",
+  },
+  {
+    id: 17,
+    questionText:
+      "Proaktif kriz yönetimi yaklaşımı bağlamında, eğer bir işletme güçlü kaynaklara sahip, fakat dış çevreden kaynaklanan tehlikelere maruz ise aşağıdakilerden hangisine yönelik stratejiler geliştirmelidir?",
+    options: [
+      "Bir bölümünü tasfiye etme",
+      "Mevcut durumunu koruma",
+      "Karı maksimize etme",
+      "Küçülme",
+      "Büyüme",
+    ],
+    correctAnswer: "Mevcut durumunu koruma",
+  },
+  {
+    id: 18,
+    questionText:
+      "Dar müşteri ya da pazar hedefi içinde var olmak isteyen işletmelerin tercih ettiği strateji şekli aşağıdakilerden hangisidir?",
+    options: [
+      "Maliyet liderliği",
+      "Farklılaştırma",
+      "Küçülme stratejisi",
+      "Odaklanma",
+      "Çeşitlendirme",
+    ],
+    correctAnswer: "Odaklanma",
+  },
+  {
+    id: 19,
+    questionText:
+      "Aşağıdakilerden hangisi değer zincirindeki destek faaliyetleri arasında yer alır?",
+    options: [
+      "Tedarik",
+      "Dış Lojistik",
+      "Satış Sonrası Hizmet",
+      "Üretim",
+      "İç Lojistik",
+    ],
+    correctAnswer: "Tedarik",
+  },
+  {
+    id: 20,
+    questionText:
+      "Aşağıdakilerden hangisi rakiplerin endüstriye girişte karşılaşabileceği misilleme beklentilerinden biri değildir?",
+    options: [
+      "Kendi aralarında birleşme-ittifak",
+      "Reklam faaliyetlerine belli bir süre ara vermek",
+      "Girdi kaynaklarına baskı yapma",
+      "Ana pazarlama kanallarına sahip olma",
+      "Fiyatları aşırı derecede aşağı çekme",
+    ],
+    correctAnswer: "Reklam faaliyetlerine belli bir süre ara vermek",
+  },
+  {
+    id: 21,
+    questionText:
+      "Aşağıdakilerden hangisi mevcut işin tanımını değiştirerek büyüme şekillerinden değildir?",
+    options: [
+      "Üretilen hizmetlere yenilerini ekleme",
+      "Mevcut üretim ve operasyon faaliyetleri ve süreçlerine yenilerini ekleme",
+      "Mevcut ürünlerde kullanım geliştirmeleri yapmak",
+      "Faaliyette bulunulan pazarlara yeni pazarlar ekleme",
+      "Üretilen mallara yeni mallar ekleme",
+    ],
+    correctAnswer: "Mevcut ürünlerde kullanım geliştirmeleri yapmak",
+  },
+  {
+    id: 22,
+    questionText:
+      "Toplumun gereksinimlerini karşılayacak mal ve hizmetlerin eldeki sınırlı kaynaklarla üretildiği, tüketildiği, kaynakların, mal ve hizmetlerin ve gelirin bölüşüldüğü ortamı ifade eden kavram aşağıdakilerden hangisidir?",
+    options: [
+      "Ana Pazar",
+      "Ekonomik çevre",
+      "Sektör",
+      "Küresel çevre",
+      "Sosyo kültürel çevre",
+    ],
+    correctAnswer: "Ekonomik çevre",
+  },
+  {
+    id: 23,
+    questionText:
+      "İşletme amaçlarına ulaşmayı sağlayacak değişimleri gerçekleştirmek üzere, ihtiyaç karşılayacak malların, hizmetlerin ve fikirlerin geliştirilmesi, fiyatlandırılması, tutundurulması ve dağıtılmasına ilişkin planlama ve uygulama sürecine ne ad verilir?",
+    options: [
+      "Ekonomi",
+      "Ürün",
+      "Müşteri İlişkileri",
+      "Üretim",
+      "Pazarlama",
+    ],
+    correctAnswer: "Pazarlama",
+  },
+  {
+    id: 24,
+    questionText:
+      "Nüfus artışı ve kırsal alanlardan şehirlere göç nedeniyle artan kentleşme, genel çevre analizinde hangi faktör kapsamında yer alır?",
+    options: [
+      "Politik",
+      "Demografik",
+      "Uluslararası",
+      "Sosyo Kültürel",
+      "Ekonomik",
+    ],
+    correctAnswer: "Demografik",
+  },
+  {
+    id: 25,
+    questionText:
+      "Aşağıdakilerden hangisi işletmenin Genel Dış Çevresi unsurlarından değildir?",
+    options: [
+      "Alıcılar",
+      "Ekonomik Çevre",
+      "Demografik Çevre",
+      "Yasal Çevre",
+      "Politik Çevre",
+    ],
+    correctAnswer: "Alıcılar",
+  },
+  {
+    id: 26,
+    questionText:
+      "Aşağıdakilerden hangisi stratejik yönetimin önemli amaçlarından biri değildir?",
+    options: [
+      "Sürdürülebilir rekabet üstünlüğü",
+      "Uzun dönemde yaşamın devam ettirilmesi",
+      "Ortalamanın üzerinde getiri",
+      "Uzun dönemli nihai sonuç",
+      "Değişen durumları önceden sezebilme",
+    ],
+    correctAnswer: "Uzun dönemli nihai sonuç",
+  },
+  {
+    id: 27,
+    questionText:
+      "Aşağıdakilerden hangisi Durağan Stratejilerin bir özelliğidir?",
+    options: [
+      "Mevcut mal ve hizmetler için yeni kullanım alanları geliştirilir",
+      "Mevcut işlerde iyileştirme ve geliştirme yapılmaz ve zaman içinde küçülünür",
+      "Mevcut mal ve hizmetlerin bir kısmı terk edilir",
+      "Faaliyetlerin hız ve etkililiğinde küçük iyileştirmeler yapılır",
+      "Farklı temel stratejiler aynı anda ve ard arda uygulanır",
+    ],
+    correctAnswer: "Faaliyetlerin hız ve etkililiğinde küçük iyileştirmeler yapılır",
+  },
+  {
+    id: 28,
+    questionText:
+      "İşlerin ve faaliyetlerin gerçekleşmesinden önce kullanılacak girdilerin kontrol edilerek, faaliyet esnasında oluşabilecek hataların ve yanlış uygulamaların önlenmesine yönelik kontrol türü aşağıdakilerden hangisidir?",
+    options: [
+      "Süreç sırası",
+      "Eşzamanlı",
+      "Gözle kontrol",
+      "Geriye Yönelik",
+      "İleriye Yönelik",
+    ],
+    correctAnswer: "İleriye Yönelik",
+  },
+  {
+    id: 29,
+    questionText:
+      "Aşağıdakilerden hangisi stratejik yönetim çalışmalarında uygulanacak süreçlerden değildir?",
+    options: [
+      "Stratejik seçenekler ve seçim",
+      "Durum Belirleme",
+      "İnteraktif kriz yönetimi",
+      "Durum Analizi",
+      "İşletmenin tanımı, tarihçe, kısa bilgiler ve amaç",
+    ],
+    correctAnswer: "İnteraktif kriz yönetimi",
+  },
+  {
+    id: 30,
+    questionText:
+      "Strateji ve yapı ilişkisi ile ilgili olarak aşağıdaki ifadelerden hangisi yanlıştır?",
+    options: [
+      "Bir işletme organizasyon yapısında değişiklik yapmadan da yeni bir strateji uygulama konusunda başarılı olabilir",
+      "Örgütsel yapı stratejiyi etkiler, hatta sınırlandırır",
+      "Tasarruf stratejileri uygulayan şirketlerin başarılı olabilmeleri için önemli yönetsel giderleri kaldırarak örgütsel yapı değişimine gitmeleri gerekir",
+      "Örgütsel amaçlara ulaşmak için seçilecek yapı stratejiye uygun olmalıdır",
+      "Yönetimce planlanan ve seçilen strateji örgüt yapısını yeniden şekillendirir",
+    ],
+    correctAnswer:
+      "Bir işletme organizasyon yapısında değişiklik yapmadan da yeni bir strateji uygulama konusunda başarılı olabilir",
+  },
+  {
+    id: 31,
+    questionText:
+      "İşletmenin misyonu, vizyonu ve stratejileri çerçevesinde oluşturduğu ve bu unsurların gerçekleşmesi için gerekli olan kilit faaliyet alanlarını temsil eden kavram aşağıdakilerden hangisidir?",
+    options: [
+      "Finansal Performans Oranları",
+      "Sinerjik Unsurlar",
+      "Temel Yetenekler",
+      "Kritik Başarı Faktörleri",
+      "Temel Performans Göstergeleri",
+    ],
+    correctAnswer: "Kritik Başarı Faktörleri",
+  },
+  {
+    id: 32,
+    questionText:
+      "Aşağıdakilerden hangisi insan kaynakları işlevi ile ilgili stratejiler belirlenirken ele alınan konulardan biri değildir?",
+    options: [
+      "İş gücü planlaması",
+      "İşe alma sürecinin planlanması",
+      "Yönetici geliştirme",
+      "Ücret sisteminin oluşturulması",
+      "Üretim hattının düzenlenmesi",
+    ],
+    correctAnswer: "Üretim hattının düzenlenmesi",
+  },
+  {
+    id: 33,
+    questionText:
+      "Aşağıdakilerden hangisi işletmenin stratejilerini uygularken değerlendirmesi gereken öğelerden biri değildir?",
+    options: [
+      "Yönetim tarzı",
+      "Çalışanlar",
+      "Sistemler",
+      "Örgütsel yapı",
+      "Müşteri",
+    ],
+    correctAnswer: "Müşteri",
+  },
+  {
+    id: 34,
+    questionText:
+      "Aşağıdakilerden hangisi İşletme analizinde (İç Çevre analizi) ele alınması gerekli hususlardan biri değildir?",
+    options: [
+      "Kritik başarı faktörlerinin belirlenmesi",
+      "İşletmenin finansal ve temel faaliyetlerinin sektör ortalamaları ve rakiplerle kıyaslama yapılarak durumunun belirlenmesi",
+      "Müşterilerin belirlenmesi",
+      "Varlık ve yeteneklerin, sektördeki belli başlı rakiplerin sahip oldukları benzer varlık ve yetenekleri ile karşılaştırılarak üstünlük veya zayıflıklarının belirlenmesi",
+      "İşletmenin varlıkları ve yeteneklerinin belirlenmesi",
+    ],
+    correctAnswer: "Müşterilerin belirlenmesi",
+  },
+  {
+    id: 35,
+    questionText:
+      "Aşağıdakilerden hangisi kurumsal stratejilerden biri değildir?",
+    options: [
+      "Bağımlı çekilme",
+      "Maliyet liderliği",
+      "Çeşitlendirme",
+      "Kısmı tasfiye",
+      "İlişkili Çeşitlendirme",
+    ],
+    correctAnswer: "Maliyet liderliği",
+  },
+  {
+    id: 36,
+    questionText:
+      "\"Türkiye'de sektöründe en yenilikçi işletme olmak\" ifadesi aşağıdakilerden hangisine verilebilecek bir örnektir?",
+    options: [
+      "Misyon",
+      "Strateji",
+      "Politika",
+      "Vizyon",
+      "Amaç",
+    ],
+    correctAnswer: "Vizyon",
+  },
+  {
+    id: 37,
+    questionText:
+      "Aşağıdakilerden hangisi temel yeteneklerin sahip olması gereken özelliklerden değildir?",
+    options: [
+      "Taklidi zor olma",
+      "Ucuz olma",
+      "İkame edilememe",
+      "Nadir olma",
+      "Değerli olma",
+    ],
+    correctAnswer: "Ucuz olma",
+  },
+  {
+    id: 38,
+    questionText:
+      "İşletmeler için çekici (cazip) sektörlerin sahip olması gereken özelliklerden hangisi yanlış olarak verilmiştir?",
+    options: [
+      "Sektöre giriş engelinin azlığı nedeniyle sektöre yeni girişlerin kolay olduğu",
+      "Rakipler arasındaki rekabetin şiddetli olmadığı",
+      "Sektörün hitap ettiği pazarın büyüme trendinde olduğu",
+      "Tedarikçilerin ve müşterilerin pazarlık gücünün düşük olduğu",
+      "İkame sektörlerde üretilen malların işletmenin ürettiği mallar için önemli bir alternatif kabul edilmediği",
+    ],
+    correctAnswer:
+      "Sektöre giriş engelinin azlığı nedeniyle sektöre yeni girişlerin kolay olduğu",
+  },
+  {
+    id: 39,
+    questionText:
+      "Fırsat ve tehditler ile üstünlük ve zayıflıkları değerleyen analizlerden en çok kullanılanı aşağıdakilerden hangisidir?",
+    options: [
+      "Balık kılçığı analizi",
+      "Balanced scorecard",
+      "İş Portföy analizleri",
+      "Swot analizi",
+      "Değer zinciri analizi",
+    ],
+    correctAnswer: "Swot analizi",
+  },
+  {
+    id: 40,
+    questionText:
+      "İşletme stratejilerinin oluşturulmasında işletmenin içsel faktörlerinin göz önünde bulundurulması gerektiğini savunan stratejik yönetim teorisi aşağıdakilerden hangisidir?",
+    options: [
+      "Durumsallık Yaklaşımı Teorisi",
+      "Sistem Yaklaşımı Teorisi",
+      "Tünel Vizyonu yaklaşımı",
+      "Endüstriyel örgüt teorisi",
+      "Kaynak temelli teori",
+    ],
+    correctAnswer: "Kaynak temelli teori",
+  },
+  {
+    id: 41,
+    questionText:
+      "\"Kabul edilen stratejilerin etkin bir şekilde uygulandığından emin olma ve uygulanan stratejinin hala geçerli olup olmadığını belirleme sürecidir\" ifadesi aşağıdakilerden hangisine aittir?",
+    options: [
+      "Çağdaş Stratejik Kontrol",
+      "Geleneksel Stratejik Kontrol",
+      "Özel Uyarı Kontrolü",
+      "Stratejik Denetim",
+      "Öngörü Kontrolü",
+    ],
+    correctAnswer: "Çağdaş Stratejik Kontrol",
+  },
+  {
+    id: 42,
+    questionText:
+      "Mevcut stratejiler için temel oluşturan iç ve dış faktörlerin gözden geçirildiği, performansın ölçüldüğü ve düzeltici önlemlerin alındığı stratejik yönetim süreci aşaması aşağıdakilerden hangisidir?",
+    options: [
+      "Stratejik değerlendirme ve kontrol",
+      "İleriye yönelik kontrol",
+      "Stratejik geri bildirim",
+      "Stratejik uygulama",
+      "Strateji oluşturma",
+    ],
+    correctAnswer: "Stratejik değerlendirme ve kontrol",
+  },
+  {
+    id: 43,
+    questionText:
+      "Temel Yetenekler ve kaynak temelli görüş ile paralel düşüncelere sahip stratejist aşağıdakilerden hangisidir?",
+    options: [
+      "Hamel-Pharalad",
+      "Porter",
+      "Mc Miller",
+      "Slywotzky",
+      "Grove",
+    ],
+    correctAnswer: "Hamel-Pharalad",
+  },
+  {
+    id: 44,
+    questionText:
+      "Aşağıdakilerden hangisi, farklılaştırma stratejisinin uygulama yollarından bir değildir?",
+    options: [
+      "Kalite iyileştirme çabalarını güçlendirme",
+      "Rakiplere nazaran daha üstün bir teknik teknolojinin uygulanması",
+      "Ürün ve hizmetlerin muhafazakar bir düşünce ile zaman içinde bir değişikliğe uğratılmadan piyasaya sürülmesi",
+      "Müşterilere sağlanan destek hizmetlerini ve satış hizmetlerini rakiplere nazaran daha etkili ve kaliteli gerçekleştirme",
+      "Az kalite ve nitelikteki ürün ve hizmeti rakiplerden daha düşük fiyata satma",
+    ],
+    correctAnswer:
+      "Az kalite ve nitelikteki ürün ve hizmeti rakiplerden daha düşük fiyata satma",
+  },
+  {
+    id: 45,
+    questionText:
+      "Aşağıdakilerden hangisi amaçların oluşturulmasında dikkat edilmesi gereken ilkelerden değildir?",
+    options: [
+      "Ölçülebilir olması",
+      "Katı olması",
+      "Gerçekçi olması",
+      "Zamanla sınırlı olması",
+      "Erişilebilir olması",
+    ],
+    correctAnswer: "Katı olması",
+  },
+  {
+    id: 46,
+    questionText:
+      "Aşağıdakilerden hangisi endüstri analizi temel değişkenlerinden alıcıların pazarlık gücü kapsamında yer alır?",
+    options: [
+      "Marka kimliği",
+      "Ürün farklılıkları",
+      "Alıcı kar ve çıkarları",
+      "Alınan malın miktarı",
+      "Kalite imajının etkisi",
+    ],
+    correctAnswer: "Alınan malın miktarı",
+  },
+  {
+    id: 47,
+    questionText:
+      "Beş rekabetçi güç modeli hangi strateji gurusu tarafından geliştirilmiştir?",
+    options: [
+      "Hamel",
+      "Porter",
+      "Grove",
+      "Pharalad",
+      "Slywotzky",
+    ],
+    correctAnswer: "Porter",
+  },
+  {
+    id: 48,
+    questionText:
+      "İkinci derecede önem sırasına sahip işlerin işletme dışına kaydırılması anlamında kullanılmakta olan stratejik uygulama biçimine ne ad verilir?",
+    options: [
+      "Değişim mühendisliği",
+      "Değer zinciri analizi",
+      "Balık kılçığı analizi",
+      "Balanced scorecard",
+      "Outsourcing",
+    ],
+    correctAnswer: "Outsourcing",
+  },
+  {
+    id: 49,
+    questionText:
+      "İki veya daha fazla işletmenin bir araya gelerek bir dizi stratejik ve finansal amaçları gerçekleştirmek için uzun veya kısa vadede ortaklık veya yeni bir işletme kurması şeklindeki büyüme stratejisinin adı aşağıdakilerden hangisidir?",
+    options: [
+      "Şirket evliliği",
+      "Ortak Girişim",
+      "Lisans verme",
+      "Tam birleşme",
+      "Satın alma",
+    ],
+    correctAnswer: "Ortak Girişim",
+  },
+  {
+    id: 50,
+    questionText:
+      "Amaçlara ulaşmak için eldeki kaynakları en iyi şekilde kullanarak uzun dönemli ve nihai sonuca odaklı açık ve genel bir işletme planı yapmaya ne ad verilir?",
+    options: [
+      "Misyon",
+      "Amaç",
+      "Strateji",
+      "Politika",
+      "Taktik",
+    ],
+    correctAnswer: "Strateji",
+  },
+  {
+    id: 51,
+    questionText:
+      "Aşağıdakilerden hangisinde İşletme içi faktörlere dönük pazarlama stratejileri doğru olarak verilmiştir?",
+    options: [
+      "Ürün-Tasarım-Tutundurma-Pazarlama",
+      "Ürün-Fiyat-Tutundurma-Pazarlama",
+      "Tutundurma-Fiyat-Ürün-Pazarlama",
+      "Dağıtım-Tasarım-Ürün-Tutundurma",
+      "Ürün-Fiyat-Tutundurma-Dağıtım",
+    ],
+    correctAnswer: "Ürün-Fiyat-Tutundurma-Dağıtım",
+  },
+  {
+    id: 52,
+    questionText:
+      "Aşağıdakilerden hangisi İşlevsel bir strateji olabilir?",
+    options: [
+      "İş birimi stratejisi",
+      "Kurumsal Strateji",
+      "Zaman liderliği",
+      "Üretim stratejisi",
+      "Maliyet Liderliği",
+    ],
+    correctAnswer: "Üretim stratejisi",
+  },
+  {
+    id: 53,
+    questionText:
+      "Aşağıdakilerden hangisi BEŞ REKABETÇİ GÜÇ sınıflaması içinde yer alan bir unsur değildir?",
+    options: [
+      "Müşteriler",
+      "Tamamlayıcı Ürün üretenler",
+      "İkame Ürün üretenler",
+      "Rakipler",
+      "Tedarikçiler",
+    ],
+    correctAnswer: "Tamamlayıcı Ürün üretenler",
+  },
+  {
+    id: 54,
+    questionText:
+      "Aşağıdakilerden hangisi beş rekabetçi güçten biri olan Potansiyel rakiplerin sektöre girişte karşılaşabilecekleri engellerden biri olamaz?",
+    options: [
+      "Maliyet Avantajı",
+      "Marka Bağımlılığı",
+      "Ölçek Ekonomileri",
+      "Pazarda yoğun rekabetin olması",
+      "Pazardan çıkış engellerinin bulunmaması",
+    ],
+    correctAnswer: "Pazardan çıkış engellerinin bulunmaması",
+  },
+  {
+    id: 55,
+    questionText: "Yönetim kavramı için aşağıdakilerden hangisi yanlıştır?",
+    options: [
+      "Bir amaca ulaşmak için başkaları ile işbirliği yapmaktır",
+      "Sanatların en eskisi, bilimlerin en yenisidir",
+      "Ortak amaçlar doğrultusunda faaliyetlerin koordinasyonudur",
+      "Başkaları vasıtasıyla iş gördürme faaliyetidir",
+      "Bireysel amaçları gerçekleştirme yolunda faaliyetlerin planlanması, örgütlenmesi, kontrolüdür",
+    ],
+    correctAnswer:
+      "Bireysel amaçları gerçekleştirme yolunda faaliyetlerin planlanması, örgütlenmesi, kontrolüdür",
+  },
+  {
+    id: 56,
+    questionText:
+      "Aşağıdakilerden hangisi strateji değerlemede kullanılan sayısal ölçütler arasında yer almaz?",
+    options: [
+      "Kapasite kullanım yüzdesi",
+      "Pazar payında artış",
+      "Sermaye ve yatırım dönüş hızı",
+      "Satış tutarında gelişmeler",
+      "Hedef ve planların tutarlılığı",
+    ],
+    correctAnswer: "Hedef ve planların tutarlılığı",
+  },
+  {
+    id: 57,
+    questionText:
+      "Aşağıdaki ifadelerden hangisi misyon kavramının içeriğinde yer almaz?",
+    options: [
+      "Yapılan işin tanımı",
+      "Varlık nedeni",
+      "Faaliyet alanının genel çerçevesinin belirlenmesi",
+      "İşletme değerleri",
+      "İnsanlığa yapılan katkı",
+    ],
+    correctAnswer: "İnsanlığa yapılan katkı",
+  },
+];
+
 const AcikKaynak = [
   {
     id: 1,
@@ -7429,6 +8176,13 @@ const Muhasebe: Question[] = [
 ];
 
 export const lessons: Lesson[] = [
+  {
+    id: "stratejikSorular",
+    title: "Stratejik Sorular",
+    description: `${stratejikSorular.length} soruluk tam tarama testi.`,
+    accent: "emerald",
+    questions: stratejikSorular,
+  },
   {
     id: "Kalkinma Ekonomisi",
     title: "Kalkınma Ekonomisi (Güncellendi)",

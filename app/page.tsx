@@ -94,14 +94,15 @@ const UNLOCKED_LESSON_IDS = new Set([
   "Kalkinma Ekonomisi",
   "İmalat Silah Sanayi",
   "Veri Madenciliği",
-]);
-
-// Şifre ile açılan gizli dersler — doğru şifre girilmeden listede hiç görünmez.
-const PRIVATE_LESSON_IDS = new Set([
   "Bütünleşik Pazarlama",
   "Makro İktisat",
   "Stratejik Special",
   "Muhasebe",
+]);
+
+// Şifre ile açılan gizli dersler — doğru şifre girilmeden listede hiç görünmez.
+const PRIVATE_LESSON_IDS = new Set([
+ "stratejikSorular"
 ]);
 
 export default function QuizApp() {
