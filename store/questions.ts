@@ -746,7 +746,286 @@ const stratejikSorular = [
     correctAnswer: "İnsanlığa yapılan katkı",
   },
 ];
-
+const dijitalP = [
+  {
+    id: 1,
+    questionText:
+      "Aşağıdakilerden hangisi pazarlamanın temel özelliklerinden bir tanesi değildir?",
+    options: [
+      "Pazarlama çok çeşitli faaliyetleri kapsayan bir süreçtir.",
+      "Pazarlama sadece kar amacı güden işletmeler için önem arz etmektedir.",
+      "Pazarlama tüketici istek ve ihtiyaçlarını karşılamaya yönelik bir mübadele sürecidir.",
+      "Pazarlama sadece mallar için değil, fikir ve hizmetler için de gereklidir.",
+      "Pazarlama satış sonrası da devam eden bir faaliyettir.",
+    ],
+    correctAnswer:
+      "Pazarlama sadece kar amacı güden işletmeler için önem arz etmektedir.",
+  },
+  {
+    id: 2,
+    questionText:
+      "\"Müslüman mahallesinde salyangoz satmak\" özdeyişi uluslararası pazarlamayı etkileyen çevre faktörlerinden hangisi ile ilişkilendirilebilir?",
+    options: [
+      "Uluslararası Ekonomik Çevre",
+      "Uluslararası Demografik Çevre",
+      "Uluslararası Sosyal ve Kültürel Çevre",
+      "Uluslararası Politik ve Yasal Çevre",
+      "Uluslararası Teknolojik Çevre",
+    ],
+    correctAnswer: "Uluslararası Sosyal ve Kültürel Çevre",
+  },
+  {
+    id: 3,
+    questionText:
+      "Dağıtım kanalının genişliğinin en çok önem kazandığı mal türü aşağıdakilerden hangisidir?",
+    options: [
+      "Kolayda mal",
+      "Beğenmeli mal",
+      "Özellikli mal",
+      "Aranmayan mal",
+      "Araştırılan mal",
+    ],
+    correctAnswer: "Kolayda mal",
+  },
+  {
+    id: 4,
+    questionText:
+      "PR'nin (Public Relations) açılımı aşağıdakilerden hangisidir?",
+    options: [
+      "Kişisel İletişim",
+      "Toplu İletişim",
+      "Halkla İlişkiler",
+      "Karşılıklı İlişkiler",
+      "İşletme İlişkileri",
+    ],
+    correctAnswer: "Halkla İlişkiler",
+  },
+  {
+    id: 5,
+    questionText:
+      "Aşağıda verilen fiyatlandırma stratejilerinden hangisi psikolojik fiyatlandırma stratejilerinden değildir?",
+    options: [
+      "Küsuratlı Fiyatlandırma",
+      "Teklif Usulü Fiyatlandırma",
+      "Prestij Fiyatlandırma",
+      "Miktar İndirimi Yoluyla Fiyatlandırma",
+      "Sabit Fiyatla Fiyatlandırma",
+    ],
+    correctAnswer: "Teklif Usulü Fiyatlandırma",
+  },
+  {
+    id: 6,
+    questionText:
+      "H.Ford'un \"Siyah olmak kaydıyla, müşteri istediği renkte arabayı satın alabilir.\" sözü hangi pazarlama anlayışının düşüncesini yansıtmaktadır?",
+    options: [
+      "Deneyimsel Pazarlama Anlayışı Dönemi",
+      "Pazarlama Anlayışı Dönemi",
+      "Toplumsal Pazarlama Anlayışı Dönemi",
+      "Satış Anlayışı Dönemi",
+      "Üretim Anlayışı Dönemi",
+    ],
+    correctAnswer: "Üretim Anlayışı Dönemi",
+  },
+  {
+    id: 7,
+    questionText:
+      "TCDD ile THY arasında yaşanan rekabet türü aşağıdakilerden hangisidir?",
+    options: [
+      "Yatay Rekabet",
+      "Jenerik Rekabet",
+      "Arzu Rekabeti",
+      "Marka Rekabeti",
+      "Dikey Rekabet",
+    ],
+    correctAnswer: "Jenerik Rekabet",
+  },
+  {
+    id: 8,
+    questionText:
+      "BDG (Boston Danışma Grubu) matrisinde büyüme hızı yüksek, pazar payı düşük iş birimleri aşağıdakilerden hangisidir?",
+    options: [
+      "Yıldızlar (Amiral Gemisi)",
+      "Nakit Yutucular (Köpekler)",
+      "Nakit İnekleri (Nakit Sağmaları)",
+      "Problemliler (Sorunlular)",
+      "Hiçbiri",
+    ],
+    correctAnswer: "Problemliler (Sorunlular)",
+  },
+  {
+    id: 9,
+    questionText:
+      "Mevcut pazarlarda yeni mamuller geliştirerek büyümek isteyen bir işletme aşağıdaki stratejilerden hangisini uygulamalıdır?",
+    options: [
+      "Çeşitlendirme Stratejisi",
+      "Mamul Geliştirme Stratejisi",
+      "Pazar Geliştirme Stratejisi",
+      "Pazara nüfuz etme stratejisi",
+      "Ortak Girişim Stratejisi",
+    ],
+    correctAnswer: "Mamul Geliştirme Stratejisi",
+  },
+  {
+    id: 10,
+    questionText:
+      "Tüketicilerin az da olsa önceden satın alma deneyimlerinin olduğu orta seviyeli karar verme tekniği olarak adlandırılan satın alma türü aşağıdakilerden hangisidir?",
+    options: [
+      "Kapsamlı Problem Çözme",
+      "Otomatik Satın Alma",
+      "Rutin Satın Alma",
+      "Sınırlı Problem Çözme",
+      "Hiçbiri",
+    ],
+    correctAnswer: "Sınırlı Problem Çözme",
+  },
+  {
+    id: 11,
+    questionText:
+      "Aşağıdakilerden hangisi doğrudan pazarlamanın avantajlarından değildir?",
+    options: [
+      "Düşük maliyet",
+      "Yüksek kar marjı",
+      "İnteraktiflik ve hızlılık",
+      "Kolaylık",
+      "Ürünü görmeden alma",
+    ],
+    correctAnswer: "Ürünü görmeden alma",
+  },
+  {
+    id: 12,
+    questionText:
+      "Kişi başına ulaşma maliyetinin en yüksek olduğu tutundurma metodu aşağıdakilerden hangisidir?",
+    options: [
+      "Satış geliştirme",
+      "Kişisel satış",
+      "Doğrudan pazarlama",
+      "Reklam",
+      "Halkla ilişkiler",
+    ],
+    correctAnswer: "Kişisel satış",
+  },
+  {
+    id: 13,
+    questionText:
+      "Ülkemizde en fazla hizmet ihracatı yapan firma aşağıdakilerden hangisidir?",
+    options: ["Ford", "Pegasus", "Tüpraş", "THY", "Ziraat Bankası"],
+    correctAnswer: "THY",
+  },
+  {
+    id: 14,
+    questionText:
+      "Aşağıdakilerden hangisi bir hizmet markası değildir?",
+    options: ["ICBC", "TCDD", "TOGG", "ETS", "Selçuk Üniversitesi"],
+    correctAnswer: "TOGG",
+  },
+  {
+    id: 15,
+    questionText:
+      "Vakıfbank World Kart markası hangi marka stratejisinin bir ürünüdür?",
+    options: [
+      "Marka genişletme",
+      "Yeni marka",
+      "Birlikte markalama",
+      "Çok marka",
+      "Dizi genişletme",
+    ],
+    correctAnswer: "Birlikte markalama",
+  },
+  {
+    id: 16,
+    questionText:
+      "Aşağıdakilerden hangisi tüketicileri etkilemek amacı ile kullanılan AIDA Modelinin aşamalarından değildir?",
+    options: [
+      "Tepki Ölçme",
+      "İlgi Uyandırma",
+      "Dikkat Çekme",
+      "İstek Oluşturma",
+      "Harekete Geçirme",
+    ],
+    correctAnswer: "Tepki Ölçme",
+  },
+  {
+    id: 17,
+    questionText:
+      "Sabancı Holding bünyesindeki Brisa, DanoneSA, DupontSA, KordSA vb şirketler uluslararası pazarlara giriş yöntemlerinden hangisi kapsamında değerlendirilebilir?",
+    options: [
+      "Dolaylı İhracat",
+      "Franchising",
+      "Merger",
+      "Doğrudan İhracat",
+      "Joit Venture",
+    ],
+    correctAnswer: "Joit Venture",
+  },
+  {
+    id: 18,
+    questionText:
+      "En düşük/yüksek riskin üstlenildiği dış pazarlara giriş türü aşağıdakilerden hangisidir?",
+    options: [
+      "Doğrudan Yatırım/İhracat",
+      "Doğrudan yatırım/Konsorsiyum",
+      "İhracat/Doğrudan Yatırım",
+      "Ortak girişim/Doğrudan Yatırım",
+      "İhracat/Ortak Girişim",
+    ],
+    correctAnswer: "İhracat/Doğrudan Yatırım",
+  },
+  {
+    id: 19,
+    questionText:
+      "Ülkelerin ekonomik değeri yüksek ürünlerde uzmanlaşarak bu ürünleri kendileri üretip zayıf oldukları ve ekonomik değeri düşük ürünleri ithal etmelerini esas alan kurama ne ad verilir?",
+    options: [
+      "Uluslararası ticaret kuramı",
+      "Doğrudan yatırım kuramı",
+      "Karşılaştırmalı avantajlar kuramı",
+      "Küresel avantaj kuramı",
+      "Hiçbiri",
+    ],
+    correctAnswer: "Karşılaştırmalı avantajlar kuramı",
+  },
+  {
+    id: 20,
+    questionText:
+      "Aşağıdaki ülkelerden hangisi BENELÜX ülkeleri arasındadır?",
+    options: ["Estonya", "Ürdün", "Letonya", "Bosna Hersek", "Hollanda"],
+    correctAnswer: "Hollanda",
+  },
+  {
+    id: 21,
+    questionText:
+      "Dünyada günümüzde en fazla İthalat/İhracat yapan ülkeler hangi seçenekte doğru verilmiştir?",
+    options: ["Çin/Almanya", "Çin/ABD", "ABD/Çin", "ABD/ABD", "Çin/Çin"],
+    correctAnswer: "ABD/Çin",
+  },
+  {
+    id: 22,
+    questionText:
+      "Aşağıdaki ülkelerden hangisi dünyanın en kalabalık nüfusa sahip 10 ülkesi arasında yer almaz?",
+    options: ["Nijerya", "ABD", "Bangladeş", "İran", "Rusya"],
+    correctAnswer: "İran",
+  },
+  {
+    id: 23,
+    questionText:
+      "Türkiye'nin en büyük sanayi şirketi aşağıdakilerden hangisidir?",
+    options: ["Turkcell", "Türk Telekom", "Tüpraş", "THY", "Ford Otosan"],
+    correctAnswer: "Tüpraş",
+  },
+  {
+    id: 24,
+    questionText:
+      "Aşağıdakilerin değerinin büyükten küçüğe doğru sıralanışı hangi seçenekte verilmiştir? (I) 30 Varil Petrol, II) 1 Ons Altın, III) 1000 Euro)",
+    options: ["I-III-II", "I-II-III", "III-I-II", "II-III-I", "II-I-III"],
+    correctAnswer: "II-I-III",
+  },
+  {
+    id: 25,
+    questionText:
+      "2025 yılı dış ticaret açığımız yaklaşık olarak ne kadardır?",
+    options: ["20 milyon $", "50 milyon TL", "120 milyar $", "90 milyar TL", "30 milyar $"],
+    correctAnswer: "120 milyar $",
+  },
+];
 const AcikKaynak = [
   {
     id: 1,
@@ -8176,6 +8455,13 @@ const Muhasebe: Question[] = [
 ];
 
 export const lessons: Lesson[] = [
+  {
+    id: "dijitalP",
+    title: "Dijital Pazarlama!!!!",
+    description: `${dijitalP.length} soruluk tam tarama testi.`,
+    accent: "emerald",
+    questions: dijitalP,
+  },
   {
     id: "stratejikSorular",
     title: "Stratejik Sorular",
